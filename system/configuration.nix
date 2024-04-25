@@ -108,7 +108,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     #nvidiaPersistenced = true;
-    forceFullCompositionPipeline = true;
+    forceFullCompositionPipeline = false;
   };
 
   networking.hostName = "tayou-nixos"; # Define your hostname.
