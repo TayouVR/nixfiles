@@ -605,17 +605,17 @@
       git_commit = {
         commit_hash_length = 7;
         format = "[($hash$tag)]($style)";
-        style = "green bold";
+        style = "fg:green bold bg:#00428a";
         only_detached = true;
         disabled = false;
         tag_symbol = " 🏷  ";
         tag_disabled = true;
       };
       git_metrics = {
-        added_style = "bold green";
-        deleted_style = "bold red";
+        added_style = "fg:bold green bg:#00428a";
+        deleted_style = "fg:bold red bg:#00428a";
         only_nonzero_diffs = true;
-        format = "([+$added]($added_style) )([-$deleted]($deleted_style) )";
+        format = "([+$added ]($added_style))([-$deleted ]($deleted_style))";
         disabled = false;
       };
       git_state = {
@@ -628,7 +628,7 @@
         merge = "MERGING";
         rebase = "REBASING";
         revert = "REVERTING";
-        style = "bold yellow";
+        style = "bold fg:yellow bg:#00428a";
       };
       golang = {
         format = "[$symbol($version )]($style)";
@@ -679,7 +679,7 @@
       };
       hg_branch = {
         symbol = " ";
-        style = "bold purple";
+        style = "bold fg:purple bg:#00428a";
         format = "on [$symbol$branch]($style)";
         truncation_length = 9223372036854775807;
         truncation_symbol = "…";
