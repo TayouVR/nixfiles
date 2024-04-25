@@ -182,6 +182,10 @@
     monado.enable = true;
   };
 
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = 1;
+  };
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
