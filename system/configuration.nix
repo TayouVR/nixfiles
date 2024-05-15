@@ -22,6 +22,12 @@
 
   # Use latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPatches = [
+    {
+      name = "bigscreen beyond";
+      patch = ./beyondKernel.patch;
+    }
+  ];
 
   # nix commands and flakes enabled
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -179,7 +185,10 @@
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
-    monado.enable = true;
+    monado = {
+      enable = true;
+      defaultRuntime = true;
+    };
   };
 
   environment.sessionVariables = {
