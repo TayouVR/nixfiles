@@ -226,7 +226,7 @@
   #  wget
     discord
     vesktop
-    quodlibet
+    #quodlibet
     blender
     unityhub
     vlc
@@ -248,7 +248,7 @@
     jetbrains.rust-rover
     jetbrains.idea-ultimate
     jetbrains.pycharm-professional
-    prismlauncher-qt5-unwrapped
+    prismlauncher-unwrapped
     lightly-boehs
     gimp
     inkscape
