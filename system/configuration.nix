@@ -2,7 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  username,
+  ...
+}:
 
 {
   imports =
@@ -22,12 +28,14 @@
 
   # Use latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPatches = [
-    {
-      name = "bigscreen beyond";
-      patch = ./beyondKernel.patch;
-    }
-  ];
+  # TODO: remove EDID QUIRK from patch as beyond seems to provide correct Display ID 2.0 data to the kernel
+  # patch doesn't work for nvidia, so don't bother
+#  boot.kernelPatches = [
+#    {
+#      name = "bigscreen beyond";
+#      patch = ./beyondKernel.patch;
+#    }
+#  ];
 
   # nix commands and flakes enabled
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -80,8 +88,8 @@
 
   # GPU driver
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport32Bit = true;
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
   hardware.nvidia = {
 
     # Modesetting is required.
@@ -104,7 +112,7 @@
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
+    open = true;
 
     # Enable the Nvidia settings menu,
 	  # accessible via `nvidia-settings`.
@@ -195,10 +203,13 @@
     NIXOS_OZONE_WL = 1;
   };
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  programs = {
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    };
+    envision.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -227,16 +238,16 @@
     discord
     vesktop
     #quodlibet
-    blender
+    #blender
     unityhub
     vlc
     kid3
     wine
     gparted
-    libsForQt5.kpmcore # For kde partition manager, as it seems to be missing this dependency
+    #libsForQt5.kpmcore # For kde partition manager, as it seems to be missing this dependency
     partition-manager
     htop
-    gnome.gnome-disk-utility
+    gnome-disk-utility
     smartmontools
     sl
     lolcat
@@ -269,11 +280,15 @@
     opencomposite
     qpwgraph
     obs-studio
+    # for plasma desktop info center
+    glxinfo
+    vulkan-tools
+    clinfo
   ];
 
-  nixpkgs.config.permittedInsecurePackages = with pkgs; [
-    "electron-25.9.0"
-  ];
+#  nixpkgs.config.permittedInsecurePackages = with pkgs; [
+#    "electron-25.9.0"
+#  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
