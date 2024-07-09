@@ -38,6 +38,7 @@
         modules = [
           nixpkgs-xr.nixosModules.nixpkgs-xr
           ./system/configuration.nix
+          ./starship/starship.nix
         ];
       };
 
@@ -48,6 +49,7 @@
         modules = [
           nixpkgs-xr.nixosModules.nixpkgs-xr
           ./system/configuration.nix
+          ./starship/starship.nix
         ];
       };
     };
