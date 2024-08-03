@@ -2,6 +2,7 @@
   description = "Tayous NixOS system flake";
 
   inputs = {
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     #nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -9,24 +10,39 @@
 
   outputs = {
     nixpkgs,
+    nixpkgs-stable,
     nixpkgs-xr,
     ...
   } @ inputs:
   let
     username = "tayou";
     system = "x86_64-linux";
+    pkgsStable = import nixpkgs-stable {
+      inherit system;
+      config = {
+        allowUnfree = true;
+      };
+    };
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+      };
+    };
+    xr-pkgs = import nixpkgs-xr {
+      inherit system;
+      config = {
+        allowUnfree = true;
+      };
+    };
 
     specialArgs = {
       inherit username;
       inherit inputs;
       inherit system;
-    };
-    pkgs = import nixpkgs {
-      inherit system;
-
-      config = {
-        allowUnfree = true;
-      };
+      inherit pkgs;
+      inherit pkgsStable;
+      inherit xr-pkgs;
     };
 
   in {

@@ -7,6 +7,7 @@
   pkgs,
   inputs,
   username,
+  xr-pkgs,
   ...
 }:
 
@@ -178,7 +179,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services = {
@@ -198,6 +198,11 @@
       enable = true;
       defaultRuntime = true;
     };
+  };
+
+  systemd.user.services.monado.environment = {
+    STEAMVR_LH_ENABLE = "1";
+    XRT_COMPOSITOR_COMPUTE = "1";
   };
 
   environment.sessionVariables = {
@@ -239,7 +244,7 @@
     discord
     vesktop
     #quodlibet
-    #blender
+    blender
     unityhub
     vlc
     kid3
@@ -290,7 +295,7 @@
     chromium
     gcc
     gpp
-    #nixpkgs-xr.wlxoverlay-s
+    #xr-pkgs.wlxoverlay-s
   ];
 
 #  nixpkgs.config.permittedInsecurePackages = with pkgs; [
