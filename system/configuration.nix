@@ -11,6 +11,15 @@
   ...
 }:
 
+# remove when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
+let
+  nixpkgs-klassy =
+    import (fetchTarball "https://github.com/pluiedev/nixpkgs/archive/init/klassy.tar.gz")
+      {
+        inherit (pkgs) system config;
+        overlays = [ ];
+      };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -296,6 +305,10 @@
     gcc
     gpp
     #xr-pkgs.wlxoverlay-s
+
+    # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
+    nixpkgs-klassy.klassy
+
   ];
 
 #  nixpkgs.config.permittedInsecurePackages = with pkgs; [

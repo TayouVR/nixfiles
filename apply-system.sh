@@ -4,4 +4,4 @@
 #sudo nixos-rebuild --install-bootloader switch --flake ./#nixosTayou
 
 ## regular rebuild
-sudo nixos-rebuild switch --flake ./#nixosTayou
+sudo nixos-rebuild --impure switch --flake ./#nixosTayou
