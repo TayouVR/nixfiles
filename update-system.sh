@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## update nix channel
-sudo nix-channel --update
+#sudo nix-channel --update
 
 ## update current nixos configuration
 #sudo nixos-rebuild switch --update
