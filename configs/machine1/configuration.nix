@@ -39,7 +39,7 @@
 #  boot.kernelPatches = [
 #    {
 #      name = "bigscreen beyond";
-#      patch = ./beyondKernel.patch;
+#      patch = ../beyondKernel.patch;
 #    }
 #  ];
   boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
@@ -185,7 +185,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.tayou = {
+  users.users."${username}" = {
     isNormalUser = true;
     description = "Tayou";
     extraGroups = [ "networkmanager" "wheel" ];
@@ -259,6 +259,11 @@
     chromium
     gcc
     gpp
+    nixd
+    protonup-qt
+    kicad
+    gamemode
+    lutris
     #xr-pkgs.wlxoverlay-s
 
     # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
