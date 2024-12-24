@@ -34,14 +34,6 @@
 
   # Use latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # TODO: remove EDID QUIRK from patch as beyond seems to provide correct Display ID 2.0 data to the kernel
-  # patch doesn't work for nvidia, so don't bother
-#  boot.kernelPatches = [
-#    {
-#      name = "bigscreen beyond";
-#      patch = ../beyondKernel.patch;
-#    }
-#  ];
   boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
 
   # nix commands and flakes enabled
@@ -90,7 +82,7 @@
     forceFullCompositionPipeline = false;
   };
 
-  networking.hostName = "${username}-nixos"; # Define your hostname.
+  # networking.hostName = "${username}-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -213,7 +205,6 @@
     kid3
     wine
     gparted
-    #libsForQt5.kpmcore # For kde partition manager, as it seems to be missing this dependency
     partition-manager
     htop
     gnome-disk-utility

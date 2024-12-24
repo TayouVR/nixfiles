@@ -84,13 +84,13 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
 
     #nvidiaPersistenced = true;
     forceFullCompositionPipeline = false;
   };
 
-  networking.hostName = "${username}-nixos"; # Define your hostname.
+  # networking.hostName = "${username}-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary

@@ -2,9 +2,9 @@
   description = "Tayous NixOS system flake";
 
   inputs = {
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    #nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    #nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -29,8 +29,8 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         ./lib
-        ./pkgs
-        ./modules
+        #./pkgs
+        #./modules
 
         ./configs/machine1
         ./configs/machine2
