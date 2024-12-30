@@ -8,18 +8,9 @@
   inputs,
   username,
   xr-pkgs,
+  packages,
   ...
 }:
-
-# remove when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
-#let
-#  nixpkgs-klassy =
-#    import (fetchTarball "https://github.com/pluiedev/nixpkgs/archive/init/klassy.tar.gz")
-#      {
-#        inherit (pkgs) system config;
-#        overlays = [ ];
-#      };
-#in
 {
 
   # Bootloader.
@@ -76,7 +67,9 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # https://nixos.wiki/wiki/Nvidia
+    #
 
     #nvidiaPersistenced = true;
     forceFullCompositionPipeline = false;
@@ -132,6 +125,15 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.extraConf = ''
+      DefaultEncryption Never
+    '';
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -191,6 +193,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  virtualisation.waydroid.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -219,8 +223,7 @@
     jetbrains.rust-rover
     jetbrains.idea-ultimate
     jetbrains.pycharm-professional
-    prismlauncher-unwrapped
-    lightly-boehs
+    prismlauncher
     gimp
     inkscape
     krita
@@ -255,12 +258,25 @@
     kicad
     gamemode
     lutris
+    lolcat
+    sl
+    waydroid
+    krdc
+    localsend
     #xr-pkgs.wlxoverlay-s
 
     # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
-    #nixpkgs-klassy.klassy
+    packages.klassy
+
+    # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/367614
+    packages.darkly
 
   ];
+
+  security.pam.services.kwallet = {
+    name = "kwallet";
+    enableKwallet = true;
+  };
 
 #  nixpkgs.config.permittedInsecurePackages = with pkgs; [
 #    "electron-25.9.0"

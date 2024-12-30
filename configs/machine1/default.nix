@@ -8,7 +8,7 @@
       #../common
 
       ./hardware-configuration.nix
-
+      ./mounts.nix
       ./configuration.nix
 
       ../../starship/starship.nix

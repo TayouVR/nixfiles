@@ -29,7 +29,7 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         ./lib
-        #./pkgs
+        ./pkgs
         #./modules
 
         ./configs/machine1

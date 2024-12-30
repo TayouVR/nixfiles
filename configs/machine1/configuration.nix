@@ -8,18 +8,9 @@
   inputs,
   username,
   xr-pkgs,
+  packages,
   ...
 }:
-
-# remove when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
-#let
-#  nixpkgs-klassy =
-#    import (fetchTarball "https://github.com/pluiedev/nixpkgs/archive/init/klassy.tar.gz")
-#      {
-#        inherit (pkgs) system config;
-#        overlays = [ ];
-#      };
-#in
 {
 
   # Bootloader.
@@ -34,14 +25,12 @@
 
   # Use latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # TODO: remove EDID QUIRK from patch as beyond seems to provide correct Display ID 2.0 data to the kernel
-  # patch doesn't work for nvidia, so don't bother
-#  boot.kernelPatches = [
-#    {
-#      name = "bigscreen beyond";
-#      patch = ../beyondKernel.patch;
-#    }
-#  ];
+  boot.kernelPatches = [
+    {
+      name = "bigscreen beyond";
+      patch = ../beyondKernel.patch;
+    }
+  ];
   boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
 
   # nix commands and flakes enabled
@@ -52,43 +41,9 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   # GPU driver
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
-  hardware.nvidia = {
-
-    # Modesetting is required.
-    modesetting.enable = true;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
-    # of just the bare essentials.
-    powerManagement.enable = false;
-
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of
-    # supported GPUs is at:
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
-
-    # Enable the Nvidia settings menu,
-	  # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
-
-    #nvidiaPersistenced = true;
-    forceFullCompositionPipeline = false;
-  };
 
   # networking.hostName = "${username}-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -126,8 +81,6 @@
   services.desktopManager.plasma6.enable = true;
 
   #programs.home-manager.enable = true;
-
-  #services.wayland.windowManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -199,6 +152,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  virtualisation.waydroid.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -213,7 +168,6 @@
     kid3
     wine
     gparted
-    #libsForQt5.kpmcore # For kde partition manager, as it seems to be missing this dependency
     partition-manager
     htop
     gnome-disk-utility
@@ -228,8 +182,7 @@
     jetbrains.rust-rover
     jetbrains.idea-ultimate
     jetbrains.pycharm-professional
-    prismlauncher-unwrapped
-    lightly-boehs
+    prismlauncher
     gimp
     inkscape
     krita
@@ -264,10 +217,17 @@
     kicad
     gamemode
     lutris
+    lolcat
+    sl
+    waydroid
+    localsend
     #xr-pkgs.wlxoverlay-s
 
     # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
-    #nixpkgs-klassy.klassy
+    packages.klassy
+
+    # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/367614
+    packages.darkly
 
   ];
 
