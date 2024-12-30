@@ -25,13 +25,13 @@
 
   # Use latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelPatches = [
     {
       name = "bigscreen beyond";
       patch = ../beyondKernel.patch;
     }
   ];
-  boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
 
   # nix commands and flakes enabled
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -162,7 +162,7 @@
     discord
     vesktop
     #quodlibet
-    blender
+    blender-hip
     unityhub
     vlc
     kid3
@@ -183,6 +183,8 @@
     jetbrains.idea-ultimate
     jetbrains.pycharm-professional
     prismlauncher
+    kdePackages.krdp # server
+    kdePackages.krdc # client
     gimp
     inkscape
     krita
@@ -212,13 +214,16 @@
     chromium
     gcc
     gpp
+    keepassxc
+    stardust-xr-kiara
+    stardust-xr-server
+    stardust-xr-flatland
+    stardust-xr-protostar
     nixd
     protonup-qt
     kicad
     gamemode
     lutris
-    lolcat
-    sl
     waydroid
     localsend
     #xr-pkgs.wlxoverlay-s
@@ -230,10 +235,6 @@
     packages.darkly
 
   ];
-
-#  nixpkgs.config.permittedInsecurePackages = with pkgs; [
-#    "electron-25.9.0"
-#  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

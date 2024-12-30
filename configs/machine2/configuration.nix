@@ -258,8 +258,6 @@
     kicad
     gamemode
     lutris
-    lolcat
-    sl
     waydroid
     krdc
     localsend
