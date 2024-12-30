@@ -38,6 +38,10 @@
      fsType = "ntfs";
    };
   fileSystems."/mnt/WindowsApps" =
+   { device = "/dev/disk/by-uuid/1FDC889B1C3ED0B2";
+     fsType = "ntfs";
+   };
+  fileSystems."/mnt/WindowsAppsOld" =
    { device = "/dev/disk/by-uuid/4EAE54E9AE54CADB";
      fsType = "ntfs";
    };
