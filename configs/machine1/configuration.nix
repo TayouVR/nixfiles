@@ -226,6 +226,7 @@
     lutris
     waydroid
     localsend
+    alcom
     #xr-pkgs.wlxoverlay-s
 
     # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
