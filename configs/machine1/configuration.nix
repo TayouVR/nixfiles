@@ -161,7 +161,7 @@
   #  wget
     discord
     vesktop
-    #quodlibet
+    quodlibet
     blender-hip
     unityhub
     vlc
