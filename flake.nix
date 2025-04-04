@@ -18,6 +18,8 @@
       url = "github:nix-community/nixpkgs-xr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-conf-editor.url = "github:snowfallorg/nixos-conf-editor";
   };
 
   outputs =

@@ -69,7 +69,6 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     # https://nixos.wiki/wiki/Nvidia
-    #
 
     #nvidiaPersistenced = true;
     forceFullCompositionPipeline = false;
@@ -269,6 +268,7 @@
     # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/367614
     packages.darkly
 
+    inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
   ];
 
   security.pam.services.kwallet = {
