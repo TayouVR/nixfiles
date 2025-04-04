@@ -263,7 +263,7 @@
     #xr-pkgs.wlxoverlay-s
 
     # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
-    packages.klassy
+    #packages.klassy
 
     # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/367614
     packages.darkly
