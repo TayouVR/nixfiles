@@ -95,9 +95,9 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services = {
+    pulseaudio.enable = false;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -144,7 +144,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-      kate
       thunderbird
     ];
   };
@@ -168,7 +167,12 @@
     kid3
     wine
     gparted
-    partition-manager
+    kdePackages.partitionmanager
+    kdePackages.kate
+    kdePackages.calligra # includes karbon, and the rest of the suite
+    kdePackages.filelight
+    kdePackages.krdp # server
+    kdePackages.krdc # client
     htop
     gnome-disk-utility
     smartmontools
@@ -183,8 +187,6 @@
     jetbrains.idea-ultimate
     jetbrains.pycharm-professional
     prismlauncher
-    kdePackages.krdp # server
-    kdePackages.krdc # client
     gimp
     inkscape
     krita
@@ -197,7 +199,6 @@
     gitkraken
     fuse3
     obsidian
-    filelight
     superTux
     superTuxKart
     extremetuxracer
