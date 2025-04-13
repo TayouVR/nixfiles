@@ -236,6 +236,7 @@
     # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/367614
     packages.darkly
 
+    inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
