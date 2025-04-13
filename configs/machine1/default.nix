@@ -7,6 +7,8 @@
     modules = [
       #../common
 
+      ./home.nix
+
       ./hardware-configuration.nix
       ./mounts.nix
       ./configuration.nix
