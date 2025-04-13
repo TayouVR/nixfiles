@@ -5,7 +5,8 @@
     hostname = "tayou-gw";
     username = "tayou";
     modules = [
-      #../common
+      ../common/required
+      ../common/graphics/nvidia.nix
 
       ./hardware-configuration.nix
 

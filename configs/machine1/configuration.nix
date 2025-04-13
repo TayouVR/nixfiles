@@ -13,26 +13,6 @@
 }:
 {
 
-  # Bootloader.
-  #boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.useOSProber = true;
-  boot.loader.grub.efiSupport = true;
-  #boot.loader.grub.memtest86.enable = true;
-  boot.loader.grub.default = "saved";
-
-  # Use latest linux kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelPatches = [
-    {
-      name = "bigscreen beyond";
-      patch = ../beyondKernel.patch;
-    }
-  ];
-
   # nix commands and flakes enabled
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -40,20 +20,12 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
-  # GPU driver
-  services.xserver.videoDrivers = [ "amdgpu" ];
-  hardware.graphics.enable = true;
-  hardware.graphics.enable32Bit = true;
-
   # networking.hostName = "${username}-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -141,7 +113,7 @@
   users.users."${username}" = {
     isNormalUser = true;
     description = "Tayou";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "wheel" ];
     packages = with pkgs; [
       firefox
       thunderbird
@@ -195,8 +167,6 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.caskaydia-mono
     hyfetch
-    git
-    gitkraken
     fuse3
     obsidian
     superTux
@@ -229,6 +199,8 @@
     localsend
     alcom
     telegram-desktop
+    home-manager
+    bat
     #xr-pkgs.wlxoverlay-s
 
     # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
@@ -239,6 +211,13 @@
 
     inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
   ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      tayou = import ./home.nix;
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
