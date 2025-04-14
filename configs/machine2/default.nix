@@ -6,7 +6,7 @@
     username = "tayou";
     modules = [
       ../common/required
-      ../common/graphics/nvidia.nix
+      ../common/optional/graphics/nvidia.nix
 
       ./hardware-configuration.nix
 

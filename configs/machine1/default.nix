@@ -7,7 +7,8 @@
     modules = [
       inputs.home-manager.nixosModules.home-manager
       ../common/required
-      ../common/graphics/amd.nix
+      ../common/optional/graphics/amd.nix
+      ../common/optional/vr
 
       ./hardware-configuration.nix
       ./mounts.nix
