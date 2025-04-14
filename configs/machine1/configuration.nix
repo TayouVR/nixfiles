@@ -143,7 +143,8 @@
     kdePackages.calligra # includes karbon, and the rest of the suite
     kdePackages.filelight
     kdePackages.krdp # server
-    kdePackages.krdc # client
+    kdePackages.krdc # client - wait for 25.04 version to get RDP support back
+    freerdp3
     htop
     gnome-disk-utility
     smartmontools
