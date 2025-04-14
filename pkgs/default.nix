@@ -3,8 +3,9 @@
     { pkgs, ... }:
     {
       packages = {
-        darkly = pkgs.callPackage ./darkly/package.nix {};
-        klassy = pkgs.callPackage ./klassy/package.nix {};
+        darkly = pkgs.callPackage ./darkly {};
+        klassy = pkgs.callPackage ./klassy {};
+        startvrc = pkgs.callPackage ./startvrc {};
       };
     };
 }
