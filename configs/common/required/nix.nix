@@ -31,7 +31,7 @@ in
       }
     ];
 
-    nixpkgs.overlays = [ self.overlays.default ];
+    #nixpkgs.overlays = [ self.overlays.default ];
     nixpkgs.config.allowUnfree = true;
 
     nix = {
