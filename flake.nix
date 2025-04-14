@@ -33,6 +33,7 @@
         ./lib
         ./pkgs
         #./modules
+        ./homeModules
 
         ./configs/machine1
         ./configs/machine2
