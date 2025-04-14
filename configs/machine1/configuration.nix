@@ -63,6 +63,7 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  hardware.sane.enable = true;
 
   # Enable sound with pipewire.
   security.rtkit.enable = true;
@@ -111,7 +112,7 @@
   users.users."${username}" = {
     isNormalUser = true;
     description = "Tayou";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "scanner" "lp" ]; # scanner group for sane, lp for printers
     packages = with pkgs; [
       firefox
       thunderbird
@@ -199,6 +200,7 @@
     telegram-desktop
     home-manager
     bat
+    simple-scan
     #xr-pkgs.wlxoverlay-s
 
     # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
