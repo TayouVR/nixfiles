@@ -218,12 +218,12 @@
     inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
   ];
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      tayou = import ./home.nix;
-    };
-  };
+#  home-manager = {
+#    extraSpecialArgs = { inherit inputs; };
+#    users = {
+#      tayou = import ./home.nix;
+#    };
+#  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
