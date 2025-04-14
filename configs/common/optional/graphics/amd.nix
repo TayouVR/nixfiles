@@ -4,7 +4,7 @@
   boot.kernelPatches = [
     {
       name = "bigscreen beyond";
-      patch = ../beyondKernel.patch;
+      patch = ./beyondKernel.patch;
     }
   ];
 
