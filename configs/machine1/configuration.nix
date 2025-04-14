@@ -136,7 +136,8 @@
     unityhub
     vlc
     kid3
-    wine
+    wineWowPackages.stable
+    winetricks
     gparted
     kdePackages.partitionmanager
     kdePackages.kate
