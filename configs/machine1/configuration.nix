@@ -145,6 +145,8 @@
     kdePackages.filelight
     kdePackages.krdp # server
     kdePackages.krdc # client - wait for 25.04 version to get RDP support back
+    chromium
+    # chromium-bsu
     freerdp3
     htop
     gnome-disk-utility
@@ -202,7 +204,9 @@
     telegram-desktop
     home-manager
     bat
+    rare
     simple-scan
+    vrcx
     #xr-pkgs.wlxoverlay-s
 
     # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
