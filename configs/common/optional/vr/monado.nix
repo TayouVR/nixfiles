@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  packages,
   ...
 }:
 
@@ -79,7 +80,7 @@ in
     name = "Monado";
     comment = "Starts the Monado OpenXR service";
     exec = lib.getExe (
-      pkgs.writeSystemdToggle.override {
+      packages.writeSystemdToggle.override {
         service = "monado";
         isUserService = true;
       }
