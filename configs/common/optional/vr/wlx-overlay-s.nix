@@ -85,8 +85,14 @@ in
       };
 
       disp2 = {
-        width = 1920;
-        height = 1080;
+        width = 2560;
+        height = 1440;
+        scale = 1.0;
+      };
+
+      disp3 = {
+        width = 2560;
+        height = 1440;
         scale = 1.0;
       };
     };
@@ -113,6 +119,14 @@ in
 
   hm.xdg.configFile."wlxoverlay/conf.d/font.yaml".source = yaml.generate "font.yaml" {
     primary_font = "Cascadia Cove:weight=150";
+  };
+
+  hm.xdg.configFile."wlxoverlay/conf.d/skybox.yaml".source = yaml.generate "skybox.yaml" {
+    use_skybox = true;
+    #use_passthrough = false;
+
+    # for a custom skybox texture
+    #skybox_texture = "my-skybox.dds";
   };
 
   hm.xdg.configFile."wlxoverlay/icons.dds".source = ./icons.dds;
