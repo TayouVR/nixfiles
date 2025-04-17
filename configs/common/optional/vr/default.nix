@@ -4,5 +4,6 @@
     ./audio.nix
     ./vrchat.nix
     ./wlx-overlay-s.nix
+    ./monado.nix
   ];
 }

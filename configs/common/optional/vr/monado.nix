@@ -59,10 +59,10 @@ in
   };
 
   systemd.user.services.monado = {
-    serviceConfig = {
-      ExecStartPre = lighthouseScript "ON";
-      ExecStopPost = lighthouseScript "OFF";
-    };
+#    serviceConfig = {
+#      ExecStartPre = lighthouseScript "ON";
+#      ExecStopPost = lighthouseScript "OFF";
+#    };
 
     environment = {
       STEAMVR_PATH = "${config.hm.xdg.dataHome}/Steam/steamapps/common/SteamVR";
