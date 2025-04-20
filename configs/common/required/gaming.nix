@@ -31,6 +31,9 @@
       superTuxKart
       extremetuxracer
       chromium-bsu
+
+      # BeatSaber
+      bs-manager
     ];
   };
 }
