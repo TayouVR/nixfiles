@@ -39,6 +39,10 @@
 
       # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/367614
       packages.darkly
+
+      obsidian
+      nextcloud-client
+
     ];
 
     # Enable Bluetooth
