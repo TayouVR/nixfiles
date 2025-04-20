@@ -1,18 +1,22 @@
-{ inputs, deps, ... }:
+{ deps, ... }:
 
 {
   flake.nixosConfigurations = deps.mkSystem {
     hostname = "tayou-berlin";
     username = "tayou";
     modules = [
-      inputs.home-manager.nixosModules.home-manager
       ../common/required
-      ../common/optional/graphics/amd.nix
+      ../common/optional/graphics
       ../common/optional/vr
 
       ./hardware-configuration.nix
       ./mounts.nix
       ./configuration.nix
+
+      # Configure to use AMD graphics
+      {
+        tayouflake.graphics.driver = "amd";
+      }
 
       ../../starship/starship.nix
     ];

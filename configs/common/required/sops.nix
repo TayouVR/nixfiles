@@ -11,7 +11,7 @@ let
   inherit (lib.modules) mkAliasOptionModule;
   inherit (inputs) sops-nix;
 
-  cfg = config.nanoflake.sopsFile;
+  cfg = config.tayouflake.sopsFile;
 
   sopsCfg = {
     defaultSopsFile = cfg;
@@ -22,7 +22,7 @@ let
 in
 
 {
-  options.nanoflake.sopsFile = mkOption {
+  options.tayouflake.sopsFile = mkOption {
     type = types.pathInStore;
     default = ./. + "../../../${config.networking.hostName}/secrets.yaml";
     example = lib.literalExpression "./secrets.yaml";

@@ -3,14 +3,14 @@
 let
   inherit (lib) mkOption types;
 
-  cfg = config.nanoflake.localization;
+  cfg = config.tayouflake.localization;
 
   characterSet = builtins.elemAt (lib.strings.splitString "." cfg.locale) 1;
   posixLocalePredicate = lang: (builtins.match "^[a-z]{2}_[A-Z]{2}$" lang) != null;
 in
 
 {
-  options.nanoflake.localization = {
+  options.tayouflake.localization = {
     timezone = mkOption {
       type = types.str;
       default = "Europe/Berlin";
@@ -20,7 +20,7 @@ in
 
     language = mkOption {
       type = types.either types.str (types.listOf types.str);
-      default = "de_DE";
+      default = "en_US";
       example = lib.literalExpression ''[ "de_DE" "en" ]'';
       description = ''
         The language preference order to set for messages.
@@ -53,7 +53,7 @@ in
             posixLocalePredicate cfg.language
           else
             lib.lists.any posixLocalePredicate cfg.language;
-        message = "The nanoflake.localization.language option must contain the country code like in the posix locale";
+        message = "The tayouflake.localization.language option must contain the country code like in the posix locale";
       }
     ];
 

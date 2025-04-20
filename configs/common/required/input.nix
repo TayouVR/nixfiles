@@ -9,13 +9,13 @@
 let
   inherit (lib) mkOption mkIf types;
 
-  cfg = config.nanoflake.keyboard;
+  cfg = config.tayouflake.keyboard;
 
-  hasDesktop = config.nanoflake ? desktop;
+  hasDesktop = config.tayouflake ? desktop;
 in
 
 {
-  options.nanoflake.keyboard = {
+  options.tayouflake.keyboard = {
     layout = mkOption {
       type = types.str;
       default = "de";
@@ -49,7 +49,7 @@ in
         ];
         waylandFrontend =
           config.services.xserver.displayManager.gdm.wayland
-          || config.nanoflake.desktop.plasma6.enableWaylandDefault;
+          || true; # Always enable Wayland frontend for fcitx5
       };
     };
 

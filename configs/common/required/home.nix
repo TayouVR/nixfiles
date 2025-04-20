@@ -7,14 +7,9 @@
   config,
   ...
 }:
-
-let
-  inherit (inputs) home-manager;
-in
-
 {
   imports = [
-    home-manager.nixosModules.home-manager
+    inputs.home-manager.nixosModules.home-manager
     (lib.modules.mkAliasOptionModule
       [ "hm" ]
       [
