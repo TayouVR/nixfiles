@@ -7,73 +7,7 @@
       add_newline = false;
       command_timeout = 500;
       continuation_prompt = "[∙](bright-black) ";
-      format = ''
-      $shell\\
-      $username\\
-      $hostname\\
-      [](bg:#005bbd fg:#0074f0)\\
-      $directory\\
-      [](fg:#005bbd bg:#00428a)\\
-      $git_branch\\
-      $git_commit\\
-      $git_state\\
-      $git_metrics\\
-      $git_status\\
-      $hg_branch\\
-      [](fg:#00428a bg:#002956)\\
-      $aws\\
-      $azure\\
-      $c\\
-      $cmake\\
-      $cobol\\
-      $container\\
-      $conda\\
-      $crystal\\
-      $custom\\
-      $elixir\\
-      $elm\\
-      $erlang\\
-      $env_var\\
-      $daml\\
-      $dart\\
-      $deno\\
-      $dotnet\\
-      $golang\\
-      $gradle\\
-      $gcloud\\
-      $haskell\\
-      $helm\\
-      $java\\
-      $julia\\
-      $kotlin\\
-      $lua\\
-      $nodejs\\
-      $nim\\
-      $nix_shell\\
-      $ocaml\\
-      $openstack\\
-      $perl\\
-      $php\\
-      $pulumi\\
-      $purescript\\
-      $python\\
-      $rlang\\
-      $red\\
-      $ruby\\
-      $rust\\
-      $scala\\
-      $swift\\
-      $spack\\
-      $terraform\\
-      $vlang\\
-      $vagrant\\
-      $zig\\
-      [](fg:#002956 bg:#001023)\\
-      $docker_context\\
-      [](fg:#001023 bg:#002145)\\
-      $cmd_duration\\
-      [ ](fg:#002145)
-      '';
+      format = "$shell$username$hostname[](bg:#005bbd fg:#0074f0)$directory[](fg:#005bbd bg:#00428a)$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch[](fg:#00428a bg:#002956)$aws$azure$c$cmake$cobol$container$conda$crystal$custom$elixir$elm$erlang$env_var$daml$dart$deno$dotnet$golang$gradle$gcloud$haskell$helm$java$julia$kotlin$lua$nodejs$nim$nix_shell$ocaml$openstack$perl$php$pulumi$purescript$python$rlang$red$ruby$rust$scala$swift$spack$terraform$vlang$vagrant$zig[](fg:#002956 bg:#001023)$docker_context[](fg:#001023 bg:#002145)$cmd_duration[ ](fg:#002145)";
       right_format = "";
       scan_timeout = 30;
 
@@ -235,11 +169,11 @@
       directory.substitutions = {
         # Here is how you can shorten some long paths by text replacement;
         # similar to mapped_locations in Oh My Posh:;
-        "Documents" = " ";
-        "Downloads" = " ";
-        "Music" = " ";
-        "Pictures" = " ";
-        "~" = " ";
+#        "Documents" = " ";
+#        "Downloads" = " ";
+#        "Music" = " ";
+#        "Pictures" = " ";
+#        "~" = " ";
         # Keep in mind that the order matters. For example:;
         # "Important Documents" = "  ";
         # will not be replaced, because "Documents" was already substituted before.;
@@ -725,18 +659,18 @@
       };
       shell = {
         format = "[$indicator ]($style)";
-        bash_indicator = "_b";
+        bash_indicator = "›_b";
         cmd_indicator = "cmd";
         elvish_indicator = "esh";
         fish_indicator = "";
         ion_indicator = "ion";
         nu_indicator = "nu";
-        powershell_indicator = "_";
+        powershell_indicator = "›_";
         style = "bg:#0074f0";
         tcsh_indicator = "tsh";
         unknown_indicator = "mystery shell";
         xonsh_indicator = "xsh";
-        zsh_indicator = "_z";
+        zsh_indicator = "›_z";
         disabled = false;
       };
       shlvl = {
