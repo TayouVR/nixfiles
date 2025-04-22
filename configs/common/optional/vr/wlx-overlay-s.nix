@@ -129,6 +129,8 @@ in
     #skybox_texture = "my-skybox.dds";
   };
 
+  hm.xdg.configFile."wlxoverlay/openxr_actions.json5".source = ./wlx_openxr_actions.json5;
+
   hm.xdg.configFile."wlxoverlay/icons.dds".source = ./icons.dds;
 
   hm.xdg.configFile."wlxoverlay/watch.yaml".source = yaml.generate "watch.yaml" {
