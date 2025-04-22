@@ -36,6 +36,7 @@
     # Other
     keepassxc
     kdePackages.kcalc
+    qbittorrent
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
