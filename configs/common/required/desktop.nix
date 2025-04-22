@@ -19,6 +19,9 @@
 
     # Common desktop packages
     environment.systemPackages = with pkgs; [
+      kdePackages.sddm-kcm # sddm configuration in kde settings
+      kdePackages.sddm
+
       # File management
       kdePackages.kate
       kdePackages.filelight
