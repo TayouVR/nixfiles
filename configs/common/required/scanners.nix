@@ -16,6 +16,8 @@
     environment.systemPackages = with pkgs; [
       # Scanning
       simple-scan
+      kdePackages.skanpage # testing how this is
+      kdePackages.skanlite # testing how this is
     ];
   };
 }
