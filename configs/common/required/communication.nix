@@ -9,6 +9,7 @@
       # Web browsers
       firefox
       chromium
+      kdePackages.falkon
 
       # Email
       thunderbird
