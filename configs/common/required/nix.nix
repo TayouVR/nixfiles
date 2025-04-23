@@ -35,13 +35,39 @@ in
     nixpkgs.config.allowUnfree = true;
 
     nix = {
-      settings.experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+      settings = {
+        # Enable experimental features
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
 
-      settings.auto-optimise-store = true;
+        # Store optimization
+        auto-optimise-store = true;
+
+        # Add alternative binary caches
+        substituters = [
+          "https://cache.nixos.org/"
+          "https://nix-community.cachix.org"
+        ];
+        trusted-public-keys = [
+          "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        ];
+
+        # Configure download settings for better reliability
+        connect-timeout = 60;  # Increase connection timeout (seconds)
+        stalled-download-timeout = 300;  # Increase stalled download timeout (seconds)
+        download-attempts = 5;  # Increase number of download attempts
+
+        # Enable more verbose output for troubleshooting
+        show-trace = true;
+      };
+
+      # Automatic optimization
       optimise.automatic = true;
+
+      # Garbage collection
       gc = {
         automatic = true;
         dates = "daily";
