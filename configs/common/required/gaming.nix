@@ -31,6 +31,9 @@
       superTuxKart
       extremetuxracer
       chromium-bsu
+      openarena
+      xonotic
+      gzdoom
 
       # BeatSaber
       bs-manager
