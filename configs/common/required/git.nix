@@ -2,6 +2,9 @@
 
 {
   hm.programs.git.enable = true;
+  hm.programs.git.extraConfig = {
+    core.autocrlf = true;
+  };
 
   programs.git = {
     enable = true;
