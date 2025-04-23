@@ -21,6 +21,8 @@
     environment.systemPackages = with pkgs; [
       kdePackages.sddm-kcm # sddm configuration in kde settings
 
+      kdePackages.kweather
+
       # File management
       kdePackages.kate
       kdePackages.filelight
