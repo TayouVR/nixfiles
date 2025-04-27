@@ -16,7 +16,7 @@ in
 
   config = {
     nixpkgs.overlays = [(final: prev: {
-      xrizer-patched = final.xrizer.overrideAttrs rec {
+      xrizer-patched = final.xrizer.overrideAttrs {
         patches = [
           # ./patching/patches/xrizer/68.patch
           ./patching/patches/xrizer/69.patch

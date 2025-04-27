@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 pkgs.monado.overrideAttrs (prevAttrs: {
   # Check if patches exists before filtering
