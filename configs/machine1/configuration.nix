@@ -22,13 +22,6 @@
     wineWowPackages.stable
     winetricks
 
-    # VR-specific packages
-    opencomposite
-    stardust-xr-kiara
-    stardust-xr-server
-    stardust-xr-flatland
-    stardust-xr-protostar
-
     # VRChat
     vrcx
     alcom

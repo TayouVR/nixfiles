@@ -21,28 +21,8 @@ in
 
 # https://wiki.nixos.org/wiki/VR#Monado
 {
-  hm.xdg.configFile."openvr/openvrpaths.vrpath".text = ''
-    {
-      "config" :
-      [
-        "${config.hm.xdg.dataHome}/Steam/config"
-      ],
-      "external_drivers" : null,
-      "jsonid" : "vrpathreg",
-      "log" :
-      [
-        "${config.hm.xdg.dataHome}/Steam/logs"
-      ],
-      "runtime" :
-      [
-        "${pkgs.opencomposite}/lib/opencomposite"
-      ],
-      "version" : 1
-    }
-  '';
-
   hm.xdg.configFile."openxr/1/active_runtime.json".source =
-    "${pkgs.monado}/share/openxr/1/openxr_monado.json";
+    "${packages.monado-fix}/share/openxr/1/openxr_monado.json";
 
   hm.xdg.dataFile."monado/hand-tracking-models".source = pkgs.fetchgit {
     url = "https://gitlab.freedesktop.org/monado/utilities/hand-tracking-models.git";
@@ -55,7 +35,7 @@ in
     enable = true;
     defaultRuntime = true;
     highPriority = true;
-    package = pkgs.monado;
+    package = packages.monado-fix;
   };
 
   systemd.user.services.monado = {

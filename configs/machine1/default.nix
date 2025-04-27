@@ -15,7 +15,10 @@
 
       # Configure to use AMD graphics
       {
-        tayouflake.graphics.driver = "amd";
+        tayouflake = {
+          graphics.driver = "amd";
+          openvr.runtime = "xrizer";
+        };
       }
 
       ../../starship/starship.nix

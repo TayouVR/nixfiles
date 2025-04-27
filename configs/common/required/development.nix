@@ -17,6 +17,8 @@
       jetbrains.idea-ultimate
       jetbrains.pycharm-professional
 
+      zed-editor
+
       # Programming languages and tools
       gcc
       gpp

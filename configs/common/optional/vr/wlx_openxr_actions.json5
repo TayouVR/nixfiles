@@ -158,7 +158,7 @@
       // right trackpad is alt_click
     },
     space_reset: {
-      left: "/user/hand/left/input/trackpad/force",
+      left: "/user/hand/left/input/a/click",
       double_click: true,
     },
     click_modifier_right: {

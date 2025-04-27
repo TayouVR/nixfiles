@@ -5,5 +5,7 @@
     ./vrchat.nix
     ./wlx-overlay-s.nix
     ./monado.nix
+    ./stardust.nix
+    ./openvr.nix
   ];
 }

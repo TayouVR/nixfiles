@@ -22,6 +22,7 @@
     nixos-conf-editor.url = "github:snowfallorg/nixos-conf-editor";
   };
 
+
   outputs =
     inputs@{
       flake-parts,

@@ -1,0 +1,27 @@
+From edcb123fa3d219addf870cc16e05d6c2771184d6 Mon Sep 17 00:00:00 2001
+From: Tayou <git@tayou.org>
+Date: Sun, 27 Apr 2025 09:37:49 +0200
+Subject: [PATCH] Revert "a/bindings: Don't add dpad paths to all paths in
+ script"
+
+This reverts commit 60b6fb8eed421e335d66469585bcd554ad9ce8c9.
+---
+ src/xrt/auxiliary/bindings/bindings.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/xrt/auxiliary/bindings/bindings.py b/src/xrt/auxiliary/bindings/bindings.py
+index 19b073025..5a10baedc 100755
+--- a/src/xrt/auxiliary/bindings/bindings.py
++++ b/src/xrt/auxiliary/bindings/bindings.py
+@@ -183,6 +183,8 @@ class Component:
+         if self.component_name == "position":
+             paths.append(basepath + "/" + "x")
+             paths.append(basepath + "/" + "y")
++            if self.has_dpad_emulation():
++                paths += dpad_paths(basepath, self.dpad_emulation["center"])
+             paths.append(basepath)
+         else:
+             paths.append(basepath + "/" + self.component_name)
+-- 
+2.49.0
+

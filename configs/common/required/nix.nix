@@ -9,6 +9,7 @@
 
 let
   inherit (lib) mkOption types;
+  inherit (inputs) nixpkgs-xr;
 
   cfg = config.tayouflake.nix;
 in
@@ -17,7 +18,7 @@ in
   options.tayouflake.nix = {
     flakeDir = mkOption {
       type = types.str;
-      default = "$HOME/flake";
+      default = "$HOME/nix";
       example = "/etc/nixos/configuration";
       description = "The location of this flake";
     };
@@ -31,7 +32,10 @@ in
       }
     ];
 
-    #nixpkgs.overlays = [ self.overlays.default ];
+    nixpkgs.overlays = [
+      # self.overlays.default
+      nixpkgs-xr.overlays.default
+    ];
     nixpkgs.config.allowUnfree = true;
 
     nix = {
