@@ -22,6 +22,7 @@
       kdePackages.sddm-kcm # sddm configuration in kde settings
 
       kdePackages.kweather
+      kdePackages.kdeconnect-kde
 
       # File management
       kdePackages.kate
