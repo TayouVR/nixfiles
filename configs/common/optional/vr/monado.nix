@@ -21,8 +21,29 @@ in
 
 # https://wiki.nixos.org/wiki/VR#Monado
 {
+  nixpkgs.overlays = [(final: prev: {
+    monado-patched = prev.monado.overrideAttrs (oldAttrs: {
+      # Set the source to the specific GitLab repo and branch
+      src = final.fetchFromGitLab {
+        domain = "gitlab.freedesktop.org";
+        owner = "openglfreak";
+        repo = "monado";
+        rev = "dyndev";
+        # Replace this with the actual hash after the first build attempt
+        sha256 = "sha256-esI5Ne6tZe8mZ2rTC7npA2QtPsvfD/DLFjM6BMNg400=";
+        # You can also use lib.fakeSha256:
+        # sha256 = lib.fakeSha256;
+      };
+      # Optionally, update the version string if desired
+      version = "${oldAttrs.version}-dyndev";
+      # Add any other overrides needed for this specific version,
+      # for example, disabling checks if they fail:
+      # doCheck = false;
+    });
+  })];
+
   hm.xdg.configFile."openxr/1/active_runtime.json".source =
-    "${packages.monado-fix}/share/openxr/1/openxr_monado.json";
+    "${pkgs.monado-patched}/share/openxr/1/openxr_monado.json";
 
   hm.xdg.dataFile."monado/hand-tracking-models".source = pkgs.fetchgit {
     url = "https://gitlab.freedesktop.org/monado/utilities/hand-tracking-models.git";
@@ -35,7 +56,7 @@ in
     enable = true;
     defaultRuntime = true;
     highPriority = true;
-    package = packages.monado-fix;
+    package = pkgs.monado-patched;
   };
 
   systemd.user.services.monado = {
@@ -60,7 +81,7 @@ in
     name = "Monado";
     comment = "Starts the Monado OpenXR service";
     exec = lib.getExe (
-      packages.writeSystemdToggle.override {
+      pkgs.local.writeSystemdToggle.override {
         service = "monado";
         isUserService = true;
       }
