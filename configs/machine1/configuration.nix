@@ -30,6 +30,8 @@
     keepassxc
     kdePackages.kcalc
     qbittorrent
+    unrar
+    parabolic # seems unable to get clipboard contents, TODO: investigate
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
