@@ -33,6 +33,9 @@
       # Unity
       unityhub
 
+      # Godot
+      godot-mono
+
       # Other development tools
       git
       kicad
