@@ -4,8 +4,11 @@
     ./audio.nix
     ./vrchat.nix
     ./wlx-overlay-s.nix
-    ./monado.nix
+
+    ./package-patches.nix
+
     ./stardust.nix
+    ./monado.nix
     ./openvr.nix
   ];
 }

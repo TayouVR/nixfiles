@@ -7,42 +7,21 @@ in
 {
   options.tayouflake.openvr = {
     runtime = mkOption {
-      type = types.str;
+      type = types.enum [ "opencomposite" "steamvr" "xrizer" ];
       default = "opencomposite";
-      example = "opencomposite|xrizer|steamvr";
-      description = "Selects the active OpenVR Runtime";
+      example = "opencomposite | xrizer | steamvr";
+      description = "Selects the active OpenVR Runtime. Must be one of: opencomposite, steamvr, xrizer.";
     };
   };
 
   config = {
-    nixpkgs.overlays = [(final: prev: {
-      # Override the original xrizer package
-      xrizer-patched = prev.xrizer.overrideAttrs (oldAttrs: {
-        # Set the source to the specific GitHub fork and branch
-        src = final.fetchFromGitHub {
-          owner = "openglfreak";
-          repo = "xrizer";
-          rev = "feat-tracker-list-update";
-          # Replace this with the actual hash after the first build attempt
-          sha256 = "sha256-XQk0nB+5R4LQGRtTvSjXy30cLjmSZqpvvLqV9LrNNJc=";
-          # You can also use lib.fakeSha256 instead of the zeroes:
-          # sha256 = lib.fakeSha256;
-        };
-        # Remove the patches attribute, as they are presumably included in the fork
-        patches = [];
-        # Keep this if checks still fail or are unwanted, otherwise remove it.
-        doCheck = false;
-        # Optionally, update the version string if desired
-        version = "${oldAttrs.version}-feat-tracker-list-update";
-      });
-    })];
-
     hm.xdg.configFile."openvr/openvrpaths.vrpath".text =
       let
         runtimePath =
           if cfg.runtime == "opencomposite" then "${pkgs.opencomposite}/lib/opencomposite"
           else if cfg.runtime == "steamvr" then "${config.hm.xdg.dataHome}/Steam/steamapps/common/SteamVR"
-          else "${pkgs.xrizer-patched}/lib/xrizer";
+          else if cfg.runtime == "xrizer" then "${pkgs.patched.xrizer}/lib/xrizer"
+          else builtins.throw "Invalid value for tayouflake.openvr.runtime: ${cfg.runtime}. Expected one of: 'opencomposite', 'steamvr', 'xrizer'.";
       in
     ''
       {
@@ -66,6 +45,6 @@ in
 
     environment.systemPackages =
       (if cfg.runtime == "opencomposite" then [ pkgs.opencomposite ] else []) ++
-      (if cfg.runtime == "xrizer" then [ pkgs.xrizer-patched ] else []);
+      (if cfg.runtime == "xrizer" then [ pkgs.patched.xrizer ] else []);
   };
 }
