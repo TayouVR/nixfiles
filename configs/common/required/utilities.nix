@@ -1,6 +1,5 @@
 {
   pkgs,
-  packages,
   ...
 }:
 
@@ -35,10 +34,10 @@
 
       # Custom packages
       # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
-      #packages.klassy
+      #local.klassy
 
       # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/367614
-      packages.darkly
+      local.darkly
 
       obsidian
       nextcloud-client

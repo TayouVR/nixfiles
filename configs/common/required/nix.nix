@@ -3,6 +3,7 @@
   inputs,
   pkgs,
   config,
+  self,
   ...
 }:
 
@@ -32,7 +33,7 @@ in
     ];
 
     nixpkgs.overlays = [
-      # self.overlays.default
+      self.overlays.default
       nixpkgs-xr.overlays.default
     ];
     nixpkgs.config.allowUnfree = true;

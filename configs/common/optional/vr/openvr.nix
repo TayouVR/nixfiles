@@ -16,15 +16,25 @@ in
 
   config = {
     nixpkgs.overlays = [(final: prev: {
-      xrizer-patched = final.xrizer.overrideAttrs {
-        patches = [
-          # ./patching/patches/xrizer/68.patch
-          ./patching/patches/xrizer/69.patch
-          ./patching/patches/xrizer/82.patch
-          # ./patching/patches/xrizer/rin_xdevs.patch
-        ];
+      # Override the original xrizer package
+      xrizer-patched = prev.xrizer.overrideAttrs (oldAttrs: {
+        # Set the source to the specific GitHub fork and branch
+        src = final.fetchFromGitHub {
+          owner = "openglfreak";
+          repo = "xrizer";
+          rev = "feat-tracker-list-update";
+          # Replace this with the actual hash after the first build attempt
+          sha256 = "sha256-XQk0nB+5R4LQGRtTvSjXy30cLjmSZqpvvLqV9LrNNJc=";
+          # You can also use lib.fakeSha256 instead of the zeroes:
+          # sha256 = lib.fakeSha256;
+        };
+        # Remove the patches attribute, as they are presumably included in the fork
+        patches = [];
+        # Keep this if checks still fail or are unwanted, otherwise remove it.
         doCheck = false;
-      };
+        # Optionally, update the version string if desired
+        version = "${oldAttrs.version}-feat-tracker-list-update";
+      });
     })];
 
     hm.xdg.configFile."openvr/openvrpaths.vrpath".text =

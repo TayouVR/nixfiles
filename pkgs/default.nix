@@ -1,12 +1,19 @@
+{ inputs, ... }:
 {
+  imports = [
+    inputs.flake-parts.flakeModules.easyOverlay
+  ];
+
   perSystem =
     { pkgs, ... }:
     {
-      packages = {
-        darkly = pkgs.callPackage ./darkly {};
-        klassy = pkgs.callPackage ./klassy {};
-        startvrc = pkgs.callPackage ./startvrc {};
-        writeSystemdToggle = pkgs.callPackage ./writeSystemdToggle { };
+      overlayAttrs = {
+        local = {
+          darkly = pkgs.callPackage ./darkly {};
+          klassy = pkgs.callPackage ./klassy {};
+          startvrc = pkgs.callPackage ./startvrc {};
+          writeSystemdToggle = pkgs.callPackage ./writeSystemdToggle { };
+        };
       };
     };
 }

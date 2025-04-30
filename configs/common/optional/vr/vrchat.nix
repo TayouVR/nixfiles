@@ -2,22 +2,21 @@
   lib,
   pkgs,
   config,
-  packages,
   ...
 }:
 
 let
   vrcSwitch = pkgs.writeShellScriptBin "vrcSwitch" ''
     if systemctl --user is-active monado.service --quiet;
-    then PRESSURE_VESSEL_FILESYSTEMS_RW="$XDG_RUNTIME_DIR/monado_comp_ipc" ${lib.getExe packages.startvrc} "$@";
-    else ${lib.getExe packages.startvrc} "$@";
+    then PRESSURE_VESSEL_FILESYSTEMS_RW="$XDG_RUNTIME_DIR/monado_comp_ipc" ${lib.getExe pkgs.local.startvrc} "$@";
+    else ${lib.getExe pkgs.local.startvrc} "$@";
     fi
   '';
 in
 
 {
   environment.systemPackages = with pkgs; [
-    packages.startvrc
+    local.startvrc
     vrcSwitch
     vrcx
     vrc-get
