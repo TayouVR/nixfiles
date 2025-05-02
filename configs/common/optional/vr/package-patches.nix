@@ -7,18 +7,22 @@
         patched = {
           xrizer = prev.xrizer.overrideAttrs (oldAttrs: {
             src = final.fetchFromGitHub {
-              owner = "openglfreak";
+              owner = "RinLovesYou";
               repo = "xrizer";
-              rev = "feat-tracker-list-update";
-              sha256 = "sha256-XQk0nB+5R4LQGRtTvSjXy30cLjmSZqpvvLqV9LrNNJc=";
+              rev = "experimental2";
+              # to get the latest hash from nix on build: "0000000000000000000000000000000000000000000000000000";
+              sha256 = "sha256-N455/aGfJ1kRwKKY9Ry/WkFLW1BoAmz2q22KTtELYGE=";
               # You can also use lib.fakeSha256 instead of the zeroes:
               # sha256 = lib.fakeSha256;
             };
             # If using patches
-            # patches = [];
+#            patches = [
+#              ./patching/patches/xrizer/69.patch
+#              ./patching/patches/xrizer/82.patch
+#            ];
             # Keep this if checks still fail or are unwanted, otherwise remove it.
             doCheck = false;
-            version = "${oldAttrs.version}-feat-tracker-list-update";
+            version = "${oldAttrs.version}-experimental2";
           });
           monado = prev.monado.overrideAttrs (oldAttrs: {
             src = final.fetchFromGitLab {
