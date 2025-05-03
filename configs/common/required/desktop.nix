@@ -17,6 +17,13 @@
       NIXOS_OZONE_WL = 1;
     };
 
+    hm.xdg.portal.config = {
+      common.default = [ "kde" ];
+    };
+    environment.variables = {
+      XDG_DESKTOP_PORTAL_BACKEND = "kde";
+    };
+
     # Common desktop packages
     environment.systemPackages = with pkgs; [
       kdePackages.sddm-kcm # sddm configuration in kde settings
