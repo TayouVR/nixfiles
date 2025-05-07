@@ -35,8 +35,14 @@
       xonotic
       gzdoom
 
+      # XR
+      #overte
+
       # BeatSaber
       bs-manager
+
+      gamemode
+      mangohud
     ];
   };
 }
