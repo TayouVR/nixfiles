@@ -39,6 +39,7 @@
       # Other development tools
       git
       kicad
+      sqlitebrowser
     ];
 
     # Fix for JetBrains Rider desktop entry
