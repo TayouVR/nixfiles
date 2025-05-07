@@ -18,6 +18,7 @@
         tayouflake = {
           graphics.driver = "amd";
           openvr.runtime = "xrizer";
+          openxr.viewportScale = 50;
         };
       }
 

@@ -9,6 +9,7 @@
             src = final.fetchFromGitHub {
               owner = "RinLovesYou";
               repo = "xrizer";
+              # rev can be the branch, or a specific commit... possibly (todo: test)
               rev = "experimental2";
               # to get the latest hash from nix on build: "0000000000000000000000000000000000000000000000000000";
               sha256 = "sha256-N455/aGfJ1kRwKKY9Ry/WkFLW1BoAmz2q22KTtELYGE=";
@@ -34,6 +35,9 @@
               # You can also use lib.fakeSha256:
               # sha256 = lib.fakeSha256;
             };
+            patches = [
+              ./patching/patches/monado/0000-dsteamvr_lh-Fix-haptic-pulse-being-set-to-1-Hz-w.patch
+            ];
             version = "${oldAttrs.version}-dyndev";
             # Add any other overrides needed for this specific version,
             # for example, disabling checks if they fail:

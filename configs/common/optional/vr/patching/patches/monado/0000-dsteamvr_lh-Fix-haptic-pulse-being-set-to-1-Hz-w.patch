@@ -1,0 +1,33 @@
+From 48a029c31fcb0389fc00f1fc9d0ddda98850a5f6 Mon Sep 17 00:00:00 2001
+From: Nyabsi <nyabsi@sovellus.cc>
+Date: Tue, 15 Apr 2025 13:50:49 +0300
+Subject: [PATCH] d/steamvr_lh: Fix haptic pulse being set to 1 Hz when
+ XR_FREQUENCY_UNSPECIFIED is used
+
+The steamvr_lh driver haptic pulse was being set to 1 Hz when the haptic frequency sent from a OpenXR client was set to XR_FREQUENCY_UNSPECIFIED (0.0f), which is far too weak for games such as Beat Saber that rely completely on haptic feedback as core mechanism, now the code is adjusted to set the frequency to 200 Hz when it's 0 which is comparable to what SteamVR sets on its OpenXR runtime.
+---
+ src/xrt/drivers/steamvr_lh/device.cpp | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/xrt/drivers/steamvr_lh/device.cpp b/src/xrt/drivers/steamvr_lh/device.cpp
+index 2d6bd81d8..20828d521 100644
+--- a/src/xrt/drivers/steamvr_lh/device.cpp
++++ b/src/xrt/drivers/steamvr_lh/device.cpp
+@@ -471,8 +471,12 @@ ControllerDevice::set_output(xrt_output_name name, const xrt_output_value *value
+ 	event.componentHandle = haptic_handle;
+ 	event.fDurationSeconds = (float)vib.duration_ns / 1e9f;
+ 	// 0.0f in OpenXR means let the driver determine a frequency, but
+-	// in OpenVR means no haptic.
+-	event.fFrequency = std::max(vib.frequency, 1.0f);
++	// in OpenVR means no haptic, so let's set a reasonable default.
++	float frequency = vib.frequency;
++	if (frequency == 0.0)
++		frequency = 200.0f;
++
++	event.fFrequency = frequency;
+ 	event.fAmplitude = vib.amplitude;
+ 
+ 	ctx->add_haptic_event(event);
+-- 
+2.49.0
+
