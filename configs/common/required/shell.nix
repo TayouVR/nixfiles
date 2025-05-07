@@ -32,4 +32,12 @@
 
     histSize = 10000;
   };
+
+  environment.systemPackages = [
+    pkgs.bat
+  ];
+
+  environment.variables = {
+    BAT_PAGING = "never"; # I don't like having a pager when using bat, I can always activate it myself using | less -RF, or by passing -P="auto"
+  };
 }

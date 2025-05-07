@@ -20,8 +20,7 @@
       nerd-fonts.caskaydia-mono
 
       # File management
-      bat
-      fuse3
+      fuse3 # was this for AppImage? Not sure...
 
       # Hardware utilities
       pciutils
