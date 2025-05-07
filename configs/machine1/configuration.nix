@@ -32,6 +32,11 @@
     qbittorrent
     unrar
     parabolic # seems unable to get clipboard contents, TODO: investigate
+
+    qemu
+    virt-manager
+
+    picard
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
