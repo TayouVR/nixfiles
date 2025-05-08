@@ -21,6 +21,7 @@
     # Wine
     wineWowPackages.stable
     winetricks
+    bottles
 
     # VRChat
     vrcx
