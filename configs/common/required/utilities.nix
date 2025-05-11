@@ -41,6 +41,7 @@
       obsidian
       nextcloud-client
 
+      freecad-qt6
     ];
 
     # Enable Bluetooth
