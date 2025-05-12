@@ -18,13 +18,15 @@
     # Gaming-related packages
     environment.systemPackages = with pkgs; [
       # Game launchers
-      prismlauncher  # Minecraft launcher
-      lutris         # Game launcher
-      protonup-qt    # Proton GE manager
-      rare           # Epic Games Store launcher
+      prismlauncher
+      modrinth-app
+      lutris
+      protonup-qt
+      rare
 
       # Gaming utilities
-      gamemode       # Optimize system performance for gaming
+      gamemode
+      mangohud
 
       # Games
       superTux
@@ -40,9 +42,6 @@
 
       # BeatSaber
       bs-manager
-
-      gamemode
-      mangohud
     ];
   };
 }
