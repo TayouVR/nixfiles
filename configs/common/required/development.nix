@@ -16,6 +16,7 @@
       jetbrains.rust-rover
       jetbrains.idea-ultimate
       jetbrains.pycharm-professional
+      jetbrains-toolbox # for fleet primarily, and any other jb app without native package
 
       zed-editor
 
