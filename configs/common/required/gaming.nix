@@ -36,6 +36,7 @@
       openarena
       xonotic
       gzdoom
+      osu-lazer
 
       # XR
       #overte
