@@ -12,7 +12,7 @@
               # rev can be the branch, or a specific commit... possibly (todo: test)
               rev = "experimental2";
               # to get the latest hash from nix on build: "0000000000000000000000000000000000000000000000000000";
-              sha256 = "sha256-N455/aGfJ1kRwKKY9Ry/WkFLW1BoAmz2q22KTtELYGE=";
+              sha256 = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
               # You can also use lib.fakeSha256 instead of the zeroes:
               # sha256 = lib.fakeSha256;
             };
