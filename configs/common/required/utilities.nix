@@ -44,6 +44,11 @@
       freecad-qt6
     ];
 
+    programs.ausweisapp = {
+      enable = true;
+      openFirewall = true;
+    };
+
     # Enable Bluetooth
     hardware.bluetooth = {
       enable = true;
