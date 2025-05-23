@@ -36,6 +36,7 @@
 
     qemu
     virt-manager
+    virtiofsd
 
     picard
   ];
