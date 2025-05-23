@@ -22,6 +22,7 @@
     };
     environment.variables = {
       XDG_DESKTOP_PORTAL_BACKEND = "kde";
+      GTK_USE_PORTAL = 1;
     };
 
     # Common desktop packages
