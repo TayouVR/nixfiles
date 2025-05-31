@@ -72,17 +72,13 @@ in
       defaultLocale = cfg.locale;
 
       extraLocaleSettings =
-        {
+        rec {
           LANGUAGE =
-            if builtins.isString cfg.language then
-              cfg.language
-            else
-              lib.strings.concatStrings (lib.strings.intersperse ":" cfg.language);
-          LC_MESSAGES =
             if builtins.isString cfg.language then
               "${cfg.language}.${characterSet}"
             else
               "${lib.lists.findFirst posixLocalePredicate "en_US" cfg.language}.${characterSet}";
+          LC_MESSAGES = LANGUAGE;
         }
         // builtins.listToAttrs (
           builtins.map (lcKey: lib.nameValuePair lcKey cfg.locale) [
@@ -100,24 +96,18 @@ in
           ]
         );
 
-      supportedLocales = lib.unique (
-        (builtins.map
-          (l: (lib.replaceStrings [ "utf8" "utf-8" "UTF8" ] [ "UTF-8" "UTF-8" "UTF-8" ] l) + "/UTF-8")
-          (
-            [
-              "C.UTF-8"
-              "en_US.UTF-8"
-              config.i18n.defaultLocale
-            ]
-            ++ (lib.attrValues (lib.filterAttrs (n: _: n != "LANGUAGE") config.i18n.extraLocaleSettings))
-          )
-        )
-        ++ cfg.extraLocales
+      inherit (cfg) extraLocales;
+    };
+
+    environment.sessionVariables = config.i18n.extraLocaleSettings // {
+      LC_ALL = "";
+      LANGUAGE = lib.mkForce (
+        if builtins.isString cfg.language then
+          cfg.language
+        else
+          lib.strings.concatStrings (lib.strings.intersperse ":" cfg.language)
       );
     };
 
-    environment.sessionVariables = {
-      LC_ALL = "";
-    } // config.i18n.extraLocaleSettings;
   };
 }
