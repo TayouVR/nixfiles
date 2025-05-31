@@ -1,7 +1,6 @@
-{ ... }:
+{ pkgs, config, ... }:
 {
   config = {
-    # Add the standard overlays option for more complex overlays
     nixpkgs.overlays = [
       (final: prev: {
         patched = {
@@ -42,6 +41,29 @@
             # Add any other overrides needed for this specific version,
             # for example, disabling checks if they fail:
             # doCheck = false;
+          });
+          blender = prev.blender.overrideAttrs (oldAttrs: {
+            pythonPath = oldAttrs.pythonPath ++ (
+            let
+              customPythonPackages = import ./robust-weight-transfer-deps.nix {
+                pkgs = pkgs; # Pass the current pkgs
+                fetchurl = pkgs.fetchurl;
+                fetchgit = pkgs.fetchgit;
+                fetchhg = pkgs.fetchhg;
+              } pkgs.python3Packages pkgs.python3Packages;
+
+              libiglCustom = customPythonPackages.libigl;
+              robustLaplacianCustom = customPythonPackages.robust-laplacian;
+              scipyCustom = customPythonPackages.scipy;
+            in
+            [
+              libiglCustom
+              robustLaplacianCustom
+              scipyCustom
+            ]);
+            hipSupport = config.tayouflake.graphics.driver == "amd";
+            cudaSupport = config.tayouflake.graphics.driver == "nvidia";
+            version = "${oldAttrs.version}-patched";
           });
         };
       })

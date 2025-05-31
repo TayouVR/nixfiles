@@ -20,8 +20,7 @@ in
     vrcSwitch
     vrcx
     vrc-get
-    unityhub
-    blender
+    patched.blender
     alcom
   ];
 

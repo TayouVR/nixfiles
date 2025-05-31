@@ -17,13 +17,4 @@ in
     ./amd.nix
     ./nvidia.nix
   ];
-
-  config = {
-    # Configure the appropriate Blender package based on the selected driver
-    environment.systemPackages = with pkgs; [
-      # Use mkIf to conditionally include `blender-hip` or `blender`
-      (lib.mkIf (cfg.driver == "amd") blender-hip)
-      (lib.mkIf (cfg.driver == "nvidia") blender)
-    ];
-  };
 }
