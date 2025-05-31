@@ -77,24 +77,6 @@ in
         };
       };
 
-      disp1 = {
-        primary = true;
-        width = 1920;
-        height = 1080;
-        scale = 1.0;
-      };
-
-      disp2 = {
-        width = 2560;
-        height = 1440;
-        scale = 1.0;
-      };
-
-      disp3 = {
-        width = 2560;
-        height = 1440;
-        scale = 1.0;
-      };
     };
 
     catalogs.default_catalog.apps = [
