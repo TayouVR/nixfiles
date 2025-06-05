@@ -69,5 +69,9 @@
       clinfo
       wayland-utils
     ];
+
+    # not sure this isn't already on because of something else,
+    #  but it might help with the SteamVR admin prompt not working?
+    security.polkit.enable = true;
   };
 }
