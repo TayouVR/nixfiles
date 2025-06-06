@@ -22,7 +22,7 @@
       thunderbird
 
       # Chat and messaging
-      discord
+      (discord.override { withMoonlight = true; })
       vesktop
       telegram-desktop
       jami-client-qt
