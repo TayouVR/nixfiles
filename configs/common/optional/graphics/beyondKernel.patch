@@ -229,16 +229,15 @@ index 000000000..61fbd38e0
 + /* DisplayID iteration */
 
 diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm_helpers.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm_helpers.c
-index 2c36f3d00ca2..322059dca3ae 100644
+index d4395b92fb85..6c7f589e19ac 100644
 --- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm_helpers.c
 +++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm_helpers.c
-@@ -122,6 +122,8 @@ enum dc_edid_status dm_helpers_parse_edid_caps(
+@@ -136,6 +136,8 @@ enum dc_edid_status dm_helpers_parse_edid_caps(
 
  	edid_caps->edid_hdmi = connector->display_info.is_hdmi;
 
 +	edid_caps->dsc_fixed_bits_per_pixel_x16 = connector->display_info.dp_dsc_bpp;
 +
- 	apply_edid_quirks(edid_buf, edid_caps);
+ 	apply_edid_quirks(dev, edid_buf, edid_caps);
 
  	sad_count = drm_edid_to_sad((struct edid *) edid->raw_edid, &sads);
-

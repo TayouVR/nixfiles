@@ -25,22 +25,21 @@
             version = "${oldAttrs.version}-experimental2";
           });
           monado = prev.monado.overrideAttrs (oldAttrs: {
-            src = final.fetchFromGitLab {
-              domain = "gitlab.freedesktop.org";
-              owner = "openglfreak";
-              repo = "monado";
-              rev = "dyndev";
-              sha256 = "sha256-esI5Ne6tZe8mZ2rTC7npA2QtPsvfD/DLFjM6BMNg400=";
-              # You can also use lib.fakeSha256:
-              # sha256 = lib.fakeSha256;
-            };
-            patches = [
-              ./patching/patches/monado/0000-dsteamvr_lh-Fix-haptic-pulse-being-set-to-1-Hz-w.patch
-            ];
-            version = "${oldAttrs.version}-dyndev";
-            # Add any other overrides needed for this specific version,
-            # for example, disabling checks if they fail:
-            # doCheck = false;
+#            src = final.fetchFromGitLab {
+#              domain = "gitlab.freedesktop.org";
+#              owner = "openglfreak";
+#              repo = "monado";
+#              rev = "dyndev";
+#              sha256 = "sha256-esI5Ne6tZe8mZ2rTC7npA2QtPsvfD/DLFjM6BMNg400=";
+#              # You can also use lib.fakeSha256:
+#              # sha256 = lib.fakeSha256;
+#            };
+#            patches = [
+#            ];
+#            version = "${oldAttrs.version}-dyndev";
+#            # Add any other overrides needed for this specific version,
+#            # for example, disabling checks if they fail:
+#            # doCheck = false;
           });
           blender = prev.blender.overrideAttrs (oldAttrs: {
             pythonPath = oldAttrs.pythonPath ++ (
@@ -63,7 +62,7 @@
             ]);
             hipSupport = config.tayouflake.graphics.driver == "amd";
             cudaSupport = config.tayouflake.graphics.driver == "nvidia";
-            version = "${oldAttrs.version}-patched";
+            #version = "${oldAttrs.version}-patched";
           });
         };
       })
