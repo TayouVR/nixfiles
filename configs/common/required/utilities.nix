@@ -5,6 +5,29 @@
 
 {
   config = {
+    fonts = {
+      enableDefaultPackages = true;
+      packages = with pkgs; [
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-emoji
+
+        twemoji-color-font
+
+        # monospace
+        nerd-fonts.jetbrains-mono
+        nerd-fonts.caskaydia-mono
+      ];
+
+      fontconfig = {
+        defaultFonts = {
+          serif = [ "Noto Serif" "Liberation Serif" "Vazirmatn" ];
+          sansSerif = [ "Noto Sans" "Ubuntu" "Vazirmatn" ];
+          monospace = [ "CaskaydiaMono Nerd Font" ];
+        };
+      };
+    };
+
     # System utilities
     environment.systemPackages = with pkgs; [
       # System information and monitoring
@@ -14,10 +37,6 @@
       # Fun utilities
       sl
       lolcat
-
-      # Fonts
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.caskaydia-mono
 
       # File management
       fuse3 # was this for AppImage? Not sure...
