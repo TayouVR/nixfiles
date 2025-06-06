@@ -51,7 +51,7 @@
       obsidian
 
       # Graphics and media
-      gimp
+      gimp3
       inkscape
       krita
       vlc
