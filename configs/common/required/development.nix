@@ -41,6 +41,8 @@
       git
       kicad
       sqlitebrowser
+      gtk3 # for gtk-icon-browser
+      kdePackages.plasma-sdk # cuttlefish icon viewer
     ];
 
     # Fix for JetBrains Rider desktop entry
