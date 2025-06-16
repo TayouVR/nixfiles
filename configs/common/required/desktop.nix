@@ -56,6 +56,7 @@
       krita
       vlc
       obs-studio
+      kdePackages.kolourpaint
 
       # System utilities
       htop
