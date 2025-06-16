@@ -19,13 +19,13 @@
         nerd-fonts.caskaydia-mono
       ];
 
-      fontconfig = {
-        defaultFonts = {
-          serif = [ "Noto Serif" "Liberation Serif" "Vazirmatn" ];
-          sansSerif = [ "Noto Sans" "Ubuntu" "Vazirmatn" ];
-          monospace = [ "CaskaydiaMono Nerd Font" ];
-        };
-      };
+#      fontconfig = {
+#        defaultFonts = {
+#          serif = [ "Noto Serif" "Liberation Serif" "Vazirmatn" ];
+#          sansSerif = [ "Noto Sans" "Ubuntu" "Vazirmatn" ];
+#          monospace = [ "CaskaydiaMono Nerd Font Mono" "CaskaydiaCove Nerd Font" "CaskaydiaMono NF" ];
+#        };
+#      };
     };
 
     # System utilities
