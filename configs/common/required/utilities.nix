@@ -61,6 +61,11 @@
       nextcloud-client
 
       freecad-qt6
+
+      scrcpy
+      qtscrcpy
+
+      just
     ];
 
     programs.ausweisapp = {
