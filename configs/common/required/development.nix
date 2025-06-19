@@ -26,7 +26,7 @@
 
       # .NET
       dotnetCorePackages.sdk_9_0
-      dotnetCorePackages.sdk_10_0
+      dotnetCorePackages.sdk_10_0-bin
       dotnetPackages.Nuget
       mono
       msbuild
