@@ -45,6 +45,7 @@
       kdePackages.krdc
       kdePackages.krdp
       freerdp3
+      zenity # for password prompt with freerdp
 
       # Office and productivity
       libreoffice
@@ -74,5 +75,29 @@
     # not sure this isn't already on because of something else,
     #  but it might help with the SteamVR admin prompt not working?
     security.polkit.enable = true;
+
+    hm.xdg.desktopEntries.freerdp-work-laptop = {
+      name = "FreeRDP - Work Laptop";
+      comment = "Starts freerdp with pre-configured options, prompts for user and password";
+      exec = "${pkgs.writeShellScriptBin "freerdp-work-laptop-exec" ''
+        ${pkgs.freerdp3}/bin/xfreerdp /u:$(${pkgs.zenity}/bin/zenity \
+          --entry \
+          --title="Username" \
+          --text="Enter your Username") \
+        /p:$(${pkgs.zenity}/bin/zenity \
+          --entry \
+          --title="Password" \
+          --text="Enter your _password:" \
+          --hide-text) \
+        /v:192.168.178.20 \
+        /multimon /mic /sound /microphone:sys:pulse \
+        /clipboard /dvc:urbdrc,dev:12d1:4321 /kbd:layout:0x407
+      ''}/bin/freerdp-work-laptop-exec";
+      icon = "gnome-rdp";
+      categories = [
+        "Utility"
+      ];
+      terminal = false;
+    };
   };
 }
