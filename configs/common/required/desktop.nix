@@ -58,6 +58,7 @@
       vlc
       obs-studio
       kdePackages.kolourpaint
+      darktable
 
       # System utilities
       htop
