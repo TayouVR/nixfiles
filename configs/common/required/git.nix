@@ -13,9 +13,10 @@
     config.init.defaultBranch = "main";
   };
 
-  environment.systemPackages = [
-    pkgs.gnupg
-    pkgs.gitkraken # optional GUI git client (freemium)
-    pkgs.sourcegit # optional GUI git client (FOSS)
+  environment.systemPackages = with pkgs; [
+    gnupg
+    gitkraken # optional GUI git client (freemium)
+    sourcegit # optional GUI git client (FOSS)
+    gh
   ];
 }
