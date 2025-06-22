@@ -36,6 +36,7 @@
       # Gaming utilities
       gamemode
       mangohud
+      waydroid-helper
 
       # Games
       superTux
