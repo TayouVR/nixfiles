@@ -40,6 +40,7 @@
       kdePackages.kdiagram
       gparted
       gnome-disk-utility
+      kdePackages.dolphin-plugins
 
       # Remote desktop
       kdePackages.krdc
