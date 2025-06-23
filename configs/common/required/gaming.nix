@@ -27,7 +27,8 @@
     # Gaming-related packages
     environment.systemPackages = with pkgs; [
       # Game launchers
-      prismlauncher
+      #prismlauncher.packages.${pkgs.system}.prismlauncher # latest git build
+      #prismlauncher
       modrinth-app
       lutris
       protonup-qt

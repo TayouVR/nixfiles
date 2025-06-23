@@ -21,6 +21,12 @@
           openxr.viewportScale = 50;
         };
       }
+      (
+        { pkgs, prismlauncher, ... }:
+        {
+          environment.systemPackages = [ prismlauncher.packages.${pkgs.system}.prismlauncher ];
+        }
+      )
 
       ../../starship/starship.nix
     ];
