@@ -40,7 +40,8 @@
       kdePackages.kdiagram
       gparted
       gnome-disk-utility
-      kdePackages.dolphin-plugins
+      kdePackages.dolphin
+      kdePackages.dolphin-plugins # FIXME: I don't know why the VCS integration doesn't work...
 
       # Remote desktop
       kdePackages.krdc
@@ -57,6 +58,7 @@
       inkscape
       krita
       vlc
+      haruna
       obs-studio
       kdePackages.kolourpaint
       darktable
