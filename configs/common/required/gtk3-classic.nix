@@ -36,16 +36,8 @@ let
       );
    });
 in
-   pkg: let
-      graft = (p: pkgs.replaceDependency {
-         drv = p;
-         oldDependency = pkgs.gtk3;
-         newDependency = gtk3-classic;
-      });
-   in
-      # Add override methods to make graft/replaceDependency act more like a
-      # package derivation
-      ((graft pkg) // {
-         override = (o: graft (pkg.override o));
-         overrideDerivation = (od: graft (pkg.overrideDerivation od));
-      })
+{
+  system.replaceDependencies.replacements = [
+    { oldDependency = pkgs.gtk3; newDependency = gtk3-classic; }
+  ];
+}
