@@ -18,5 +18,7 @@
     ./utilities.nix
     ./scanners.nix
     ./printers.nix
+
+    ./gtk3-nocsd.nix
   ];
 }

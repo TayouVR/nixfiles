@@ -8,7 +8,7 @@ let
       owner = "ZaWertun";
       repo = "gtk3-nocsd";
       rev = "v3.0.8";
-      sha256 = "";
+      sha256 = "sha256-BOsQqxaVdC5O6EnB3KZinKSj0U5mCcX8HSjRmSBUFks=";
     };
 
     nativeBuildInputs = with pkgs; [
