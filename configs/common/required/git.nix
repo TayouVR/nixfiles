@@ -3,7 +3,7 @@
 {
   hm.programs.git.enable = true;
   hm.programs.git.extraConfig = {
-    core.autocrlf = true;
+    core.autocrlf = "input";
   };
 
   programs.git = {
