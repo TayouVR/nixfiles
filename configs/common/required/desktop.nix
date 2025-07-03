@@ -48,6 +48,7 @@
       kdePackages.krdp
       freerdp3
       zenity # for password prompt with freerdp
+      remmina
 
       # Office and productivity
       libreoffice
@@ -62,6 +63,7 @@
       obs-studio
       kdePackages.kolourpaint
       darktable
+      grayjay
 
       # System utilities
       htop
