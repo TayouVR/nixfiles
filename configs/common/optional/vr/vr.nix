@@ -15,7 +15,10 @@
     hrtf = true
   '';
 
-  programs.steam.extraCompatPackages = [ pkgs.proton-ge-rtsp-bin ];
+  programs.steam.extraCompatPackages = [
+    pkgs.proton-ge-rtsp-bin
+    pkgs.proton-ge-bin
+  ];
 
   environment.systemPackages = with pkgs; [
     # index_camera_passthrough
