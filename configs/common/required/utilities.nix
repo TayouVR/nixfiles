@@ -66,7 +66,14 @@
       qtscrcpy
 
       just
+      nvtopPackages.amd
+      btop
+      lact
+      corectrl
     ];
+
+    systemd.packages = with pkgs; [ lact ];
+    systemd.services.lactd.wantedBy = ["multi-user.target"];
 
     programs.ausweisapp = {
       enable = true;
