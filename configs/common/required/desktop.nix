@@ -41,7 +41,8 @@
       gparted
       gnome-disk-utility
       kdePackages.dolphin
-      kdePackages.dolphin-plugins # FIXME: I don't know why the VCS integration doesn't work...
+      kdePackages.dolphin-plugins
+      kdePackages.kconfig
 
       # Remote desktop
       kdePackages.krdc
