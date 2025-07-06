@@ -53,6 +53,12 @@
 
       # BeatSaber
       bs-manager
+
+      # emulators
+      # suyu
+      ryujinx-greemdev
+      dolphin-emu
+      cemu
     ];
   };
 }
