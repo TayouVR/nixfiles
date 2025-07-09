@@ -21,6 +21,9 @@
       # Email
       thunderbird
 
+      # SIP Phone Calls
+      jitsi
+
       # Chat and messaging
       (discord.override { withVencord = true; })
       vesktop
