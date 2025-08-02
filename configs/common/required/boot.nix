@@ -17,6 +17,10 @@
         efiSupport = true;
         #memtest86.enable = true;
         default = "saved";
+        theme = (pkgs.sleek-grub-theme.override {
+          withBanner = "Tayous GRUB2";
+          withStyle = "bigSur";
+        });
       };
     };
 
