@@ -109,7 +109,7 @@ in
       nixd
 
       # NixOS configuration editor
-      inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
+      #inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
     ];
 
     programs.direnv.enable = true;

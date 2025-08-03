@@ -29,7 +29,7 @@
       vesktop
       telegram-desktop
       jami-client-qt
-      cinny-desktop
+      #cinny-desktop
       #kdePackages.neochat
       element-desktop
 

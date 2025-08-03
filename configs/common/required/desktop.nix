@@ -62,7 +62,7 @@
       vlc
       haruna
       kdePackages.kolourpaint
-      darktable
+      #darktable # - build failure because of ancient libsoup transitive dependency
       grayjay
 
       # System utilities
