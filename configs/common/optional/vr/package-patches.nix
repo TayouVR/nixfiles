@@ -6,12 +6,12 @@
         patched = {
           xrizer = prev.xrizer.overrideAttrs (oldAttrs: {
             src = final.fetchFromGitHub {
-              owner = "RinLovesYou";
+              owner = "TayouVR";
               repo = "xrizer";
               # rev can be the branch, or a specific commit... possibly (todo: test)
               rev = "experimental2";
               # to get the latest hash from nix on build: "0000000000000000000000000000000000000000000000000000";
-              sha256 = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
+              sha256 = "sha256-XAGMorn1sDb+b5nxihQ5Xzvb14eCQGN6q0WFymSNHOM=";
               # You can also use lib.fakeSha256 instead of the zeroes:
               # sha256 = lib.fakeSha256;
             };
@@ -41,29 +41,29 @@
 #            # for example, disabling checks if they fail:
 #            # doCheck = false;
           });
-          blender = prev.blender.overrideAttrs (oldAttrs: {
-            pythonPath = oldAttrs.pythonPath ++ (
-            let
-              customPythonPackages = import ./robust-weight-transfer-deps.nix {
-                pkgs = pkgs; # Pass the current pkgs
-                fetchurl = pkgs.fetchurl;
-                fetchgit = pkgs.fetchgit;
-                fetchhg = pkgs.fetchhg;
-              } pkgs.python3Packages pkgs.python3Packages;
-
-              libiglCustom = customPythonPackages.libigl;
-              robustLaplacianCustom = customPythonPackages.robust-laplacian;
-              scipyCustom = customPythonPackages.scipy;
-            in
-            [
-              libiglCustom
-              robustLaplacianCustom
-              scipyCustom
-            ]);
-            hipSupport = config.tayouflake.graphics.driver == "amd";
-            cudaSupport = config.tayouflake.graphics.driver == "nvidia";
-            #version = "${oldAttrs.version}-patched";
-          });
+          blender = prev.blender; #.overrideAttrs (oldAttrs: {
+#            pythonPath = oldAttrs.pythonPath ++ (
+#            let
+#              customPythonPackages = import ./robust-weight-transfer-deps.nix {
+#                pkgs = pkgs; # Pass the current pkgs
+#                fetchurl = pkgs.fetchurl;
+#                fetchgit = pkgs.fetchgit;
+#                fetchhg = pkgs.fetchhg;
+#              } pkgs.python3Packages pkgs.python3Packages;
+#
+#              libiglCustom = customPythonPackages.libigl;
+#              robustLaplacianCustom = customPythonPackages.robust-laplacian;
+#              scipyCustom = customPythonPackages.scipy;
+#            in
+#            [
+#              libiglCustom
+#              robustLaplacianCustom
+#              scipyCustom
+#            ]);
+#            hipSupport = config.tayouflake.graphics.driver == "amd";
+#            cudaSupport = config.tayouflake.graphics.driver == "nvidia";
+#            #version = "${oldAttrs.version}-patched";
+#          });
         };
       })
     ];
