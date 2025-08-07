@@ -32,6 +32,8 @@
       lutris
       protonup-qt
       rare
+      minigalaxy
+      heroic
 
       # Gaming utilities
       gamemode
