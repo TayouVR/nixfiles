@@ -80,6 +80,9 @@
 
       kdePackages.discover
       msedit
+
+      # android debugging
+      android-tools
     ];
 
     services.flatpak.enable = true;
