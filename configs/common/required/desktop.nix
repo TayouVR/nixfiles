@@ -96,18 +96,18 @@
       name = "FreeRDP - Work Laptop";
       comment = "Starts freerdp with pre-configured options, prompts for user and password";
       exec = "${pkgs.writeShellScriptBin "freerdp-work-laptop-exec" ''
-        ${pkgs.freerdp3}/bin/xfreerdp /u:$(${pkgs.zenity}/bin/zenity \
-          --entry \
-          --title="Username" \
-          --text="Enter your Username") \
-        /p:$(${pkgs.zenity}/bin/zenity \
-          --entry \
-          --title="Password" \
-          --text="Enter your _password:" \
-          --hide-text) \
-        /v:192.168.178.20 \
-        /multimon /mic /sound /microphone:sys:pulse \
-        /clipboard /dvc:urbdrc,dev:12d1:4321 /kbd:layout:0x407
+${pkgs.freerdp3}/bin/xfreerdp /u:$(${pkgs.zenity}/bin/zenity \
+  --entry \
+  --title="Username" \
+  --text="Enter your Username") \
+/p:$(${pkgs.zenity}/bin/zenity \
+  --entry \
+  --title="Password" \
+  --text="Enter your _password:" \
+  --hide-text) \
+/v:192.168.178.20 \
+/multimon /mic /sound /microphone:sys:pulse \
+/clipboard /dvc:urbdrc,dev:12d1:4321 /kbd:layout:0x407
       ''}/bin/freerdp-work-laptop-exec";
       icon = "gnome-rdp";
       categories = [
