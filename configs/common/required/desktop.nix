@@ -67,6 +67,9 @@
       #darktable # - build failure because of ancient libsoup transitive dependency
       grayjay
 
+      unzip
+      p7zip
+
       # System utilities
       htop
       smartmontools
