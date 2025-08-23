@@ -43,6 +43,7 @@
       kdePackages.dolphin
       kdePackages.dolphin-plugins
       kdePackages.kconfig
+      kdePackages.kclock
 
       # Remote desktop
       kdePackages.krdc
