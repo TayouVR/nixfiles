@@ -72,6 +72,11 @@
 
       tailscale
       #sweethome3d
+
+      # 3D printing
+      #cura # build failure due to broken python dependency
+      prusa-slicer
+      #orca-slicer # build failure due to old libsoup dependency
     ];
 
     services.tailscale.enable = true;
