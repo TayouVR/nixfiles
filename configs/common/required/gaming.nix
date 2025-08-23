@@ -49,6 +49,7 @@
       xonotic
       gzdoom
       osu-lazer
+      enigma
 
       # XR
       #overte
