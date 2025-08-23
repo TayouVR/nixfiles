@@ -35,6 +35,7 @@
       # File management
       kdePackages.kate
       kdePackages.filelight
+      qdirstat
       kdePackages.partitionmanager
       kdePackages.calligra
       kdePackages.kdiagram
