@@ -79,6 +79,7 @@
       #orca-slicer # build failure due to old libsoup dependency
 
       kdePackages.discover
+      msedit
     ];
 
     services.flatpak.enable = true;
