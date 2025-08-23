@@ -77,8 +77,11 @@
       #cura # build failure due to broken python dependency
       prusa-slicer
       #orca-slicer # build failure due to old libsoup dependency
+
+      kdePackages.discover
     ];
 
+    services.flatpak.enable = true;
     services.tailscale.enable = true;
 
     systemd.packages = with pkgs; [ lact ];
