@@ -32,6 +32,7 @@
       #cinny-desktop
       #kdePackages.neochat
       element-desktop
+      fluffychat
 
       # File sharing
       localsend
