@@ -45,6 +45,7 @@
       kdePackages.dolphin-plugins
       kdePackages.kconfig
       kdePackages.kclock
+      kdePackages.wallpaper-engine-plugin
 
       # Remote desktop
       kdePackages.krdc
