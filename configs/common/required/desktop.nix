@@ -46,6 +46,8 @@
       kdePackages.kconfig
       kdePackages.kclock
       kdePackages.wallpaper-engine-plugin
+      systemdgenie
+      fsearch
 
       # Remote desktop
       kdePackages.krdc
@@ -65,7 +67,7 @@
       vlc
       haruna
       kdePackages.kolourpaint
-      #darktable # - build failure because of ancient libsoup transitive dependency
+      darktable
       grayjay
 
       unzip

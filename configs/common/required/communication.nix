@@ -29,8 +29,8 @@
       vesktop
       telegram-desktop
       jami-client-qt
-      #cinny-desktop
-      #kdePackages.neochat
+      #cinny-desktop # - build failure because of ancient libsoup transitive dependency
+      #kdePackages.neochat # - build failure because of olm dependency
       element-desktop
       fluffychat
 
