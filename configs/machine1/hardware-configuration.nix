@@ -13,6 +13,12 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  # max int, the kernel will handle increasing user watches based on this limit, afaiu
+  # https://github.com/NixOS/nixpkgs/pull/126777
+  # https://github.com/torvalds/linux/commit/92890123749bafc317bbfacbe0a62ce08d78efb7
+  # https://github.com/torvalds/linux/commit/ac7b79fd190b02e7151bc7d2b9da692f537657f3
+  boot.kernel.sysctl."fs.inotify.max_user_instances" = 2147483647;
+
   boot.supportedFilesystems = [ "ntfs" "btrfs" ];
 
   fileSystems."/" =
