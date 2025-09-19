@@ -23,6 +23,7 @@
   environment.systemPackages = with pkgs; [
     # index_camera_passthrough
     lighthouse-steamvr
+    watchmanPairingAssistant
 
     openal
   ];

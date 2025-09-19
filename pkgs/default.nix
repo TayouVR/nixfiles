@@ -5,7 +5,7 @@
   ];
 
   perSystem =
-    { pkgs, ... }:
+    { pkgs, inputs', ... }:
     {
       overlayAttrs = {
         local = {
@@ -14,6 +14,7 @@
           writeSystemdToggle = pkgs.callPackage ./writeSystemdToggle { };
           xrizer = pkgs.callPackage ./xrizer {};
         };
+        watchmanPairingAssistant = inputs'.watchman-pairing-assistant.packages.default;
       };
     };
 }

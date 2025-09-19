@@ -23,6 +23,11 @@
       url = "github:snowfallorg/nixos-conf-editor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    watchman-pairing-assistant = {
+      url = "github:TayouVR/watchman-pairing-assistant";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
 

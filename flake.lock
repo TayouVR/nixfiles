@@ -222,7 +222,8 @@
         "nixos-conf-editor": "nixos-conf-editor",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-xr": "nixpkgs-xr"
+        "nixpkgs-xr": "nixpkgs-xr",
+        "watchman-pairing-assistant": "watchman-pairing-assistant"
       }
     },
     "snowfall-lib": {
@@ -296,6 +297,26 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "watchman-pairing-assistant": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1757100525,
+        "narHash": "sha256-egFqSBJUaRmkM5Ncv5z2+6lgVgXyXy+JuykktSkA4v8=",
+        "owner": "TayouVR",
+        "repo": "watchman-pairing-assistant",
+        "rev": "bbed1c36b5ce7c6ea438c6c73659006cb3a5f254",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TayouVR",
+        "repo": "watchman-pairing-assistant",
         "type": "github"
       }
     }
