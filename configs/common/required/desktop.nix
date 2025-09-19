@@ -61,6 +61,8 @@
       libreoffice
       obsidian
 
+      qalculate-qt
+
       # Graphics and media
       gimp3
       inkscape
