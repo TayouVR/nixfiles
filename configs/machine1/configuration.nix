@@ -32,7 +32,8 @@
     kdePackages.kcalc
     qbittorrent
     unrar
-    parabolic # seems unable to get clipboard contents, TODO: investigate
+    parabolic
+    yt-dlp
 
     qemu
     virt-manager
