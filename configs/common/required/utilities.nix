@@ -73,6 +73,9 @@
       tailscale
       #sweethome3d
 
+      # telephony
+      twinkle
+
       # 3D printing
       #cura # build failure due to broken python dependency
       prusa-slicer
