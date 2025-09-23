@@ -107,6 +107,8 @@ in
     environment.systemPackages = with pkgs; [
       nixfmt-rfc-style
       nixd
+      nixpkgs-review
+      nixfmt
 
       # NixOS configuration editor
       #inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
