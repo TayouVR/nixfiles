@@ -48,29 +48,27 @@
             # for example, disabling checks if they fail:
             # doCheck = false;
           });
-          blender = prev.blender; #.overrideAttrs (oldAttrs: {
-#            pythonPath = oldAttrs.pythonPath ++ (
-#            let
-#              customPythonPackages = import ./robust-weight-transfer-deps.nix {
-#                pkgs = pkgs; # Pass the current pkgs
-#                fetchurl = pkgs.fetchurl;
-#                fetchgit = pkgs.fetchgit;
-#                fetchhg = pkgs.fetchhg;
-#              } pkgs.python3Packages pkgs.python3Packages;
-#
-#              libiglCustom = customPythonPackages.libigl;
-#              robustLaplacianCustom = customPythonPackages.robust-laplacian;
-#              scipyCustom = customPythonPackages.scipy;
-#            in
-#            [
-#              libiglCustom
-#              robustLaplacianCustom
-#              scipyCustom
-#            ]);
-#            hipSupport = config.tayouflake.graphics.driver == "amd";
-#            cudaSupport = config.tayouflake.graphics.driver == "nvidia";
-#            #version = "${oldAttrs.version}-patched";
-#          });
+          blender = prev.blender.overrideAttrs (oldAttrs: {
+            pythonPath = oldAttrs.pythonPath ++ (
+            let
+              customPythonPackages = import ./robust-weight-transfer-deps.nix {
+                pkgs = pkgs; # Pass the current pkgs
+                lib = lib;
+                pythonPackages = pkgs.python311Packages;
+              };
+
+              libiglCustom = customPythonPackages.libigl;
+              robustLaplacianCustom = customPythonPackages.robust-laplacian;
+            in
+            [
+              libiglCustom
+              robustLaplacianCustom
+              pkgs.python311Packages.scipy
+            ]);
+            hipSupport = config.tayouflake.graphics.driver == "amd";
+            cudaSupport = config.tayouflake.graphics.driver == "nvidia";
+            #version = "${oldAttrs.version}-patched";
+          });
         };
       })
     ];
