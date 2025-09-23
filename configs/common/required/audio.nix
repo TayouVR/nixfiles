@@ -27,6 +27,7 @@
     # Audio-related packages
     environment.systemPackages = with pkgs; [
       qpwgraph  # PipeWire graph manager
+      easyeffects
     ];
   };
 }
