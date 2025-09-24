@@ -86,6 +86,10 @@
 
       # android debugging
       android-tools
+
+      # backups
+      kopia
+      kopia-ui
     ];
 
     services.flatpak.enable = true;
