@@ -58,10 +58,13 @@
       bs-manager
 
       # emulators
-      # suyu
-      ryujinx-greemdev
-      dolphin-emu
-      cemu
+      # suyu              # switch
+      ryujinx-greemdev  # switch
+      dolphin-emu       # gamecube wii
+      cemu              # wii u
+      ruffle            # flash games
+      scummvm           # tons of random stuff?
+      dosbox
     ];
   };
 }
