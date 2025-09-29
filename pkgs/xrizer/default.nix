@@ -15,14 +15,19 @@ rustPlatform.buildRustPackage rec {
   version = "0.2";
 
   src = fetchFromGitHub {
-    owner = "TayouVR";
+    owner = "RinLovesYou";
     repo = "xrizer";
     rev = "experimental2";
-    sha256 = "sha256-XAGMorn1sDb+b5nxihQ5Xzvb14eCQGN6q0WFymSNHOM=";
+    sha256 = "sha256-12M7rkTMbIwNY56Jc36nC08owVSPOr1eBu0xpJxikdw=";
+#    owner = "TayouVR";
+#    repo = "xrizer";
+#    rev = "experimental2";
+#    sha256 = "sha256-XAGMorn1sDb+b5nxihQ5Xzvb14eCQGN6q0WFymSNHOM=";
   };
   doCheck = false;
 
-  cargoHash = "sha256-yvjx8hIeG9W0TColZZpjNh0h+X1U1K/WXxfCmdaqFU0=";
+  cargoHash = "sha256-87JcULH1tAA487VwKVBmXhYTXCdMoYM3gOQTkM53ehE=";
+#  cargoHash = "sha256-yvjx8hIeG9W0TColZZpjNh0h+X1U1K/WXxfCmdaqFU0=";
 
   nativeBuildInputs = [
     pkg-config
