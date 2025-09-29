@@ -65,6 +65,9 @@
       ruffle            # flash games
       scummvm           # tons of random stuff?
       dosbox
+
+      shipwright        # zelda: ocarina of time pc port
+      _2ship2harkinian  # zelda: majoras mask
     ];
   };
 }
