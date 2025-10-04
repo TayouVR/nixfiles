@@ -41,9 +41,9 @@
               (lib.cmakeBool "XRT_HAVE_OPENCV" false)
               "-DBUILD_WITH_OPENCV=OFF"
             ];
-            #patches = [
-            #];
-            #version = "${oldAttrs.version}-dyndev";
+            # patches = [
+            # ];
+            # version = "${oldAttrs.version}-dyndev";
             # Add any other overrides needed for this specific version,
             # for example, disabling checks if they fail:
             # doCheck = false;

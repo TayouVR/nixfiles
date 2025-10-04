@@ -19,6 +19,9 @@ let
   inherit (lib) mkOption types;
 
   cfg = config.tayouflake.openxr;
+
+  monadoPackage = pkgs.patched.monado; # patched
+  # monadoPackage = pkgs.monado; # upstream
 in
 
 # https://wiki.nixos.org/wiki/VR#Monado
@@ -46,7 +49,7 @@ in
     };
 
     hm.xdg.configFile."openxr/1/active_runtime.json".source =
-      "${pkgs.patched.monado}/share/openxr/1/openxr_monado.json";
+      "${monadoPackage}/share/openxr/1/openxr_monado.json";
 
     hm.xdg.dataFile."monado/hand-tracking-models".source = pkgs.fetchgit {
       url = "https://gitlab.freedesktop.org/monado/utilities/hand-tracking-models.git";
@@ -59,7 +62,7 @@ in
       enable = true;
       defaultRuntime = true;
       highPriority = true;
-      package = pkgs.patched.monado;
+      package = monadoPackage;
     };
 
     systemd.user.services.monado = {
