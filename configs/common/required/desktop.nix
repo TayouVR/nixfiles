@@ -46,6 +46,9 @@
       kdePackages.dolphin-plugins
       kdePackages.kconfig
       kdePackages.kclock
+      kdePackages.konqueror
+      kdePackages.marble
+      amarok
       kdePackages.wallpaper-engine-plugin
       systemdgenie
       fsearch
