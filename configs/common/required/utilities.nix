@@ -91,6 +91,9 @@
       kopia-ui
     ];
 
+    programs.appimage.enable = true;
+    programs.appimage.binfmt = true;
+
     services.flatpak.enable = true;
     services.tailscale.enable = true;
 
