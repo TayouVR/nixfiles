@@ -38,8 +38,12 @@
       sl
       lolcat
 
-      # File management
-      fuse3 # was this for AppImage? Not sure...
+      # appimages
+      gearlever
+      fuse3
+      webkitgtk_4_1 # for tauri
+      harfbuzz
+      glib-networking
 
       # Hardware utilities
       pciutils
