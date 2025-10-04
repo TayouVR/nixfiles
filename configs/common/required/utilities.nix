@@ -67,7 +67,6 @@
       just
       nvtopPackages.amd
       btop
-      lact
       corectrl
 
       tailscale
@@ -95,8 +94,8 @@
     services.flatpak.enable = true;
     services.tailscale.enable = true;
 
-    systemd.packages = with pkgs; [ lact ];
-    systemd.services.lactd.wantedBy = ["multi-user.target"];
+    services.lact.enable = true;
+    hardware.amdgpu.overdrive.enable = true;
 
     programs.ausweisapp = {
       enable = true;
