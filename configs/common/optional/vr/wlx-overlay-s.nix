@@ -108,7 +108,7 @@ in
     #use_passthrough = false;
 
     # for a custom skybox texture
-    #skybox_texture = "my-skybox.dds";
+    skybox_texture = "/home/tayou/nix/resources/aurorasky.dds";
   };
 
   hm.xdg.configFile."wlxoverlay/openxr_actions.json5".source = ./wlx_openxr_actions.json5;
