@@ -108,11 +108,5 @@
       enable = true;
       openFirewall = true;
     };
-
-    # Enable Bluetooth
-    hardware.bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
   };
 }

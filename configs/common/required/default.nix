@@ -11,6 +11,7 @@
     ./shell.nix
     ./git.nix
     ./desktop.nix
+    ./bluetooth.nix
     ./audio.nix
     ./gaming.nix
     ./development.nix
