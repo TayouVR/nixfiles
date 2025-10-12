@@ -1,5 +1,6 @@
 {
   pkgs,
+  username,
   ...
 }:
 
@@ -93,6 +94,8 @@
       # backups
       kopia
       kopia-ui
+
+      docker-compose
     ];
 
     programs.appimage.enable = true;
@@ -100,6 +103,8 @@
 
     services.flatpak.enable = true;
     services.tailscale.enable = true;
+    virtualisation.docker.enable = true;
+    users.users.${username}.extraGroups = [ "docker" ];
 
     services.lact.enable = true;
     hardware.amdgpu.overdrive.enable = true;
