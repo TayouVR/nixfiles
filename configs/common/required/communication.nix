@@ -33,6 +33,7 @@
       #kdePackages.neochat # - build failure because of olm dependency
       element-desktop
       fluffychat
+      beeper
 
       # File sharing
       localsend
