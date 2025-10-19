@@ -1,0 +1,13 @@
+diff --git a/source/blender/makesrna/intern/rna_userdef.cc b/source/blender/makesrna/intern/rna_userdef.cc
+index cd4301689fe..ef99d2cb0fe 100644
+--- a/source/blender/makesrna/intern/rna_userdef.cc
++++ b/source/blender/makesrna/intern/rna_userdef.cc
+@@ -5520,7 +5520,7 @@ static void rna_def_userdef_edit(BlenderRNA *brna)
+ 
+   prop = RNA_def_property(srna, "undo_steps", PROP_INT, PROP_NONE);
+   RNA_def_property_int_sdna(prop, nullptr, "undosteps");
+-  RNA_def_property_range(prop, 0, 256);
++  RNA_def_property_range(prop, 0, 2147483647);
+   RNA_def_property_int_funcs(prop, nullptr, "rna_userdef_undo_steps_set", nullptr);
+   RNA_def_property_ui_text(
+       prop, "Undo Steps", "Number of undo steps available (smaller values conserve memory)");

@@ -65,6 +65,9 @@
               robustLaplacianCustom
               pkgs.python311Packages.scipy
             ]);
+            patches = [
+              ./patching/patches/blender/undo-limit-begone.patch
+            ];
             hipSupport = config.tayouflake.graphics.driver == "amd";
             cudaSupport = config.tayouflake.graphics.driver == "nvidia";
             #version = "${oldAttrs.version}-patched";
