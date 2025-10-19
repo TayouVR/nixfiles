@@ -77,10 +77,12 @@ in
         STEAMVR_LH_ENABLE = "1";
         XRT_COMPOSITOR_COMPUTE = "1";
         #WMR_HANDTRACKING = "1";
+        #XRT_DEBUG_GUI = "1";
         XRT_COMPOSITOR_SCALE_PERCENTAGE = toString cfg.compositorScale;
         SURVIVE_GLOBALSCENESOLVER = "0";
         SURVIVE_TIMECODE_OFFSET_MS = "-6.94";
         OXR_DEBUG_IPD_MM = "62";
+        LH_STICK_DEADZONE = "0.4";
       };
     };
 
