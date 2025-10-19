@@ -50,7 +50,7 @@
       kdePackages.marble
       amarok
       kdePackages.wallpaper-engine-plugin
-      systemdgenie
+      # systemdgenie
       fsearch
 
       # Remote desktop

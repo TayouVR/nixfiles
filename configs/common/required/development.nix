@@ -18,7 +18,7 @@
       jetbrains.pycharm-professional
       jetbrains-toolbox # for fleet primarily, and any other jb app without native package
 
-      zed-editor
+      #zed-editor
 
       # Programming languages and tools
       gcc
