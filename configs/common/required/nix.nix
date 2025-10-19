@@ -109,6 +109,7 @@ in
       nixd
       nixpkgs-review
       nixfmt
+      nix-output-monitor
 
       # NixOS configuration editor
       #inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor

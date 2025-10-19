@@ -5,6 +5,7 @@
 
 ## regular rebuild
 sudo nixos-rebuild switch --flake ./#tayou-berlin
+#sudo nixos-rebuild switch --log-format internal-json -v --flake ./#tayou-berlin |& nom --json
 
 ## dry run
 #sudo nixos-rebuild dry-activate --flake ./#tayou-berlin
