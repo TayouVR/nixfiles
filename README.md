@@ -95,3 +95,6 @@ The configuration is organized into modules to reduce duplication and improve ma
   - **vr.nix**: Common VR settings
   - **vrchat.nix**: VRChat-specific configuration
   - **wlx-overlay-s.nix**: WlxOverlay configuration
+
+nix build output:  
+`[running/completed/expected built, running/completed/expected copied (MiB), MiB Downloaded]`
