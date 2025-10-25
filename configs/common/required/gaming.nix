@@ -50,6 +50,10 @@
       gzdoom
       osu-lazer
       enigma
+      space-cadet-pinball
+      kdePackages.kpat # solitaire card games
+      apotris
+      mindustry
 
       # XR
       #overte
