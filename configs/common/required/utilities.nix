@@ -96,6 +96,8 @@
       kopia-ui
 
       docker-compose
+
+      rustdesk
     ];
 
     programs.appimage.enable = true;
