@@ -11,7 +11,7 @@
       packages = with pkgs; [
         noto-fonts
         noto-fonts-cjk-sans
-        noto-fonts-emoji
+        noto-fonts-color-emoji
 
         twemoji-color-font
 
@@ -53,7 +53,7 @@
       home-manager
 
       # Diagramming
-      dia
+      #dia # build failure
 
       # Custom packages
       # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772

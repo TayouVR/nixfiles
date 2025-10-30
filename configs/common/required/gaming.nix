@@ -63,7 +63,7 @@
 
       # emulators
       # suyu              # switch
-      ryujinx-greemdev  # switch
+      ryubing           # switch
       dolphin-emu       # gamecube wii
       cemu              # wii u
       ruffle            # flash games

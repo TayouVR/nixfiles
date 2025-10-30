@@ -49,14 +49,14 @@
       kdePackages.konqueror
       kdePackages.marble
       amarok
-      kdePackages.wallpaper-engine-plugin
+      #kdePackages.wallpaper-engine-plugin # broken
       # systemdgenie
       fsearch
 
       # Remote desktop
       kdePackages.krdc
       kdePackages.krdp
-      freerdp3
+      freerdp
       zenity # for password prompt with freerdp
       remmina
 
@@ -86,7 +86,7 @@
       xwayland
 
       # For plasma desktop info center
-      glxinfo
+      mesa-demos
       vulkan-tools
       clinfo
       wayland-utils
@@ -113,7 +113,7 @@
       name = "FreeRDP - Work Laptop";
       comment = "Starts freerdp with pre-configured options, prompts for user and password";
       exec = "${pkgs.writeShellScriptBin "freerdp-work-laptop-exec" ''
-${pkgs.freerdp3}/bin/xfreerdp /u:$(${pkgs.kdePackages.kdialog}/bin/kdialog \
+${pkgs.freerdp}/bin/xfreerdp /u:$(${pkgs.kdePackages.kdialog}/bin/kdialog \
   --geometry=400x100 \
   --title "Username - FreeRDP" \
   --inputbox "Enter your Username:") \
