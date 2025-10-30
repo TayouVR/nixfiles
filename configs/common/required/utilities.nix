@@ -98,6 +98,7 @@
       docker-compose
 
       rustdesk
+      imhex
     ];
 
     programs.appimage.enable = true;
