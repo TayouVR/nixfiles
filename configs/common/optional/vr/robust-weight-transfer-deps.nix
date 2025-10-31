@@ -8,8 +8,8 @@
     pname = "libigl";
     version = "2.5.1";
     src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/d8/41/4efcb97254fd57e572ba7f419108968663a872ca6f1c584b7f012da0d3bd/libigl-2.6.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl";
-      sha256 = "sha256-JWl7++oglX2beumr/5WlYCl7M7+SuiVbio8biZDA/Ls=";
+      url = "https://files.pythonhosted.org/packages/f3/e5/4256e661a6b487fed7ccd2e92bba0a0e901c4c1aa6b08b899e728119817b/libigl-2.5.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl";
+      sha256 = "sha256-6UmhRfodGRPtPTJQMsnn1qIEhr45Oi37/mj5cBX1dis=";
     };
     format = "wheel";
     doCheck = false;
