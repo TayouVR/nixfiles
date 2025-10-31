@@ -53,6 +53,11 @@
       # systemdgenie
       fsearch
 
+      # camera
+      kdePackages.kamoso
+      cheese
+      webcamoid
+
       # Remote desktop
       kdePackages.krdc
       kdePackages.krdp
