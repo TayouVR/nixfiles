@@ -69,6 +69,8 @@
       ruffle            # flash games
       scummvm           # tons of random stuff?
       dosbox
+      # TODO: install EKA2L1 https://github.com/EKA2L1/EKA2L1
+      # TODO: install freej2me https://github.com/hex007/freej2me
 
       shipwright        # zelda: ocarina of time pc port
       _2ship2harkinian  # zelda: majoras mask

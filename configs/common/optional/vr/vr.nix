@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  username,
   ...
 }:
 
@@ -27,6 +28,8 @@
 
     openal
   ];
+
+  users.users.${username}.extraGroups = [ "video" ];
 
   # Beyond udev rule
   services.udev.extraRules = ''
