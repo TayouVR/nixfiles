@@ -10,6 +10,7 @@
       enable = true;
       remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
       dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+      gamescopeSession.enable = true;
 
 #      package = pkgs.steam.override {
 #        extraProfile = ''
@@ -19,6 +20,10 @@
 #          unset TZ
 #        '';
 #      };
+    };
+    programs.gamescope = {
+      enable = true;
+      capSysNice = true;
     };
 
     # Enable Waydroid for Android app support
