@@ -18,15 +18,6 @@
     vlc
     mpv
 
-    # Wine
-    wineWowPackages.stable
-    winetricks
-    bottles
-
-    # VRChat
-    vrcx
-    alcom
-
     # Other
     keepassxc
     kdePackages.kcalc

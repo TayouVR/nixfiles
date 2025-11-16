@@ -27,14 +27,6 @@
     vlc
     mpv
 
-    # Wine
-    wineWowPackages.stable
-    winetricks
-
-    # VRChat
-    vrcx
-    alcom
-
     # Other
     keepassxc
   ];

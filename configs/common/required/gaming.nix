@@ -45,6 +45,11 @@
       mangohud
       waydroid-helper
 
+      # Wine
+      wineWowPackages.stable
+      winetricks
+      bottles
+
       # Games
       superTux
       superTuxKart
