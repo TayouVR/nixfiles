@@ -18,7 +18,7 @@ in
   environment.systemPackages = with pkgs; [
     local.startvrc
     vrcSwitch
-    vrcx
+    local.vrcx
     vrc-get
     patched.blender
     alcom
