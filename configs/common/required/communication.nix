@@ -21,7 +21,8 @@
       # Email
       thunderbird
 
-      # SIP Phone Calls
+      # telephony (SIP Phone Calls)
+      twinkle
       jitsi
 
       # Chat and messaging

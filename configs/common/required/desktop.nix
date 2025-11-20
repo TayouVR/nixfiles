@@ -48,9 +48,7 @@
       kdePackages.kclock
       kdePackages.konqueror
       kdePackages.marble
-      amarok
-      #kdePackages.wallpaper-engine-plugin # broken
-      # systemdgenie
+      kdePackages.wallpaper-engine-plugin
       fsearch
 
       # camera
@@ -77,6 +75,7 @@
       krita
       vlc
       haruna
+      amarok
       kdePackages.kolourpaint
       darktable
       grayjay
@@ -89,6 +88,7 @@
       smartmontools
       pciutils
       xwayland
+      systemdgenie
 
       # For plasma desktop info center
       mesa-demos

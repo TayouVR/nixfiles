@@ -33,7 +33,7 @@
     environment.systemPackages = with pkgs; [
       # Game launchers
       prismlauncher
-      modrinth-app
+      # modrinth-app # broken due to build failure in rust dependency turbo
       lutris
       protonup-qt
       rare

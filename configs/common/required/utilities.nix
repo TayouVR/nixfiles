@@ -53,7 +53,7 @@
       home-manager
 
       # Diagramming
-      #dia # build failure
+      dia
 
       # Custom packages
       # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
@@ -77,11 +77,8 @@
       tailscale
       #sweethome3d
 
-      # telephony
-      twinkle
-
       # 3D printing
-      #cura # build failure due to broken python dependency
+      cura
       prusa-slicer
       orca-slicer
 
