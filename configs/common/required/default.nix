@@ -21,6 +21,6 @@
     ./printers.nix
     ./nixld.nix
 
-    #./gtk3-nocsd.nix
+    ./gtk3-nocsd.nix
   ];
 }
