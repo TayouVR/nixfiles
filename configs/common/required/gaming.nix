@@ -64,6 +64,7 @@
       kdePackages.kpat # solitaire card games
       apotris
       mindustry
+      zeroad
 
       # XR
       #overte
