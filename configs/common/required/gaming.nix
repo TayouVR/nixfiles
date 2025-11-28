@@ -66,6 +66,10 @@
       mindustry
       zeroad
 
+      # Modding
+      owmods-gui
+      #owmods-cli
+
       # XR
       #overte
 
