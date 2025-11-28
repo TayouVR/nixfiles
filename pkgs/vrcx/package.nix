@@ -16,18 +16,18 @@ let
 in
 buildNpmPackage (finalAttrs: {
   pname = "vrcx";
-  version = "2025.11.16";
+  version = "2025-11-20T15.52-9f4e56f";
 
   src = fetchFromGitHub {
     repo = "VRCX";
-    owner = "vrcx-team";
-    tag = "v${finalAttrs.version}";
-    hash = "sha256-ipe5dQQxqIdzbaeUBFAlfCtXS5fwCEuaqpVQEvz8o2E=";
+    owner = "Natsumi-sama";
+    tag = finalAttrs.version;
+    hash = "sha256-RYygTv9j/W6z0BBskW/gwoTEOAFin8HSEOKYVqUR6bg=";
   };
 
   makeCacheWritable = true;
   npmFlags = [ "--ignore-scripts" ];
-  npmDepsHash = "sha256-k+jo2Iiflmrtg3LOM2KohPFih8gaDZqoFoh6WLFJRGM=";
+  npmDepsHash = "sha256-WfLDJiwnMNxqlNLpEiBQv0jW/WI7IB2UDkcEVDae7No=";
 
   nativeBuildInputs = [
     makeWrapper
@@ -89,7 +89,24 @@ buildNpmPackage (finalAttrs: {
   ];
 
   passthru = {
-    backend = buildDotnetModule {
+    backend = buildDotnetModule (
+      let
+        # Filter out AspNetCore.App.Ref (conflicts with SDK library pack); keep NETCore.App.Ref
+        rawDeps = lib.importJSON ./deps.json;
+        filteredDeps = builtins.filter (d: d.pname != "Microsoft.AspNetCore.App.Ref") rawDeps;
+        # Ensure NETStandard.Library is present to provide runtime.any.* packages for offline restore
+        ensureNetStandard = deps:
+          deps ++ lib.optional (
+            builtins.length (builtins.filter (d: d.pname == "NETStandard.Library") deps) == 0
+          ) {
+            pname = "NETStandard.Library";
+            version = "2.0.3";
+            hash = "sha256-Prh2RPebz/s8AzHb2sPHg3Jl8s31inv9k+Qxd293ybo=";
+          };
+        finalDeps = ensureNetStandard filteredDeps;
+        filteredDepsFile = builtins.toFile "deps.filtered.json" (builtins.toJSON finalDeps);
+      in
+      {
       pname = "${finalAttrs.pname}-backend";
       inherit (finalAttrs) version src;
 
@@ -97,7 +114,14 @@ buildNpmPackage (finalAttrs: {
       dotnet-runtime = dotnet.runtime;
       projectFile = "Dotnet/VRCX-Electron.csproj";
 
-      nugetDeps = ./deps.json;
+      # Patch upstream to avoid legacy System.Text.RegularExpressions package that pulls runtime.any.*
+      postPatch = ''
+        echo "[patch] Removing System.Text.RegularExpressions package reference to use inbox library"
+        sed -i '/System.Text.RegularExpressions/d' Dotnet/VRCX-Electron.csproj
+      '';
+
+      # Use filtered/injected deps file for offline NuGet dependencies
+      nugetDeps = filteredDepsFile;
 
       installPhase = ''
         runHook preInstall
@@ -107,7 +131,7 @@ buildNpmPackage (finalAttrs: {
 
         runHook postInstall
       '';
-    };
+    });
   };
 
   meta = {
