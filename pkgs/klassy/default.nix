@@ -13,13 +13,13 @@ let
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "klassy-qt${qtMajorVersion}";
-  version = "6.2.breeze6.2.1";
+  version = "6.4.breeze6.4.0";
 
   src = fetchFromGitHub {
     owner = "paulmcauley";
     repo = "klassy";
     tag = finalAttrs.version;
-    hash = "sha256-tFqze3xN1XECY74Gj0nScis7DVNOZO4wcfeA7mNZT5M=";
+    hash = "sha256-+bYS2Upr84BS0IdA0HlCK0FF05yIMVbRvB8jlN5EOUM=";
   };
 
   nativeBuildInputs = [
@@ -51,7 +51,6 @@ stdenv.mkDerivation (finalAttrs: {
       kcolorscheme
       kconfig
       kcoreaddons
-      kdecoration
       kguiaddons
       ki18n
       kirigami
