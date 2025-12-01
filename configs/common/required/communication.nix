@@ -29,7 +29,7 @@
       (discord.override { withVencord = true; })
       vesktop
       telegram-desktop
-      #jami # build failure
+      jami
       #cinny-desktop # - build failure because of ancient libsoup transitive dependency
       #kdePackages.neochat # - build failure because of olm dependency
       element-desktop
