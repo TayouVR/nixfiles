@@ -14,7 +14,7 @@ in
     timezone = mkOption {
       type = types.str;
       default = "Europe/Berlin";
-      example = "Europe/London";
+      example = "Europe/Berlin";
       description = "The IANA timezone of the system";
     };
 
@@ -27,35 +27,9 @@ in
         Sets {option}`i18n.extraLocaleSettings.LANGUAGE` and {option}`i18n.extraLocaleSettings.LC_MESSAGES`
       '';
     };
-
-    locale = mkOption {
-      type = types.str;
-      default = "de_DE.UTF-8";
-      example = "en_GB.UTF-8";
-      description = ''
-        The locale for everything but messages.
-      '';
-    };
-
-    extraLocales = mkOption {
-      type = types.listOf types.str;
-      default = [ ];
-      example = lib.literalExpression ''[ "en_GB.UTF-8/UTF-8" ]'';
-      description = "Extra locales to add to {option}`i18n.supportedLocales`";
-    };
   };
 
   config = {
-    assertions = [
-      {
-        assertion =
-          if builtins.isString cfg.language then
-            posixLocalePredicate cfg.language
-          else
-            lib.lists.any posixLocalePredicate cfg.language;
-        message = "The tayouflake.localization.language option must contain the country code like in the posix locale";
-      }
-    ];
 
     # Configure keymap in X11
     services.xserver.xkb = {
@@ -69,38 +43,23 @@ in
     time.timeZone = cfg.timezone;
 
     i18n = {
-      defaultLocale = cfg.locale;
+      defaultLocale = "en_US.UTF-8";
 
-      extraLocaleSettings =
-        rec {
-          LANGUAGE =
-            if builtins.isString cfg.language then
-              "${cfg.language}.${characterSet}"
-            else
-              "${lib.lists.findFirst posixLocalePredicate "en_US" cfg.language}.${characterSet}";
-          LC_MESSAGES = LANGUAGE;
-        }
-        // builtins.listToAttrs (
-          builtins.map (lcKey: lib.nameValuePair lcKey cfg.locale) [
-            "LC_ADDRESS"
-            "LC_IDENTIFICATION"
-            "LC_MEASUREMENT"
-            "LC_MONETARY"
-            "LC_NAME"
-            "LC_NUMERIC"
-            "LC_PAPER"
-            "LC_TELEPHONE"
-            "LC_TIME"
-            "LC_COLLATE"
-            "LC_CTYPE"
-          ]
-        );
-
-      inherit (cfg) extraLocales;
+      extraLocaleSettings = {
+        LC_ADDRESS = "de_DE.UTF-8";
+        LC_IDENTIFICATION = "de_DE.UTF-8";
+        LC_MEASUREMENT = "de_DE.UTF-8";
+        LC_MONETARY = "de_DE.UTF-8";
+        LC_NAME = "de_DE.UTF-8";
+        LC_NUMERIC = "de_DE.UTF-8";
+        LC_PAPER = "de_DE.UTF-8";
+        LC_TELEPHONE = "de_DE.UTF-8";
+        LC_TIME = "de_DE.UTF-8";
+        LC_ALL = "en_US.UTF-8";
+      };
     };
 
     environment.sessionVariables = config.i18n.extraLocaleSettings // {
-      LC_ALL = "";
       LANGUAGE = lib.mkForce (
         if builtins.isString cfg.language then
           cfg.language
