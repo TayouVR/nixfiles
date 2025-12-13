@@ -114,6 +114,7 @@
     #  but it might help with the SteamVR admin prompt not working?
     security.polkit.enable = true;
 
+    # TODO: use wlfreerdp when that supports /multimon properly on plasma
     hm.xdg.desktopEntries.freerdp-work-laptop = {
       name = "FreeRDP - Work Laptop";
       comment = "Starts freerdp with pre-configured options, prompts for user and password";

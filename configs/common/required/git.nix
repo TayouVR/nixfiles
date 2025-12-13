@@ -4,6 +4,7 @@
   hm.programs.git.enable = true;
   hm.programs.git.settings = {
     core.autocrlf = "input";
+    format.signoff = true;
   };
 
   programs.git = {
