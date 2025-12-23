@@ -25,6 +25,8 @@
     distrobox
   ];
 
+  networking.extraHosts = "192.168.178.64 homeassistant";
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
