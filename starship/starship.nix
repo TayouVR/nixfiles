@@ -72,7 +72,7 @@
         format = "[$symbol($version )]($style)";
         version_format = "v$raw";
         symbol = "△ ";
-        style = "bold blue";
+        style = "bold blue bg:#002956";
         disabled = false;
         detect_extensions = [];
         detect_files = [
@@ -85,7 +85,7 @@
         format = "[$symbol($version )]($style)";
         version_format = "v$raw";
         symbol = "⚙️ ";
-        style = "bold blue";
+        style = "bold blue bg:#002956";
         disabled = false;
         detect_extensions = [
           "cbl"
@@ -100,21 +100,21 @@
         truncation_length = 1;
         format = "[$symbol$environment]($style)";
         symbol = " ";
-        style = "green bold";
+        style = "green bold bg:#002956";
         ignore_base = true;
         disabled = false;
       };
       container = {
         format = "[$symbol [$name]]($style)";
         symbol = "⬢";
-        style = "red bold dimmed";
+        style = "red bold dimmed bg:#002956";
         disabled = false;
       };
       crystal = {
         format = "[$symbol($version )]($style)";
         version_format = "v$raw";
         symbol = "🔮 ";
-        style = "bold red";
+        style = "bold red bg:#002956";
         disabled = false;
         detect_extensions = ["cr"];
         detect_files = ["shard.yml"];
@@ -124,7 +124,7 @@
         format = "[$symbol($version )]($style)";
         version_format = "v$raw";
         symbol = "🎯 ";
-        style = "bold blue";
+        style = "bold blue bg:#002956";
         disabled = false;
         detect_extensions = ["dart"];
         detect_files = [
@@ -138,7 +138,7 @@
         format = "[$symbol($version )]($style)";
         version_format = "v$raw";
         symbol = "🦕 ";
-        style = "green bold";
+        style = "green bold bg:#002956";
         disabled = false;
         detect_extensions = [];
         detect_files = [
@@ -184,7 +184,7 @@
         format = "[$symbol($version )(🎯 $tfm )]($style)";
         version_format = "v$raw";
         symbol = "🥅 ";
-        style = "blue bold";
+        style = "blue bold bg:#002956";
         heuristic = true;
         disabled = false;
         detect_extensions = [
@@ -329,13 +329,12 @@
       java = {
         disabled = false;
         format = "[$symbol($version )]($style)";
-        style = "red dimmed bg:0x86BBD8";
+        style = "red bg:#002956";
         symbol = " ";
         version_format = "v$raw";
         detect_extensions = [
           "java"
           "class"
-          "jar"
           "gradle"
           "clj"
           "cljc"
@@ -377,7 +376,7 @@
         format = "[$symbol($version )]($style)";
         version_format = "v$raw";
         symbol = "🅺 ";
-        style = "bold blue";
+        style = "bold blue bg:#002956";
         kotlin_binary = "kotlin";
         disabled = false;
         detect_extensions = [
@@ -407,7 +406,7 @@
         format = "[$symbol($version )]($style)";
         version_format = "v$raw";
         symbol = "🌙 ";
-        style = "bold blue";
+        style = "bold blue bg:#002956";
         lua_binary = "lua";
         disabled = false;
         detect_extensions = ["lua"];
@@ -511,7 +510,7 @@
         format = "[$symbol($version )]($style)";
         version_format = "v$raw";
         symbol = "🐪 ";
-        style = "149 bold";
+        style = "149 bold bg:#002956";
         disabled = false;
         detect_extensions = [
           "pl"
@@ -533,7 +532,7 @@
         format = "[$symbol($version )]($style)";
         version_format = "v$raw";
         symbol = "🐘 ";
-        style = "147 bold";
+        style = "147 bold bg:#002956";
         disabled = false;
         detect_extensions = ["php"];
         detect_files = [
@@ -568,7 +567,7 @@
         ];
         pyenv_prefix = "pyenv ";
         pyenv_version_name = true;
-        style = "yellow bold";
+        style = "yellow bold bg:#002956";
         symbol = "🐍 ";
         version_format = "v$raw";
         disabled = false;
@@ -634,7 +633,7 @@
         format = "[$symbol($version )]($style)";
         version_format = "v$raw";
         symbol = "🦀 ";
-        style = "bold red bg:0x86BBD8";
+        style = "bold red bg:#002956";
         disabled = false;
         detect_extensions = ["rs"];
         detect_files = ["Cargo.toml"];
@@ -786,7 +785,7 @@
       aws = {
         format = "[$symbol($profile )(($region) )([$duration] )]($style)";
         symbol = "🅰 ";
-        style = "bold yellow";
+        style = "bold yellow bg:#002956";
         disabled = false;
         expiration_symbol = "X";
         force_display = false;
@@ -797,7 +796,7 @@
       azure = {
         format = "[$symbol($subscription)([$duration])]($style)";
         symbol = "ﴃ ";
-        style = "blue bold";
+        style = "blue bold bg:#002956";
         disabled = true;
       };
 
