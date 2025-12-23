@@ -119,5 +119,14 @@
       enable = true;
       openFirewall = true;
     };
+
+    services.grafana = {
+      enable = true;
+      settings.security = {
+        admin_user = "admin";
+        admin_password = "1234";
+        admin_email = "local-grafana@tayou.org";
+      };
+    };
   };
 }
