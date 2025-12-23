@@ -18,17 +18,6 @@
 
   # Machine-specific packages
   environment.systemPackages = with pkgs; [
-    # Music
-    quodlibet
-    kdePackages.elisa
-    kid3
-
-    # Video
-    vlc
-    mpv
-
-    # Other
-    keepassxc
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

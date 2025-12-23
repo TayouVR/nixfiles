@@ -31,11 +31,12 @@
 
     # Gaming-related packages
     environment.systemPackages = with pkgs; [
+      protonup-qt
+
       # Game launchers
       prismlauncher
-      # modrinth-app # broken due to build failure in rust dependency turbo
+      modrinth-app
       lutris
-      protonup-qt
       rare
       minigalaxy
       heroic

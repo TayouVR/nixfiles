@@ -9,20 +9,9 @@
 
   # Machine-specific packages
   environment.systemPackages = with pkgs; [
-    # Music
-    quodlibet
-    kdePackages.elisa
-    kid3
-
-    # Video
-    vlc
-    mpv
 
     # Other
-    keepassxc
-    kdePackages.kcalc
     qbittorrent
-    unrar
     parabolic
     yt-dlp
 

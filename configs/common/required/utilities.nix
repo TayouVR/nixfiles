@@ -41,10 +41,10 @@
 
       # appimages
       gearlever
-      fuse3
-      webkitgtk_4_1 # for tauri
-      harfbuzz
-      glib-networking
+#      fuse3
+#      webkitgtk_4_1 # for tauri
+#      harfbuzz
+#      glib-networking
 
       # Hardware utilities
       pciutils
@@ -96,6 +96,10 @@
 
       rustdesk
       imhex
+
+      keepassxc
+
+      unrar
     ];
 
     programs.appimage = {

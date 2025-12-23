@@ -45,10 +45,12 @@
       kdePackages.dolphin
       kdePackages.dolphin-plugins
       kdePackages.kconfig
+      kdePackages.kcalc
       kdePackages.kclock
       kdePackages.konqueror
       kdePackages.marble
       kdePackages.wallpaper-engine-plugin
+      kdePackages.kfind
       fsearch
 
       # camera
@@ -73,11 +75,17 @@
       gimp3
       inkscape
       krita
-      vlc
-      haruna
-      amarok
       kdePackages.kolourpaint
       darktable
+
+      # Music & Video playback
+      quodlibet
+      kdePackages.elisa
+      amarok
+      kid3
+      mpv
+      vlc
+      haruna
       grayjay
 
       unzip
