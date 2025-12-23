@@ -28,6 +28,9 @@
       url = "github:TayouVR/watchman-pairing-assistant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # they got rid of the flake in their rewrite, fork has a new flake & module?
+    #millennium.url = "git+https://github.com/SteamClientHomebrew/Millennium.git?ref=legacy";
+    millennium.url = "git+https://github.com/michaelgoldenn/Millennium";
   };
 
 
