@@ -15,7 +15,7 @@
         device = "nodev";
         useOSProber = true;
         efiSupport = true;
-        #memtest86.enable = true;
+        memtest86.enable = true;
         default = "saved";
         theme = (pkgs.sleek-grub-theme.override {
           withBanner = "Tayous GRUB2";
