@@ -111,6 +111,13 @@ in
     skybox_texture = "/home/tayou/nix/resources/aurorasky.dds";
   };
 
+  hm.xdg.configFile."wlxoverlay/conf.d/clock.yaml".source = yaml.generate "clock.yaml" {
+    timezones = [
+      "Europe/Berlin"
+    ];
+    clock_12h = false;
+  };
+
   hm.xdg.configFile."wlxoverlay/openxr_actions.json5".source = ./wlx_openxr_actions.json5;
 
   hm.xdg.configFile."wlxoverlay/icons.dds".source = ./icons.dds;
