@@ -21,6 +21,12 @@
           withBanner = "Tayous GRUB2";
           withStyle = "bigSur";
         });
+
+        extraEntries = ''
+          menuentry "Reboot to BIOS Setup" {
+            fwsetup
+          }
+        '';
       };
     };
 
