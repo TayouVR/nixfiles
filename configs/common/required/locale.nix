@@ -5,8 +5,6 @@ let
 
   cfg = config.tayouflake.localization;
 
-  characterSet = builtins.elemAt (lib.strings.splitString "." cfg.locale) 1;
-  posixLocalePredicate = lang: (builtins.match "^[a-z]{2}_[A-Z]{2}$" lang) != null;
 in
 
 {
@@ -55,18 +53,8 @@ in
         LC_PAPER = "de_DE.UTF-8";
         LC_TELEPHONE = "de_DE.UTF-8";
         LC_TIME = "de_DE.UTF-8";
-        LC_ALL = "en_US.UTF-8";
+        #LC_ALL = "de_DE.UTF-8";
       };
     };
-
-    environment.sessionVariables = config.i18n.extraLocaleSettings // {
-      LANGUAGE = lib.mkForce (
-        if builtins.isString cfg.language then
-          cfg.language
-        else
-          lib.strings.concatStrings (lib.strings.intersperse ":" cfg.language)
-      );
-    };
-
   };
 }
