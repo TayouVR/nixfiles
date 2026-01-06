@@ -16,18 +16,18 @@ let
 in
 buildNpmPackage (finalAttrs: {
   pname = "vrcx";
-  version = "2025-11-20T15.52-9f4e56f";
+  version = "2026.01.04";
 
   src = fetchFromGitHub {
     repo = "VRCX";
-    owner = "Natsumi-sama";
-    tag = finalAttrs.version;
-    hash = "sha256-RYygTv9j/W6z0BBskW/gwoTEOAFin8HSEOKYVqUR6bg=";
+    owner = "vrcx-team";
+    tag = "v${finalAttrs.version}";
+    hash = "sha256-ibsmlNfW64mzJOhIkJydpJ9ys2PbPfyj2XBGwY5xuww=";
   };
 
   makeCacheWritable = true;
   npmFlags = [ "--ignore-scripts" ];
-  npmDepsHash = "sha256-WfLDJiwnMNxqlNLpEiBQv0jW/WI7IB2UDkcEVDae7No=";
+  npmDepsHash = "sha256-TUdzrEa2dW4rKA/9HGgF6c9JTMiBmNWvc/9R0kIKSls=";
 
   nativeBuildInputs = [
     makeWrapper
