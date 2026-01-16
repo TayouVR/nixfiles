@@ -114,7 +114,7 @@ in
   hm.xdg.configFile."wlxoverlay/conf.d/clock.yaml".source = yaml.generate "clock.yaml" {
     timezones = [
       "Europe/London"
-      "North America/New York"
+      "America/New_York"
     ];
     clock_12h = false;
   };
