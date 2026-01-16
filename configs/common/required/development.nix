@@ -43,7 +43,14 @@
       sqlitebrowser
       gtk3 # for gtk-icon-browser
       kdePackages.plasma-sdk # cuttlefish icon viewer
+
+      # microcontrollers
+      esptool
+      espflash
     ];
+
+    # serial device access, e.g. ESP32, for tasmota web flasher, esptool, etc.
+    users.users.${username}.extraGroups = [ "dialout" ];
 
     # Fix for JetBrains Rider desktop entry
     home-manager.users.${username}.home.file = {
