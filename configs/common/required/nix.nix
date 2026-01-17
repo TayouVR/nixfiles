@@ -105,11 +105,11 @@ in
     environment.variables.FLAKE_DIR = cfg.flakeDir;
 
     environment.systemPackages = with pkgs; [
-      nixfmt-rfc-style
       nixd
       nixpkgs-review
       nixfmt
       nix-output-monitor
+      nix-tree
 
       # NixOS configuration editor
       #inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
