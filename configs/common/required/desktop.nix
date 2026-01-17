@@ -137,7 +137,7 @@ ${pkgs.freerdp}/bin/xfreerdp /u:$(${pkgs.kdePackages.kdialog}/bin/kdialog \
   --title "Password - FreeRDP" \
   --password "Enter your Password:") \
 /v:192.168.178.20 \
-/multimon /mic /sound /microphone:sys:pulse \
+/multimon /sound /microphone \
 /clipboard /dvc:urbdrc,dev:12d1:4321 /kbd:layout:0x407
       ''}/bin/freerdp-work-laptop-exec";
       icon = "gnome-rdp";
