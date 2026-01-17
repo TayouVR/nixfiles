@@ -81,6 +81,8 @@
       # cura # broken
       prusa-slicer
       orca-slicer
+      # local.qidi-studio # qidi has some of their own trash added to orca, so need this maybe
+      # qidi-slicer-bin # this is a prusa slicer fork, old and trash
 
       kdePackages.discover
       msedit
