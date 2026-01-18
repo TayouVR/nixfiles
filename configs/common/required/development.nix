@@ -41,6 +41,8 @@
       git
       kicad
       sqlitebrowser
+      qtcreator
+      kdePackages.qttools
       gtk3 # for gtk-icon-browser
       kdePackages.plasma-sdk # cuttlefish icon viewer
 
