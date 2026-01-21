@@ -5,7 +5,7 @@
     ./vr.nix
     ./audio.nix
     ./vrchat.nix
-    ./wlx-overlay-s.nix
+    ./wayvr/wayvr.nix
 
     ./stardust.nix
     ./monado.nix

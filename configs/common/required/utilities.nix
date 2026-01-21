@@ -94,7 +94,7 @@
 
       docker-compose
 
-      # rustdesk # broken
+      rustdesk
       imhex
 
       keepassxc

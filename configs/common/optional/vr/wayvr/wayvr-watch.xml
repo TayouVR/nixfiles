@@ -2,6 +2,7 @@
     <theme>
         <var key="set_color" value="#cad3f5" />
         <var key="bgcolor" value="#010206d5" />
+        <var key="buttoncolor" value="#181818d5" />
 
         <var key="clock0_color" value="#cad3f5" />
         <var key="clock0_size" value="46" />
