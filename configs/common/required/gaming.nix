@@ -70,6 +70,7 @@
       # Modding
       owmods-gui
       #owmods-cli
+      limo
 
       # XR
       #overte
