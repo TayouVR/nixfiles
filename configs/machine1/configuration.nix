@@ -1,8 +1,12 @@
 # Machine-specific configuration for tayou-berlin
 {
   pkgs,
+  hm,
   ...
 }:
+let
+  json = pkgs.formats.json { };
+in
 {
   # Enable envision program
   programs.envision.enable = true;
@@ -22,8 +26,19 @@
     picard
 
     podman
+    podman-compose
     distrobox
   ];
+
+  # allow podman to pull any image it wants. I can limit here where it can pull from.
+  # docs: https://docs.podman.io/en/latest/markdown/podman-image-trust.1.html
+  hm.xdg.configFile."containers/policy.json".source = json.generate "policy.json" {
+    default = [
+      {
+        type = "insecureAcceptAnything";
+      }
+    ];
+  };
 
   networking.extraHosts = "192.168.178.64 homeassistant";
 
