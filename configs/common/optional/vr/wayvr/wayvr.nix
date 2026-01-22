@@ -9,6 +9,10 @@
 let
   yaml = pkgs.formats.yaml { };
 
+  # TODO: add media play pause panel-modify set-image
+  #  panel-modify watch media_pause_play set-image \"/home/${ username }/.config/wayvr/theme/gui/assets/media/play.svg\"
+  #  panel-modify watch media_pause_play set-image \"/home/${ username }/.config/wayvr/theme/gui/assets/media/pause.svg\"
+  #  "playerctl status" -> "Paused" or "Playing"
   wayvrExtrasScript = pkgs.writeShellScript "wayvrExtrasScript.sh" ''
     # Define paths to binaries via Nix
     AWK="${pkgs.gawk}/bin/awk"
@@ -59,6 +63,43 @@ let
             touch $HOME/.config/wayvr/theme/gui/states/$FILE;
         fi
     fi
+  '';
+
+  wayvrMediaControllerScript = pkgs.writeShellScript "wayvrExtrasScript.sh" ''
+    # Define paths to binaries via Nix
+    PACTL="${lib.getExe' pkgs.pulseaudio "pactl"}"
+    PLAYERCTL="${lib.getExe pkgs.playerctl}"
+    WAYVRCTL="${pkgs.wayvr}/bin/wayvrctl"
+
+    # VOLUME_DOWN="$PACTL set-sink-volume @DEFAULT_SINK@ -5%"
+    # VOLUME_UP="$PACTL set-sink-volume @DEFAULT_SINK@ 5%"
+    # LAST="$PLAYERCTL previous"
+    # PAUSE_PLAY="$PLAYERCTL play-pause"
+    # NEXT="$PLAYERCTL next"
+
+    case "$1" in
+      "volup")
+        # command
+        ;;
+      "voldown")
+        # command
+        ;;
+      "prev")
+        # command
+        ;;
+      "pause-play")
+        PLAYING_STATUS=$($PLAYERCTL status)
+        if [PLAYING_STATUS -eq "Paused"]; then
+          # wayvrctl ->       panel-modify watch media_pause_play set-image \"/home/${ username }/.config/wayvr/theme/gui/assets/media/play.svg\"
+        else
+
+        fi
+        # command
+        ;;
+      "next")
+        # command
+        ;;
+    esac
   '';
 in
 
@@ -309,13 +350,13 @@ in
                                 </div>
                                 <div gap="8">
                                     <Button macro="button_style" _press="::ShellExec ${lib.getExe pkgs.playerctl} previous" tooltip="MEDIA.PREVIOUS" tooltip_side="left">
-                                        <sprite width="40" height="40" color="~set_color" src="/home/${ username }/.config/wayvr/theme/gui/assets/media/previous.svg" />
+                                        <sprite width="40" height="40" color="~set_color" src="/home/${ username }/.config/wayvr/theme/gui/assets/media/last.svg" />
                                     </Button>
                                     <Button macro="button_style" _press="::ShellExec ${lib.getExe pkgs.playerctl} play-pause" tooltip="MEDIA.PAUSE_PLAY" tooltip_side="left">
-                                        <sprite width="40" height="40" color="~set_color" src="/home/${ username }/.config/wayvr/theme/gui/assets/media/play.svg" />
+                                        <sprite id="media_pause_play" width="40" height="40" color="~set_color" src="/home/${ username }/.config/wayvr/theme/gui/assets/media/play.svg" />
                                     </Button>
                                     <Button macro="button_style" _press="::ShellExec ${lib.getExe pkgs.playerctl} next" tooltip="MEDIA.NEXT" tooltip_side="left">
-                                        <sprite width="40" height="40" color="~set_color" src="/home/${ username }/.config/wayvr/theme/gui/assets/media/skip.svg" />
+                                        <sprite width="40" height="40" color="~set_color" src="/home/${ username }/.config/wayvr/theme/gui/assets/media/next.svg" />
                                     </Button>
                                 </div>
                             </div>
