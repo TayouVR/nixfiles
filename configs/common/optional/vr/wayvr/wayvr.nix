@@ -111,9 +111,10 @@ in
 
         unitConfig.ConditionUser = "!root";
 
+        wants = [ "wayvr-extras.service" ];
+
         serviceConfig = {
           ExecStart = "${lib.getExe pkgs.wayvr} --openxr";
-          ExecStartPost = "${wayvrExtrasScript}";
           Restart = "on-failure";
           Type = "simple";
         };
@@ -135,6 +136,29 @@ in
           ];
         }
       );
+
+  systemd.user.services.wayvr-extras = {
+    description = "WayVR extras (stats updater)";
+
+    unitConfig = {
+      ConditionUser = "!root";
+      PartOf = [ "wayvr.service" ];
+      After = [ "wayvr.service" ];
+      Requires = [ "wayvr.service" ];
+    };
+
+    serviceConfig = {
+      ExecStart = wayvrExtrasScript;
+      Type = "simple";
+      Restart = "always";
+      RestartSec = 1;
+
+      # optional but handy if the script ever blocks on IO
+      KillMode = "mixed";
+    };
+
+    restartTriggers = [ wayvrExtrasScript ];
+  };
 
   hm.xdg.configFile."wayvr/wayvr.yaml".source = yaml.generate "wayvr.yaml" {
     version = 1;
