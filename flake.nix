@@ -28,6 +28,10 @@
       url = "github:TayouVR/watchman-pairing-assistant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    millennium = {
+      url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
 
