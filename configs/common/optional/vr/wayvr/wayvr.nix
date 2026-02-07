@@ -111,7 +111,7 @@ in
 
         unitConfig.ConditionUser = "!root";
 
-        wants = [ "wayvr-extras.service" ];
+        # wants = [ "wayvr-extras.service" ];
 
         serviceConfig = {
           ExecStart = "${lib.getExe pkgs.wayvr} --openxr";
@@ -385,7 +385,7 @@ in
                                 </div>
                             </div>
                         </rectangle>
-                        <rectangle id="perfStats" macro="decorative_rect" flex_direction="row" gap="8" justify_content="space_evenly" min_width="100" display="none" >
+                        <rectangle id="perfStats" macro="decorative_rect" flex_direction="row" gap="8" justify_content="space_evenly" min_width="100" >
                             <div flex_direction="column" gap="2">
                                 <label id="cpustat" text="CPU: RUN"/>
                                 <label id="ramstat" text="RAM: THE"/>
