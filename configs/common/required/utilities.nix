@@ -55,9 +55,7 @@
       # Diagramming
       dia
 
-      # Custom packages
-      # update when PR is merged: https://github.com/NixOS/nixpkgs/pull/318772
-      local.klassy
+      klassy
 
       darkly
 

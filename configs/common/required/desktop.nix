@@ -62,7 +62,6 @@
       kdePackages.krdc
       kdePackages.krdp
       freerdp
-      zenity # for password prompt with freerdp
       remmina
 
       # Office and productivity
