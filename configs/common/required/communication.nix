@@ -17,6 +17,8 @@
       firefox
       chromium
       kdePackages.falkon
+      ladybird
+      servo
 
       # Email
       thunderbird
