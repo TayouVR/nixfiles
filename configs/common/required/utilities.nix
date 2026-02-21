@@ -121,9 +121,11 @@
     services.grafana = {
       enable = true;
       settings.security = {
+        # TODO: use a file provider like e.g. SOPS for this data
         admin_user = "admin";
         admin_password = "1234";
         admin_email = "local-grafana@tayou.org";
+        secret_key = "SW2YcwTIb9zpOOhoPsMm";
       };
     };
   };

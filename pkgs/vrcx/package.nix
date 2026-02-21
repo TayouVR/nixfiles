@@ -1,33 +1,36 @@
 {
   lib,
-  fetchFromGitHub,
-  buildDotnetModule,
-  dotnetCorePackages,
-  buildNpmPackage,
+  stdenv,
+  nodejs_22,
   electron_39,
   makeWrapper,
-  copyDesktopItems,
+  fetchFromGitHub,
+  buildNpmPackage,
   makeDesktopItem,
-  stdenv,
+  copyDesktopItems,
+  buildDotnetModule,
+  dotnetCorePackages,
 }:
 let
+  node = nodejs_22;
   electron = electron_39;
   dotnet = dotnetCorePackages.dotnet_9;
 in
 buildNpmPackage (finalAttrs: {
   pname = "vrcx";
-  version = "2026.01.04";
+  version = "2026.02.11";
 
   src = fetchFromGitHub {
     repo = "VRCX";
     owner = "vrcx-team";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-ibsmlNfW64mzJOhIkJydpJ9ys2PbPfyj2XBGwY5xuww=";
+    hash = "sha256-/CMxFjIcLqk2oTnXUV519NkrImsnq3/kUGiew5E3Zyw=";
   };
 
+  nodejs = node;
   makeCacheWritable = true;
   npmFlags = [ "--ignore-scripts" ];
-  npmDepsHash = "sha256-TUdzrEa2dW4rKA/9HGgF6c9JTMiBmNWvc/9R0kIKSls=";
+  npmDepsHash = "sha256-bli8TKzxcASuCegEGwiHM5siMXGK4WuzhweNr5HaCvg=";
 
   nativeBuildInputs = [
     makeWrapper
@@ -75,11 +78,11 @@ buildNpmPackage (finalAttrs: {
   desktopItems = [
     (makeDesktopItem {
       name = "vrcx";
-      desktopName = "VRCX";
-      comment = "Friendship management tool for VRChat";
       icon = "vrcx";
       exec = "vrcx";
       terminal = false;
+      desktopName = "VRCX";
+      comment = "Friendship management tool for VRChat";
       categories = [
         "Utility"
         "Application"
@@ -89,39 +92,15 @@ buildNpmPackage (finalAttrs: {
   ];
 
   passthru = {
-    backend = buildDotnetModule (
-      let
-        # Filter out AspNetCore.App.Ref (conflicts with SDK library pack); keep NETCore.App.Ref
-        rawDeps = lib.importJSON ./deps.json;
-        filteredDeps = builtins.filter (d: d.pname != "Microsoft.AspNetCore.App.Ref") rawDeps;
-        # Ensure NETStandard.Library is present to provide runtime.any.* packages for offline restore
-        ensureNetStandard = deps:
-          deps ++ lib.optional (
-            builtins.length (builtins.filter (d: d.pname == "NETStandard.Library") deps) == 0
-          ) {
-            pname = "NETStandard.Library";
-            version = "2.0.3";
-            hash = "sha256-Prh2RPebz/s8AzHb2sPHg3Jl8s31inv9k+Qxd293ybo=";
-          };
-        finalDeps = ensureNetStandard filteredDeps;
-        filteredDepsFile = builtins.toFile "deps.filtered.json" (builtins.toJSON finalDeps);
-      in
-      {
-      pname = "${finalAttrs.pname}-backend";
+    backend = buildDotnetModule {
       inherit (finalAttrs) version src;
+      pname = "${finalAttrs.pname}-backend";
 
       dotnet-sdk = dotnet.sdk;
       dotnet-runtime = dotnet.runtime;
       projectFile = "Dotnet/VRCX-Electron.csproj";
 
-      # Patch upstream to avoid legacy System.Text.RegularExpressions package that pulls runtime.any.*
-      postPatch = ''
-        echo "[patch] Removing System.Text.RegularExpressions package reference to use inbox library"
-        sed -i '/System.Text.RegularExpressions/d' Dotnet/VRCX-Electron.csproj
-      '';
-
-      # Use filtered/injected deps file for offline NuGet dependencies
-      nugetDeps = filteredDepsFile;
+      nugetDeps = ./deps.json;
 
       installPhase = ''
         runHook preInstall
@@ -131,7 +110,7 @@ buildNpmPackage (finalAttrs: {
 
         runHook postInstall
       '';
-    });
+    };
   };
 
   meta = {
