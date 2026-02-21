@@ -30,6 +30,7 @@
       # Chat and messaging
       (discord.override { withVencord = true; })
       vesktop
+      equibop
       telegram-desktop
       jami
       #cinny-desktop # - build failure because of ancient libsoup transitive dependency

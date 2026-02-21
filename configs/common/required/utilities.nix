@@ -98,6 +98,11 @@
       keepassxc
 
       unrar
+
+      # vtubing
+      openseeface
+
+      kdePackages.zanshin
     ];
 
     programs.appimage = {

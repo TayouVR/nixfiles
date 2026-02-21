@@ -111,6 +111,7 @@ in
       nixfmt
       nix-output-monitor
       nix-tree
+      nvd
 
       # NixOS configuration editor
       #inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
