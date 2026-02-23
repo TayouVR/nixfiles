@@ -46,6 +46,7 @@
       kdePackages.dolphin-plugins
       kdePackages.kconfig
       kdePackages.kcalc
+      kdePackages.kalk # plasma mobile calculator app - its kinda better than kcalc, but also worse
       kdePackages.kclock
       kdePackages.konqueror
       kdePackages.marble
