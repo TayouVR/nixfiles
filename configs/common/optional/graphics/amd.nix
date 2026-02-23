@@ -7,6 +7,10 @@
         name = "bigscreen beyond";
         patch = ./beyondKernel.patch;
       }
+      {
+        name = "amd bsb dsc fix";
+        patch = ./amd_bsb_dsc_fix.patch;
+      }
       { # see https://wiki.nixos.org/wiki/VR#Applying_as_a_NixOS_kernel_patch
         name = "amdgpu-ignore-ctx-privileges";
         patch = pkgs.fetchpatch {
