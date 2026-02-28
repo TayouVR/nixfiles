@@ -342,7 +342,7 @@ in
                                         </div>
                                         <div flex_direction="column">
                                             <label text="New York" _source="clock" _display="name" _timezone="3" color="~clock_alt2_color" size="~clock_alt_tz_size" weight="bold" />
-                                            <label text="23:59" _source="clock" _display="time" _timezone="13" color="~clock_alt2_color" size="~clock_alt_size" weight="bold" />
+                                            <label text="23:59" _source="clock" _display="time" _timezone="3" color="~clock_alt2_color" size="~clock_alt_size" weight="bold" />
                                         </div>
                                     </div>
                                 </div>
