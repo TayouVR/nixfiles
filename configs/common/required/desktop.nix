@@ -88,6 +88,12 @@
       haruna
       grayjay
 
+      # video editing
+#      openshot-qt
+      shotcut
+      kdePackages.kdenlive
+
+      # archive
       unzip
       p7zip
 
