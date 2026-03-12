@@ -44,6 +44,7 @@
       kdePackages.qttools
       gtk3 # for gtk-icon-browser
       kdePackages.plasma-sdk # cuttlefish icon viewer
+      renderdoc
 
       # microcontrollers
       esptool
