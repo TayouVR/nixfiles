@@ -32,22 +32,22 @@
 #              owner = "openglfreak";
 #              repo = "monado";
 #              rev = "dyndev";
-#              sha256 = "sha256-dyHbIblR8r7vOZcZaSaXPO+XCeiD+s413UZ+Ok/4/6w=";
+#              sha256 = "sha256-PLFp4l6L3Pm0DhccOlJfO/1pwyfnhjGk1NCd0NM56Go=";
 #              # You can also use lib.fakeSha256:
 #              # sha256 = lib.fakeSha256;
 #            };
 #            # TODO: cmake flag temporary until https://github.com/nix-community/nixpkgs-xr/issues/468 and https://github.com/NixOS/nixpkgs/issues/439075 fixed
-#            cmakeFlags = oldAttrs.cmakeFlags ++ [
-#              (lib.cmakeBool "XRT_HAVE_OPENCV" false)
-#              "-DBUILD_WITH_OPENCV=OFF"
+##            cmakeFlags = oldAttrs.cmakeFlags ++ [
+##              (lib.cmakeBool "XRT_HAVE_OPENCV" false)
+##              "-DBUILD_WITH_OPENCV=OFF"
+##            ];
+#            patches = [
+#              ./patching/patches/monado/9091-deadzones.patch
 #            ];
-            patches = [
-              ./patching/patches/monado/9091-deadzones.patch
-            ];
-            # version = "${oldAttrs.version}-dyndev";
-            # Add any other overrides needed for this specific version,
-            # for example, disabling checks if they fail:
-            # doCheck = false;
+#            version = "${oldAttrs.version}-dyndev";
+#            # Add any other overrides needed for this specific version,
+#            # for example, disabling checks if they fail:
+#            doCheck = false;
           });
           blender = prev.blender.overrideAttrs (oldAttrs: {
             pythonPath = oldAttrs.pythonPath ++ (
