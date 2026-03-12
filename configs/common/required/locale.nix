@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 let
   inherit (lib) mkOption types;
@@ -41,6 +41,15 @@ in
     time.timeZone = cfg.timezone;
 
     i18n = {
+      inputMethod = {
+        type = "ibus";
+        enable = true;
+        ibus = {
+          engines = with pkgs.ibus-engines; [ mozc ];
+          waylandFrontend = true;
+          panel = "${pkgs.kdePackages.plasma-desktop}/libexec/kimpanel-ibus-panel";
+        };
+      };
       defaultLocale = "en_US.UTF-8";
 
       extraLocaleSettings = {
