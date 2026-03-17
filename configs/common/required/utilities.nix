@@ -1,6 +1,7 @@
 {
   pkgs,
   username,
+  config,
   ...
 }:
 
@@ -68,7 +69,6 @@
       qtscrcpy
 
       just
-      nvtopPackages.amd
       btop
       corectrl
 
@@ -103,7 +103,14 @@
       openseeface
 
       kdePackages.zanshin
-    ];
+    ] ++
+    (if (config.tayouflake.graphics.driver == "amd") then
+      [nvtopPackages.amd]
+    else if (config.tayouflake.graphics.driver == "nvidia") then
+      [nvtopPackages.nvidia]
+    else
+      []
+    );
 
     programs.appimage = {
       enable = true;
