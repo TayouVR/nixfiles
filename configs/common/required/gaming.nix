@@ -53,8 +53,8 @@
       bottles
 
       # Games
-      superTux
-      superTuxKart
+      supertux
+      supertuxkart
       extremetuxracer
       chromium-bsu
       openarena

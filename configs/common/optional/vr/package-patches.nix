@@ -55,7 +55,7 @@
               customPythonPackages = import ./robust-weight-transfer-deps.nix {
                 pkgs = pkgs; # Pass the current pkgs
                 lib = lib;
-                pythonPackages = pkgs.python311Packages;
+                pythonPackages = pkgs.python312Packages;
               };
 
               libiglCustom = customPythonPackages.libigl;

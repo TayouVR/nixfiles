@@ -46,6 +46,8 @@ in
           "nix-command"
           "flakes"
         ];
+        # Increase nix's internal curl download buffer from 64MiB to 500MiB
+        download-buffer-size = 524288000;
 
         # Store optimization
         auto-optimise-store = true;
