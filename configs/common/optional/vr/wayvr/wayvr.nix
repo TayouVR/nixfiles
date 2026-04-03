@@ -447,5 +447,10 @@ in
 
   environment.systemPackages = with pkgs; [
     wayvr
+    playerctl
+    gawk
+    gnugrep
+    coreutils
+    rocmPackages.amdsmi
   ];
 }
