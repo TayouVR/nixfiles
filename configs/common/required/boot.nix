@@ -30,6 +30,13 @@
       };
     };
 
+#    kernelParams = [
+#      "amd_pstate=active" # different AMD CPU frequency driver, should give better perf on modern AMD
+#      "threadirqs" # Turns most hardware interrupt handlers into kernel threads. Can reduce latency spikes
+#      "preempt=full" # Requests full kernel preemption, reducing worst-case latency by letting the kernel interrupt work more aggressively.
+#      "amdgpu.ppfeaturemask=0xffffffff" # This unlocks a bunch of AMDGPU power-management features that are otherwise masked off.
+#    ];
+
     # Use latest linux kernel
     kernelPackages = pkgs.linuxPackages_latest;
     #kernelPackages = pkgs.linuxKernel.packages.linux_zen;
