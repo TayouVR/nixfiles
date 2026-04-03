@@ -107,6 +107,7 @@
       kmymoney
       local.cbftp
       xournalpp
+      asciiquarium
     ] ++
     (if (config.tayouflake.graphics.driver == "amd") then
       [nvtopPackages.amd]
