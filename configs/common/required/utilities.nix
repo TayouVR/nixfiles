@@ -103,6 +103,10 @@
       openseeface
 
       kdePackages.zanshin
+
+      kmymoney
+      local.cbftp
+      xournalpp
     ] ++
     (if (config.tayouflake.graphics.driver == "amd") then
       [nvtopPackages.amd]
