@@ -52,6 +52,7 @@
       kdePackages.marble
       kdePackages.wallpaper-engine-plugin
       kdePackages.kfind
+      kdePackages.kcharselect
       fsearch
 
       # camera
