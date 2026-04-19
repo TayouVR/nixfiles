@@ -39,19 +39,20 @@ in
 
     console.keyMap = cfg.layout;
 
-    i18n.inputMethod = mkIf hasDesktop {
-      enable = true;
-      type = "fcitx5";
-      fcitx5 = {
-        addons = with pkgs; [
-          fcitx5-mozc
-          fcitx5-gtk
-        ];
-        waylandFrontend =
-          config.services.xserver.displayManager.gdm.wayland
-          || true; # Always enable Wayland frontend for fcitx5
-      };
-    };
+    # I don't really need it most of the time, and I'm probably better off without it for the time being.
+#    i18n.inputMethod = mkIf hasDesktop {
+#      enable = true;
+#      type = "fcitx5";
+#      fcitx5 = {
+#        addons = with pkgs; [
+#          fcitx5-mozc
+#          fcitx5-gtk
+#        ];
+#        waylandFrontend =
+#          config.services.xserver.displayManager.gdm.wayland
+#          || true; # Always enable Wayland frontend for fcitx5
+#      };
+#    };
 
     services = mkIf hasDesktop {
       libinput.mouse.accelProfile = "flat";
