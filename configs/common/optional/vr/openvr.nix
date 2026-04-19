@@ -29,7 +29,10 @@ in
         [
           "${config.hm.xdg.dataHome}/Steam/config"
         ],
-        "external_drivers" : null,
+        "external_drivers" : [
+          "/mnt/linuxApps/SteamLibrary/steamapps/common/Bigscreen Beyond Driver",
+          "${pkgs.monado}/share/steamvr-monado"
+        ],
         "jsonid" : "vrpathreg",
         "log" :
         [
