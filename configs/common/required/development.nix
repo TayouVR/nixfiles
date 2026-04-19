@@ -49,6 +49,60 @@
       # microcontrollers
       esptool
       espflash
+
+      # debugging tools
+      gdb
+      gdbgui
+      valgrind
+      ltrace
+      strace
+      perf
+      systemtap-sdt
+      lsof
+      psmisc
+      procps
+
+      ## memory
+      massif-visualizer
+      gperftools
+      jemalloc
+      heaptrack
+
+      ## files, mapping, fd introspectrion
+      smem
+      pciutils
+      util-linux
+      e2fsprogs
+
+      ## graphics
+      radeontop
+      vulkan-tools
+      wayland-protocols
+      libdrm
+      drm_info
+      mesa-demos
+
+      ## logs
+      jq
+      moreutils
+      socat
+      netcat
+
+      ## build tools
+      gcc
+      meson
+      cmake
+      clang
+      ninja
+      ccache
+      python3
+      python3Packages.pyelftools
+
+      ## inspecting kernel/wayland/DRM state
+      iotop
+      atop
+      bpftrace
+      bpftools
     ];
 
     # serial device access, e.g. ESP32, for tasmota web flasher, esptool, etc.
