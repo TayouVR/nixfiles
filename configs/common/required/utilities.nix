@@ -108,6 +108,7 @@
       local.cbftp
       xournalpp
       asciiquarium
+      tealdeer
     ] ++
     (if (config.tayouflake.graphics.driver == "amd") then
       [nvtopPackages.amd]
