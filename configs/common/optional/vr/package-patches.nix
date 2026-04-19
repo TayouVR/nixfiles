@@ -52,10 +52,11 @@
           blender = prev.blender.overrideAttrs (oldAttrs: {
             pythonPath = oldAttrs.pythonPath ++ (
             let
+              pythonPackages = pkgs.python313Packages;
               customPythonPackages = import ./robust-weight-transfer-deps.nix {
                 pkgs = pkgs; # Pass the current pkgs
                 lib = lib;
-                pythonPackages = pkgs.python312Packages;
+                pythonPackages = pythonPackages;
               };
 
               libiglCustom = customPythonPackages.libigl;
@@ -64,11 +65,11 @@
             [
               libiglCustom
               robustLaplacianCustom
-              pkgs.python311Packages.scipy
+              pythonPackages.scipy
             ]);
-            patches = [
-              ./patching/patches/blender/undo-limit-begone.patch
-            ];
+#            patches = [
+#              ./patching/patches/blender/undo-limit-begone.patch
+#            ];
             hipSupport = config.tayouflake.graphics.driver == "amd";
             cudaSupport = config.tayouflake.graphics.driver == "nvidia";
             #version = "${oldAttrs.version}-patched";
