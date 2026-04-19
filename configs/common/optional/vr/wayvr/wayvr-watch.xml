@@ -42,30 +42,83 @@
         <Device idx="${idx}" src="watch/track.svg" />
     </template>
 
-    <template name="Overlay">
-        <Button macro="button_style" id="overlay_${idx}"
-                tooltip="WATCH.TOGGLE_FOR_CURRENT_SET" _press="::EditModeOverlayToggle ${idx}"
-                align_items="center"
-                height="40">
-            <sprite id="overlay_${idx}_sprite" src_builtin="${src}" width="32" height="32" />
-            <label id="overlay_${idx}_label" text="WLX-${idx}" size="18" />
+    <template name="Screen">
+        <Button macro="button_style" id="overlay_${idx}" tooltip_str="${name}" _press="::OverlayToggle ${name}">
+            <sprite width="38" height="38" color="~color_text" src_builtin="edit/screen.svg" />
+            <div position="absolute" margin_top="-7" margin_left="-1">
+                <label text="${display}" size="18" color="~color_faded_20" weight="bold" />
+            </div>
+        </Button>
+    </template>
+    <template name="Panel">
+        <Button macro="button_style" id="overlay_${idx}" tooltip_str="${name}" _press="::OverlayToggle ${name}">
+            <sprite width="38" height="38" color="~color_text" src_builtin="edit/panel.svg" />
+        </Button>
+    </template>
+    <template name="Mirror">
+        <Button macro="button_style" id="overlay_${idx}" tooltip_str="${name}" _press="::OverlayToggle ${name}">
+            <sprite width="38" height="38" color="~color_text" src_builtin="edit/mirror.svg" />
+            <div position="absolute" margin_top="5" margin_left="13">
+                <label text="${display}" size="20" color="~color_faded_20" weight="bold" />
+            </div>
+        </Button>
+    </template>
+    <template name="App">
+        <Button macro="button_style" id="overlay_${idx}" tooltip_str="${name}" _press="::OverlayToggle ${name}">
+            <sprite width="38" height="38" color="~color_text" src_ext="${icon}" />
         </Button>
     </template>
 
     <template name="Set">
         <Button macro="button_style" id="set_${idx}" _press="::SetToggle ${idx}" tooltip="WATCH.SWITCH_TO_SET" tooltip_side="top">
-            <sprite width="40" height="40" color="~set_color" src_builtin="watch/set2.svg" />
+            <sprite width="38" height="38" color="~color_text" src_builtin="watch/set2.svg" />
             <div position="absolute" margin_top="9">
                 <label text="${display}" size="24" color="#00050F" weight="bold" />
             </div>
         </Button>
     </template>
 
-    <!--
-      [!!!!!!!!] Disclaimer [!!!!!!!!]
-      Elements with id="norm_*" show in normal mode.
-      Elements with id="edit_*" show in edit mode.
-    -->
+    <template name="Clock">
+        <div gap="12" flex_direction="column" padding="4">
+            <div flex_direction="column">
+                <label text="23:59:59" _source="clock" _display="%H:%M:%S" color="~clock0_color" size="~clock0_size" weight="bold" />
+                <div padding="2" gap="2" flex_direction="column">
+                    <label text="22/2/2022" _source="clock" _display="date" color="~clock0_color" size="~clock0_date_size" weight="bold" />
+                    <label text="Tuesday" _source="clock" _display="dow" color="~clock0_color" size="~clock0_dow_size" weight="bold" />
+                </div>
+                <div flex_direction="row" gap="8">
+                    <label text="In VR since" />
+                    <label _source="timer" _format="%h:%m:%s" />
+                </div>
+                <div flex_direction="row" gap="8">
+                    <!-- Timezone names here are only placeholders. Set your timezones via ~/.config/wlxoverlay/conf.d -->
+                    <div flex_direction="column">
+                        <label text="Paris" _source="clock" _display="name" _timezone="0" color="~clock_alt1_color" size="~clock_alt_tz_size" weight="bold" />
+                        <label text="23:59" _source="clock" _display="time" _timezone="0" color="~clock_alt1_color" size="~clock_alt_size" weight="bold" />
+                    </div>
+                    <div flex_direction="column">
+                        <label text="New York" _source="clock" _display="name" _timezone="1" color="~clock_alt2_color" size="~clock_alt_tz_size" weight="bold" />
+                        <label text="23:59" _source="clock" _display="time" _timezone="1" color="~clock_alt2_color" size="~clock_alt_size" weight="bold" />
+                    </div>
+                </div>
+                <div flex_direction="row" gap="8">
+                    <div flex_direction="column">
+                        <label text="Paris" _source="clock" _display="name" _timezone="2" color="~clock_alt1_color" size="~clock_alt_tz_size" weight="bold" />
+                        <label text="23:59" _source="clock" _display="time" _timezone="2" color="~clock_alt1_color" size="~clock_alt_size" weight="bold" />
+                    </div>
+                    <div flex_direction="column">
+                        <label text="New York" _source="clock" _display="name" _timezone="3" color="~clock_alt2_color" size="~clock_alt_tz_size" weight="bold" />
+                        <label text="23:59" _source="clock" _display="time" _timezone="3" color="~clock_alt2_color" size="~clock_alt_size" weight="bold" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template name="VerticalSeparator">
+        <rectangle width="2" height="100%" color="~color_accent" />
+    </template>
+
     <elements>
         <!-- padding="32" is required there (to make room for tooltips) -->
         <div padding="32" interactable="0" flex_direction="column" gap="8">
@@ -80,79 +133,47 @@
             </div>
 
             <!-- All other elements inside the container -->
-            <div flex_direction="column" gap="8">
+            <div flex_direction="column" gap="8" min_width="300">
                 <div flex_direction="row" gap="4">
-                    <rectangle macro="decorative_rect" flex_direction="row" id="norm_pane" gap="8">
+                    <rectangle macro="decorative_rect" flex_direction="row" gap="8" justify_content="space_evenly">
                         <!-- Clock, date and various timezones -->
-                        <div gap="8">
-                            <div flex_direction="column">
-                                <label text="23:59:59" _source="clock" _display="%H:%M:%S" color="~clock0_color" size="~clock0_size" weight="bold" />
-                                <div padding="2" gap="2" flex_direction="column">
-                                    <label text="22/2/2022" _source="clock" _display="date" color="~clock0_color" size="~clock0_date_size" weight="bold" />
-                                    <label text="Tuesday" _source="clock" _display="dow" color="~clock0_color" size="~clock0_dow_size" weight="bold" />
-                                </div>
-                                <div flex_direction="row" gap="8">
-                                    <label text="In VR since" />
-                                    <label _source="timer" _format="%h:%m:%s" />
-                                </div>
-                                <div flex_direction="row" gap="8">
-                                    <!-- Timezone names here are only placeholders. Set your timezones via ~/.config/wlxoverlay/conf.d -->
-                                    <div flex_direction="column">
-                                        <label text="Paris" _source="clock" _display="name" _timezone="0" color="~clock_alt1_color" size="~clock_alt_tz_size" weight="bold" />
-                                        <label text="23:59" _source="clock" _display="time" _timezone="0" color="~clock_alt1_color" size="~clock_alt_size" weight="bold" />
-                                    </div>
-                                    <div flex_direction="column">
-                                        <label text="New York" _source="clock" _display="name" _timezone="1" color="~clock_alt2_color" size="~clock_alt_tz_size" weight="bold" />
-                                        <label text="23:59" _source="clock" _display="time" _timezone="1" color="~clock_alt2_color" size="~clock_alt_size" weight="bold" />
-                                    </div>
-                                </div>
-                                <div flex_direction="row" gap="8">
-                                    <!-- Timezone names here are only placeholders. Set your timezones via ~/.config/wlxoverlay/conf.d -->
-                                    <div flex_direction="column">
-                                        <label text="Paris" _source="clock" _display="name" _timezone="2" color="~clock_alt1_color" size="~clock_alt_tz_size" weight="bold" />
-                                        <label text="23:59" _source="clock" _display="time" _timezone="2" color="~clock_alt1_color" size="~clock_alt_size" weight="bold" />
-                                    </div>
-                                    <div flex_direction="column">
-                                        <label text="New York" _source="clock" _display="name" _timezone="3" color="~clock_alt2_color" size="~clock_alt_tz_size" weight="bold" />
-                                        <label text="23:59" _source="clock" _display="time" _timezone="3" color="~clock_alt2_color" size="~clock_alt_size" weight="bold" />
-                                    </div>
-                                </div>
-                            </div>
+                        <div id="clock_root">
+                            <Clock />
                         </div>
 
                         <!-- Four buttons -->
                         <div flex_direction="column" gap="8">
                             <div gap="8">
-                                <Button macro="button_style" _press="::NewMirror" tooltip="WATCH.MIRROR" tooltip_side="left">
-                                    <sprite width="40" height="40" color="~set_color" src="edit/mirror.svg" />
+                                <Button id="btn_keyboard" macro="button_style" _press="::OverlayToggle kbd" tooltip="EDIT_MODE.KEYBOARD" tooltip_side="left">
+                                    <sprite src_builtin="watch/keyboard.svg" width="40" height="40" />
                                 </Button>
-                                <Button macro="button_style" _press="::CleanupMirrors" tooltip="WATCH.CLEANUP_MIRRORS" tooltip_side="left">
-                                    <sprite width="40" height="40" color="~set_color" src="watch/mirror-off.svg" />
+                                <Button id="btn_edit_mode" macro="button_style" _press="::EditToggle" tooltip="WATCH.EDIT_MODE" tooltip_side="left">
+                                    <sprite color="~color_text" width="40" height="40" src="watch/edit.svg" />
                                 </Button>
                                 <Button macro="button_style" _press="::ShellExec /nix/store/l9mzvafz6rm2vpb7grxsjn9dskh9nin7-pulseaudio-17.0/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%" tooltip="MEDIA.VOL_UP" tooltip_side="left">
-                                    <sprite width="40" height="40" color="~set_color" src="/home/tayou/.config/wayvr/theme/gui/assets/media/volup.svg" />
+                                    <sprite width="40" height="40" color="~color_text" src="/home/tayou/.config/wayvr/theme/gui/assets/media/volup.svg" />
                                 </Button>
                             </div>
                             <div gap="8">
                                 <Button macro="button_style" _press="::PlayspaceRecenter" tooltip="WATCH.RECENTER" tooltip_side="left">
-                                    <sprite width="40" height="40" color="~set_color" src="watch/recenter.svg" />
+                                    <sprite width="40" height="40" color="~color_text" src="watch/recenter.svg" />
                                 </Button>
                                 <Button macro="button_style" _press="::PlayspaceFixFloor" tooltip="WATCH.FIX_FLOOR" tooltip_side="left">
-                                    <sprite width="40" height="40" color="~set_color" src="watch/fix-floor.svg" />
+                                    <sprite width="40" height="40" color="~color_text" src="watch/fix-floor.svg" />
                                 </Button>
                                 <Button macro="button_style" _press="::ShellExec /nix/store/l9mzvafz6rm2vpb7grxsjn9dskh9nin7-pulseaudio-17.0/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%" tooltip="MEDIA.VOL_DOWN" tooltip_side="left">
-                                    <sprite width="40" height="40" color="~set_color" src="/home/tayou/.config/wayvr/theme/gui/assets/media/voldown.svg" />
+                                    <sprite width="40" height="40" color="~color_text" src="/home/tayou/.config/wayvr/theme/gui/assets/media/voldown.svg" />
                                 </Button>
                             </div>
                             <div gap="8">
                                 <Button macro="button_style" _press="::ShellExec /nix/store/5zmldqr9rdljqbmaclsygj0yvf33is3y-playerctl-2.4.1/bin/playerctl previous" tooltip="MEDIA.PREVIOUS" tooltip_side="left">
-                                    <sprite width="40" height="40" color="~set_color" src="/home/tayou/.config/wayvr/theme/gui/assets/media/last.svg" />
+                                    <sprite width="40" height="40" color="~color_text" src="/home/tayou/.config/wayvr/theme/gui/assets/media/last.svg" />
                                 </Button>
                                 <Button macro="button_style" _press="::ShellExec /nix/store/5zmldqr9rdljqbmaclsygj0yvf33is3y-playerctl-2.4.1/bin/playerctl play-pause" tooltip="MEDIA.PAUSE_PLAY" tooltip_side="left">
-                                    <sprite id="media_pause_play" width="40" height="40" color="~set_color" src="/home/tayou/.config/wayvr/theme/gui/assets/media/play.svg" />
+                                    <sprite id="media_pause_play" width="40" height="40" color="~color_text" src="/home/tayou/.config/wayvr/theme/gui/assets/media/play.svg" />
                                 </Button>
                                 <Button macro="button_style" _press="::ShellExec /nix/store/5zmldqr9rdljqbmaclsygj0yvf33is3y-playerctl-2.4.1/bin/playerctl next" tooltip="MEDIA.NEXT" tooltip_side="left">
-                                    <sprite width="40" height="40" color="~set_color" src="/home/tayou/.config/wayvr/theme/gui/assets/media/next.svg" />
+                                    <sprite width="40" height="40" color="~color_text" src="/home/tayou/.config/wayvr/theme/gui/assets/media/next.svg" />
                                 </Button>
                             </div>
                         </div>
@@ -167,28 +188,8 @@
                     </rectangle>
                 </div>
 
-                <rectangle macro="decorative_rect" flex_direction="column" id="edit_pane" display="none" gap="8">
-                    <div flex_direction="column" padding="4" align_items="center" justify_content="center">
-                        <label translation="WATCH.EDIT_MODE_EXPLANATION" align="center" />
-                    </div>
-                    <div flex_direction="column" align_items="center" justify_content="center">
-                        <div id="toolbox" gap="8" width="100%" max_width="400" flex_direction="row" flex_wrap="wrap">
-                            <Button id="btn_keyboard" height="40" macro="button_style" tooltip="WATCH.TOGGLE_FOR_CURRENT_SET" _press="::OverlayToggle kbd" >
-                                <sprite src_builtin="watch/keyboard.svg" width="32" height="32" />
-                                <label translation="EDIT_MODE.KEYBOARD" size="18" />
-                            </Button>
-                            <!-- Src here may be changed, but maintain `OverlayCategory` order: Panel, Screen, Mirror, WayVR -->
-                            <Overlay src="edit/panel.svg" idx="0" />
-                            <Overlay src="edit/screen.svg" idx="1" />
-                            <Overlay src="edit/mirror.svg" idx="2" />
-                            <Overlay src="edit/wayvr.svg" idx="3" />
-                            <!-- Will populate additional <Overlay> tags at runtime -->
-                        </div>
-                    </div>
-                </rectangle>
-
                 <!-- Bottom buttons -->
-                <div flex_direction="row" gap="4">
+                <div flex_direction="row" gap="8">
                     <div gap="4">
                         <Button id="btn_dashboard" macro="button_style" _press="::DashToggle" tooltip="WATCH.DASHBOARD" tooltip_side="top">
                             <sprite color="~color_text" width="40" height="40" src="watch/wayvr_dashboard_mono.svg" />
@@ -207,9 +208,6 @@
                         <Screen idx="0" display="H1" name="HDMI-A-1" />
                         <Screen idx="1" display="D2" name="DP-2"/>
                     </div>
-                    <Button id="btn_edit_mode" macro="button_style" _press="::EditToggle" tooltip="WATCH.EDIT_MODE" tooltip_side="top">
-                        <sprite color="~set_color" width="40" height="40" src="watch/edit.svg" />
-                    </Button>
                 </div>
             </div>
         </div>
