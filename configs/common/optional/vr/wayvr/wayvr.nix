@@ -9,6 +9,8 @@
 let
   yaml = pkgs.formats.yaml { };
 
+  wayvrPackage = pkgs.patched.wayvr;
+
   # TODO: add media play pause panel-modify set-image
   #  panel-modify watch media_pause_play set-image \"/home/${ username }/.config/wayvr/theme/gui/assets/media/play.svg\"
   #  panel-modify watch media_pause_play set-image \"/home/${ username }/.config/wayvr/theme/gui/assets/media/pause.svg\"
@@ -19,7 +21,7 @@ let
     GREP="${pkgs.gnugrep}/bin/grep"
     SLEEP="${pkgs.coreutils}/bin/sleep"
     AMD_SMI="${pkgs.rocmPackages.amdsmi}/bin/amd-smi"
-    WAYVRCTL="${pkgs.wayvr}/bin/wayvrctl"
+    WAYVRCTL="${wayvrPackage}/bin/wayvrctl"
 
     #Checks if running script natively or with variable
     if [ $# -eq 0 ]; then
@@ -69,7 +71,7 @@ let
     # Define paths to binaries via Nix
     PACTL="${lib.getExe' pkgs.pulseaudio "pactl"}"
     PLAYERCTL="${lib.getExe pkgs.playerctl}"
-    WAYVRCTL="${pkgs.wayvr}/bin/wayvrctl"
+    WAYVRCTL="${wayvrPackage}/bin/wayvrctl"
 
     # VOLUME_DOWN="$PACTL set-sink-volume @DEFAULT_SINK@ -5%"
     # VOLUME_UP="$PACTL set-sink-volume @DEFAULT_SINK@ 5%"
@@ -114,14 +116,14 @@ in
         # wants = [ "wayvr-extras.service" ];
 
         serviceConfig = {
-          ExecStart = "${lib.getExe pkgs.wayvr} --openxr";
+          ExecStart = "${lib.getExe wayvrPackage} --openxr";
           Restart = "on-failure";
           Type = "simple";
         };
 
         environment.XR_RUNTIME_JSON = "${config.hm.xdg.configHome}/openxr/1/active_runtime.json";
 
-        restartTriggers = [ pkgs.wayvr ];
+        restartTriggers = [ wayvrPackage ];
       }
       (
         lib.optionalAttrs config.services.monado.enable {

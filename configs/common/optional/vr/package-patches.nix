@@ -74,6 +74,13 @@
             cudaSupport = config.tayouflake.graphics.driver == "nvidia";
             #version = "${oldAttrs.version}-patched";
           });
+          wayvr = prev.wayvr.overrideAttrs (oldAttrs: {
+            postInstall = (oldAttrs.postInstall or "") + ''
+              wrapProgram $out/bin/wayvr \
+                --prefix PATH : "${lib.makeBinPath [ pkgs.bash ]}"
+            '';
+            nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ pkgs.makeWrapper ];
+          });
         };
       })
     ];
