@@ -9,7 +9,7 @@
     services.xserver.enable = true;
 
     # Enable the KDE Plasma Desktop Environment
-    services.displayManager.sddm.enable = true;
+    services.displayManager.plasma-login-manager.enable = true;
     services.desktopManager.plasma6.enable = true;
 
     # Enable Wayland support
@@ -28,8 +28,6 @@
 
     # Common desktop packages
     environment.systemPackages = with pkgs; [
-      kdePackages.sddm-kcm # sddm configuration in kde settings
-
       kdePackages.kweather
       kdePackages.kdeconnect-kde
 
