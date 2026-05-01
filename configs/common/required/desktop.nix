@@ -53,6 +53,10 @@
       kdePackages.kcharselect
       fsearch
 
+      # terminals
+      kitty
+      kdePackages.konsole
+
       # camera
       kdePackages.kamoso
       cheese
