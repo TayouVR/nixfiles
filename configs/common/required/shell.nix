@@ -27,7 +27,14 @@
 
     shellAliases = {
       rb = "sudo nixos-rebuild switch --flake $FLAKE_DIR --log-format internal-json -v |& ${lib.getExe pkgs.nix-output-monitor} --json";
-      nix-conf = "$EDITOR $FLAKE_DIR";
+      nix-conf = "$EDITOR $FLAKE_DIR/flake.nix";
+
+      # Replace ls with eza
+      ls = "${pkgs.eza} --color=always --group-directories-first --icons"; # preferred listing
+      la = "${pkgs.eza} -a --color=always --group-directories-first --icons";  # all files and dirs
+      ll = "${pkgs.eza} -al --color=always --group-directories-first --icons";  # long format
+      lt = "${pkgs.eza} -aT --color=always --group-directories-first --icons"; # tree listing
+      "l." = "${pkgs.eza} -a | grep -e '^\.'";                                 # show only dotfiles
     };
 
     histSize = 10000;
@@ -35,6 +42,7 @@
 
   environment.systemPackages = [
     pkgs.bat
+    pkgs.eza
   ];
 
   environment.variables = {
