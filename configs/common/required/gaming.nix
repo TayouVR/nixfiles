@@ -64,6 +64,7 @@
       enigma
       space-cadet-pinball
       kdePackages.kpat # solitaire card games
+      kdePackages.ksirk # KDE Risk game
       apotris
       mindustry
       zeroad

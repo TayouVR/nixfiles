@@ -20,6 +20,7 @@
     ./scanners.nix
     ./printers.nix
     ./nixld.nix
+    ./ai.nix
 
     ./gtk3-nocsd.nix
   ];
