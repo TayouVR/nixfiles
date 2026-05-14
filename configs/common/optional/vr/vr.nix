@@ -10,6 +10,9 @@
     inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
   ];
 
+  # Enable envision program
+  programs.envision.enable = true;
+
   nixpkgs.xr.enable = true;
 
   hm.home.file.".alsoftrc".text = ''

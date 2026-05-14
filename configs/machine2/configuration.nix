@@ -7,8 +7,6 @@
   ...
 }:
 {
-  # Enable envision program
-  programs.envision.enable = true;
 
   # Enable KWallet
   security.pam.services.kwallet = {
