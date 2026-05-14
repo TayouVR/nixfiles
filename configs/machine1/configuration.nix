@@ -40,7 +40,13 @@ in
     ];
   };
 
-  networking.extraHosts = "192.168.178.64 homeassistant";
+  networking.extraHosts = ''
+    192.168.178.64 homeassistant
+    192.168.178.64 nc.tayou.org
+    192.168.178.64 ha.tayou.org
+    192.168.178.64 immich.tayou.org
+    192.168.178.64 git.tayou.org
+  '';
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
