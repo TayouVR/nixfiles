@@ -52,6 +52,7 @@
       kdePackages.kfind
       kdePackages.kcharselect
       fsearch
+      qview
 
       # terminals
       kitty
