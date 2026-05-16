@@ -63,7 +63,7 @@
       procps
 
       ## memory
-      massif-visualizer
+      # massif-visualizer # dropped due to outdated deps (KF5)
       gperftools
       jemalloc
       heaptrack

@@ -11,7 +11,7 @@
       remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
       dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
       gamescopeSession.enable = true;
-      package = pkgs.millennium-steam;
+      # package = pkgs.millennium-steam;
 
 #      package = pkgs.steam.override {
 #        extraProfile = ''
@@ -37,7 +37,7 @@
       # Game launchers
       prismlauncher
       modrinth-app
-      lutris
+      #lutris
       rare
       minigalaxy
       heroic
@@ -50,7 +50,7 @@
       # Wine
       wineWow64Packages.stable
       winetricks
-      bottles
+      #bottles
 
       # Games
       supertux
