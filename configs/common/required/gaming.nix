@@ -21,6 +21,11 @@
 #          unset TZ
 #        '';
 #      };
+
+      # hidapi is required by Steam's controller firmware updater. Without it
+      # Steam logs `ImportError: Unable to load ... libhidapi-hidraw.so` and
+      # shows "Failed to update Steam Controller firmware" for the Steam Controller 2026.
+      extraPackages = with pkgs; [ hidapi ];
     };
     programs.gamescope = {
       enable = true;
