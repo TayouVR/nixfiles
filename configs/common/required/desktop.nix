@@ -91,6 +91,7 @@
       vlc
       haruna
       grayjay
+      spotify
 
       # video editing
 #      openshot-qt
