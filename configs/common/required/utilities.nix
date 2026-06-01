@@ -92,7 +92,7 @@
 
       docker-compose
 
-      rustdesk
+      # rustdesk
       imhex
 
       keepassxc

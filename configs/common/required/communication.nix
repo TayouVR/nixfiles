@@ -17,7 +17,7 @@
       firefox
       chromium
       kdePackages.falkon
-      ladybird
+      # ladybird # broken
       servo
 
       # Email
