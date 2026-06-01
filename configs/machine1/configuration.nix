@@ -8,8 +8,6 @@ let
   json = pkgs.formats.json { };
 in
 {
-  # Enable envision program
-  programs.envision.enable = true;
 
   # Machine-specific packages
   environment.systemPackages = with pkgs; [

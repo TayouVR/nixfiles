@@ -11,7 +11,7 @@
   ];
 
   # Enable envision program
-  programs.envision.enable = true;
+  # programs.envision.enable = true; # is marked as broken, and I don't use it anyway
 
   nixpkgs.xr.enable = true;
 
