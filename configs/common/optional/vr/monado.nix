@@ -83,7 +83,7 @@ in
         SURVIVE_GLOBALSCENESOLVER = "0";
         SURVIVE_TIMECODE_OFFSET_MS = "-6.94";
         OXR_DEBUG_IPD_MM = "62";
-        LH_STICK_DEADZONE = "0.25";
+        # LH_STICK_DEADZONE = "0.25"; # 2026-06-01 new controllers, no deadzone needed.
         OXR_PARALLEL_VIEWS = "1";
       };
     };
