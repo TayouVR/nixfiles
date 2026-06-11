@@ -103,6 +103,9 @@
       atop
       bpftrace
       bpftools
+
+      # used to e.g. spoof auth request failures for PrismLauncher
+      mitmproxy
     ];
 
     # serial device access, e.g. ESP32, for tasmota web flasher, esptool, etc.
