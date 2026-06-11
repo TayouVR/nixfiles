@@ -25,5 +25,20 @@
     services.xserver.videoDrivers = [ "amdgpu" ];
     hardware.graphics.enable = true;
     hardware.graphics.enable32Bit = true;
+    nixpkgs.config.rocmSupport = true;
+    systemd.tmpfiles.rules =
+      let
+        rocmEnv = pkgs.symlinkJoin {
+          name = "rocm-combined";
+          paths = with pkgs.rocmPackages; [
+            rocblas
+            hipblas
+            clr
+          ];
+        };
+      in
+      [
+        "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+      ];
   };
 }

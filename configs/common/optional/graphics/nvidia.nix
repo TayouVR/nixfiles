@@ -41,5 +41,6 @@
       #nvidiaPersistenced = true;
       forceFullCompositionPipeline = false;
     };
+    nixpkgs.config.cudaSupport = true;
   };
 }
