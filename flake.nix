@@ -28,9 +28,15 @@
       url = "github:TayouVR/watchman-pairing-assistant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    millennium = {
-      url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+
+    # for millenium. Upstream keeps breaking for some reason
+    millennium-src = {
+      url = "github:SteamClientHomebrew/Millennium/f8ec21d14e0f2536f099cd06dd099e39fd04cda7";
+      flake = false;
+    };
+    luajit-src = {
+      url = "github:SteamClientHomebrew/LuaJIT/v2.1";
+      flake = false;
     };
   };
 

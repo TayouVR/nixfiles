@@ -6,6 +6,11 @@
 
   perSystem =
     { pkgs, inputs', ... }:
+    let
+      millennium = pkgs.callPackage ./millennium/millennium.nix {
+        inherit (inputs) millennium-src luajit-src;
+      };
+    in
     {
       overlayAttrs = {
         local = {
@@ -20,6 +25,9 @@
               hash = "sha256-jdI820Mbb1Okfr2LR4h9szBPb9/u1mTmJ/+cUnInd6o=";
             };
           });
+          millennium-steam = pkgs.callPackage ./millennium/steam.nix {
+            inherit millennium;
+          };
         };
         watchmanPairingAssistant = inputs'.watchman-pairing-assistant.packages.default;
       };
