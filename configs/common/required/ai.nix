@@ -4,7 +4,9 @@
   pkgs,
   ...
 }:
-
+let
+  ollamaPackage = if config.tayouflake.graphics.driver == "nvidia" then pkgs.ollama-cuda else pkgs.ollama;
+in
 {
   options.tayouflake.ai = {
     enable = lib.mkOption {
@@ -23,11 +25,12 @@
       };
       ollama = {
         enable = true;
+        package = ollamaPackage;
       };
     };
 
     environment.systemPackages = with pkgs; [
-      ollama
+      ollamaPackage
       opencode-desktop
     ];
   };
