@@ -128,7 +128,8 @@
     };
 
     # firmware update service
-    services.fwupd.enable = true;
+    # services.fwupd.enable = true;
+    # fuck firmware updates, who needs them anyway (maybe they were causing crashes, idk)
 
     # not sure this isn't already on because of something else,
     #  but it might help with the SteamVR admin prompt not working?
