@@ -1,6 +1,7 @@
 {
   pkgs,
   username,
+  hm,
   ...
 }:
 
@@ -32,6 +33,7 @@
 
       # Unity
       unityhub
+      nodejs # for openupm-cli see https://nixos.wiki/wiki/Node.js#Install_to_your_home
 
       # Godot
       godot-mono
@@ -108,11 +110,17 @@
       mitmproxy
     ];
 
+    # add global node packages to path
+    hm.home.sessionVariables = {
+      PATH =
+        "$PATH:${builtins.getEnv "HOME"}/.npm-global/bin";
+    };
+
     # serial device access, e.g. ESP32, for tasmota web flasher, esptool, etc.
     users.users.${username}.extraGroups = [ "dialout" ];
 
     # Fix for JetBrains Rider desktop entry
-    home-manager.users.${username}.home.file = {
+    hm.home.file = {
       ".local/share/applications/jetbrains-rider.desktop".source =
         let
           desktopFile = pkgs.makeDesktopItem {
