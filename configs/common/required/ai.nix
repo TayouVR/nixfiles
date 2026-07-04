@@ -18,19 +18,18 @@ in
   };
 
   config = lib.mkIf (config.tayouflake.ai.enable) {
-    services = {
-      open-webui = {
-        enable = true;
-        openFirewall = true;
-      };
-      ollama = {
-        enable = true;
-        package = ollamaPackage;
-      };
-    };
+#    services = {
+#      open-webui = {
+#        enable = true;
+#        openFirewall = true;
+#      };
+#      ollama = {
+#        enable = true;
+#      };
+#    };
 
     environment.systemPackages = with pkgs; [
-      ollamaPackage
+      # ollama
       opencode-desktop
     ];
   };
