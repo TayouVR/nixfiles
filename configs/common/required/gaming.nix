@@ -73,6 +73,7 @@
       apotris
       mindustry
       zeroad
+      vintagestory
 
       # Modding
       owmods-gui
