@@ -79,6 +79,7 @@
       # cura # broken
       prusa-slicer
       orca-slicer
+      qidi-studio
 
       kdePackages.discover
       msedit
