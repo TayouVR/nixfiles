@@ -27,6 +27,8 @@
       # shows "Failed to update Steam Controller firmware" for the Steam Controller 2026.
       extraPackages = with pkgs; [ hidapi ];
     };
+    hardware.steam-hardware.enable = true;
+
     programs.gamescope = {
       enable = true;
       capSysNice = true;
