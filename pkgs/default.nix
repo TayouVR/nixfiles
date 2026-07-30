@@ -12,7 +12,7 @@
           startvrc = pkgs.callPackage ./startvrc {};
           writeSystemdToggle = pkgs.callPackage ./writeSystemdToggle {};
           xrizer = pkgs.callPackage ./xrizer {};
-          vrcx = pkgs.callPackage ./vrcx/package.nix {};
+          vrcx = pkgs.vrcx; #pkgs.callPackage ./vrcx/package.nix {};
           cbftp = pkgs.cbftp.overrideAttrs (old: {
             version = "1301";
             src = pkgs.fetchurl {
