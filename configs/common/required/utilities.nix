@@ -76,7 +76,7 @@
       #sweethome3d
 
       # 3D printing
-      # cura # broken
+      #cura # was unmaintained in nixpkgs
       prusa-slicer
       orca-slicer
       qidi-studio
@@ -93,7 +93,7 @@
 
       docker-compose
 
-      # rustdesk
+      rustdesk
       imhex
 
       keepassxc

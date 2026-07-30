@@ -41,8 +41,8 @@
 
       # Game launchers
       prismlauncher
-      modrinth-app
-      #lutris
+      #modrinth-app # build broken; /nix/store/xay14c4fjr9h6j29p6lnxgb673yglh2d-wrap-gapps-hook/nix-support/setup-hook: line 67: wrapGAppsHookHasRunForOutput: bad array subscript
+      lutris
       rare
       minigalaxy
       heroic
@@ -71,7 +71,7 @@
       kdePackages.kpat # solitaire card games
       kdePackages.ksirk # KDE Risk game
       apotris
-      mindustry
+      #mindustry # build broke
       zeroad
       vintagestory
 

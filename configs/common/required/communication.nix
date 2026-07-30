@@ -25,7 +25,7 @@
 
       # telephony (SIP Phone Calls)
       twinkle
-      jitsi
+      #jitsi # dropped due to old gtk2 libs
 
       # Chat and messaging
       (discord.override { withVencord = true; })

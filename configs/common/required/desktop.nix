@@ -36,7 +36,7 @@
       kdePackages.filelight
       qdirstat
       kdePackages.partitionmanager
-      kdePackages.calligra
+      #kdePackages.calligra # nix package patch rejected - awaiting upstream fix
       kdePackages.kdiagram
       gparted
       gnome-disk-utility
@@ -94,7 +94,7 @@
       spotify
 
       # video editing
-#      openshot-qt
+      openshot-qt
       shotcut
       kdePackages.kdenlive
 
