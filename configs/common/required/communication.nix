@@ -34,6 +34,7 @@
       telegram-desktop
       jami
       #cinny-desktop # - build failure because of ancient libsoup transitive dependency
+      sable # fork of cinny
       #kdePackages.neochat # - build failure because of olm dependency
       element-desktop
       fluffychat
