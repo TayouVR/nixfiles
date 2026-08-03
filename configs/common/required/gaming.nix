@@ -53,6 +53,7 @@
       gamemode
       mangohud
       waydroid-helper
+      protontricks
 
       # Wine
       wineWow64Packages.stable
