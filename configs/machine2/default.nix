@@ -7,6 +7,7 @@
     modules = [
       ../common/required
       ../common/optional/graphics
+      ../common/optional/vr
 
       ./hardware-configuration.nix
 
