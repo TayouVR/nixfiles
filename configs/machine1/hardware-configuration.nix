@@ -20,7 +20,7 @@
   boot.kernel.sysctl."fs.inotify.max_user_instances" = 2147483647;
   boot.kernel.sysctl."fs.inotify.max_user_watches"   =   16777216; # this shouldn't be needed, but I keep running out
 
-  boot.supportedFilesystems = [ "ntfs" "btrfs" "nfs" ];
+  boot.supportedFilesystems = [ "ntfs-3g" "ntfs" "btrfs" "nfs" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/079e0b73-63ce-4e7d-8a9e-3bbea5ad658a";

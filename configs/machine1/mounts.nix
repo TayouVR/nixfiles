@@ -3,27 +3,27 @@
   # File Stystems
   fileSystems."/mnt/data" = {
     device = "/dev/disk/by-uuid/03F19DAF20B3F598";
-    fsType = "ntfs";
+    fsType = "ntfs-3g";
     options = [ "uid=1000" "gid=100" "nofail" ];
   };
   fileSystems."/mnt/media" = {
     device = "/dev/disk/by-uuid/FE561FA7561F5FA7";
-    fsType = "ntfs";
+    fsType = "ntfs-3g";
     options = [ "uid=1000" "gid=100" "nofail" ];
   };
   fileSystems."/mnt/win10" = {
     device = "/dev/disk/by-uuid/4660E7FF60E7F419";
-    fsType = "ntfs";
+    fsType = "ntfs-3g";
     options = [ "uid=1000" "gid=100" "nofail" ];
   };
   fileSystems."/mnt/win10_old" = {
     device = "/dev/disk/by-uuid/CE46DCF546DCDEF1";
-    fsType = "ntfs";
+    fsType = "ntfs-3g";
     options = [ "uid=1000" "gid=100" "nofail" ];
   };
   fileSystems."/mnt/win7" = {
     device = "/dev/disk/by-uuid/19BBE1D72C7D6D07";
-    fsType = "ntfs";
+    fsType = "ntfs-3g";
     options = [ "uid=1000" "gid=100" "nofail" ];
   };
   fileSystems."/mnt/linuxApps" = {
@@ -38,17 +38,17 @@
   };
   fileSystems."/mnt/BACKUP" = {
     device = "/dev/disk/by-uuid/78525CB8525C7CB6";
-    fsType = "ntfs";
+    fsType = "ntfs-3g";
     options = [ "uid=1000" "gid=100" "nofail" ];
   };
   fileSystems."/mnt/BACKUP1" = {
     device = "/dev/disk/by-uuid/DA22C96F22C95165";
-    fsType = "ntfs";
+    fsType = "ntfs-3g";
     options = [ "uid=1000" "gid=100" "nofail" ];
   };
   fileSystems."/mnt/WindowsApps" = {
     device = "/dev/disk/by-uuid/1FDC889B1C3ED0B2";
-    fsType = "ntfs";
+    fsType = "ntfs-3g";
     options = [ "uid=1000" "gid=100" "nofail" ];
   };
 #  fileSystems."/mnt/BACKUP_SSD" = {
