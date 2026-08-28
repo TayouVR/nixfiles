@@ -102,6 +102,9 @@
       unzip
       p7zip
 
+      # geoloc & mapping
+      # geolibre - not packaged yet https://geolibre.app/
+
       # System utilities
       htop
       smartmontools
