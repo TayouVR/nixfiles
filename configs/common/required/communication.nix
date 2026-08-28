@@ -39,6 +39,7 @@
       element-desktop
       fluffychat
       beeper
+      signal-desktop
 
       # File sharing
       localsend
