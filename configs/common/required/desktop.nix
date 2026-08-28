@@ -1,8 +1,23 @@
 {
   pkgs,
+  lib,
   ...
 }:
+let
 
+
+
+  pactl-current-app = pkgs.writeShellScript "pactl-current-app.sh" ''
+    # Define paths to binaries via Nix
+    PACTL="${lib.getExe' pkgs.pulseaudio "pactl"}"
+
+    PACTL list sink-inputs | awk '
+      BEGIN{RS=""; id=""; vol=""}
+      $0 ~ /Sink Input/ { if (match($0,/Sink Input #([0-9]+)/,a)) id=a[1] }
+      $0 ~ /State: RUNNING/ { print id; exit }
+    '
+  '';
+in
 {
   config = {
     # Enable the X11 windowing system
@@ -117,6 +132,11 @@
       vulkan-tools
       clinfo
       wayland-utils
+
+      # pactl - pulse audio control - used for application volume adjustment
+      # not used as sound server, just installed for the utility
+      pulseaudio
+      kdotool
     ];
 
 
