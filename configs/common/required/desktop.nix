@@ -97,6 +97,7 @@
       openshot-qt
       shotcut
       kdePackages.kdenlive
+      davinci-resolve
 
       # archive
       unzip

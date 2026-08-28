@@ -23,8 +23,17 @@
 
     # GPU driver
     services.xserver.videoDrivers = [ "amdgpu" ];
-    hardware.graphics.enable = true;
-    hardware.graphics.enable32Bit = true;
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        mesa.opencl
+      ];
+    };
+    environment.variables = {
+      RUSTICL_ENABLE = "radeonsi";
+    };
+
     nixpkgs.config.rocmSupport = true;
     systemd.tmpfiles.rules =
       let
