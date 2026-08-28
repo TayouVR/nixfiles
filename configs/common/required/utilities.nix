@@ -131,7 +131,7 @@
     users.users.${username}.extraGroups = [ "docker" ];
 
     services.lact.enable = true;
-    hardware.amdgpu.overdrive.enable = true;
+    # hardware.amdgpu.overdrive.enable = true;
 
     programs.ausweisapp = {
       enable = true;
