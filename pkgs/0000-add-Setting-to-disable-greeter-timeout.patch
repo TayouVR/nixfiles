@@ -1,0 +1,126 @@
+From cd1366748ad235f1a7fe06af38e9de450fb6fe23 Mon Sep 17 00:00:00 2001
+From: Tayou Anonnymous <git@tayou.org>
+Date: Tue, 1 Sep 2026 19:14:19 +0200
+Subject: [PATCH] add Setting to disable greeter timeout
+
+timeout stays enabled by default.
+
+(cherry picked from commit 500444c9d4c70d0fc35219ff33bdbe01f00291da)
+Signed-off-by: Tayou Anonnymous <git@tayou.org>
+---
+ src/frontend/greeter/qml/GreeterState.qml             |  5 ++++-
+ src/frontend/kcm/ui/main.qml                          | 10 ++++++++++
+ src/frontend/settings/plasmaloginsettingsbase.kcfg    |  3 +++
+ src/frontend/settings/plasmaloginsettingsdefaults.cpp |  7 +++++++
+ src/frontend/settings/plasmaloginsettingsdefaults.h   |  3 +++
+ 5 files changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/src/frontend/greeter/qml/GreeterState.qml b/src/frontend/greeter/qml/GreeterState.qml
+index 68395e94..a434c38f 100644
+--- a/src/frontend/greeter/qml/GreeterState.qml
++++ b/src/frontend/greeter/qml/GreeterState.qml
+@@ -76,7 +76,10 @@ Item {
+     // Shared functionality
+ 
+     readonly property bool inhibitGreeterTimeout: {
+-        if (greeterState.loginState === PlasmaLogin.GreeterState.LoginState.UserList && greeterState.userListPassword.length > 0) {
++        if (!PlasmaLogin.Settings.greeterTimeout) {
++            // Greeter timeout disabled by configuration
++            return true;
++        } else if (greeterState.loginState === PlasmaLogin.GreeterState.LoginState.UserList && greeterState.userListPassword.length > 0) {
+             // We're on the user list and a password is entered
+             return true;
+         } else if (greeterState.loginState === PlasmaLogin.GreeterState.UserPrompt && greeterState.userPromptPassword.length > 0) {
+diff --git a/src/frontend/kcm/ui/main.qml b/src/frontend/kcm/ui/main.qml
+index 6f8b0c42..81c27699 100644
+--- a/src/frontend/kcm/ui/main.qml
++++ b/src/frontend/kcm/ui/main.qml
+@@ -206,6 +206,16 @@ KCM.SimpleKCM {
+                 }
+             }
+ 
++            QQC2.CheckBox {
++                text: i18nc("@option:check", "Hide user interface after inactivity")
++                checked: kcm.settings.greeterTimeout
++                onToggled: kcm.settings.greeterTimeout = checked
++                KCM.SettingStateBinding {
++                    configObject: kcm.settings
++                    settingName: "GreeterTimeout"
++                }
++            }
++
+             Item {
+                 Kirigami.FormData.label: i18nc("@title:group", "Defaults")
+                 Kirigami.FormData.isSection: true
+diff --git a/src/frontend/settings/plasmaloginsettingsbase.kcfg b/src/frontend/settings/plasmaloginsettingsbase.kcfg
+index fbe19ad4..a6200e08 100644
+--- a/src/frontend/settings/plasmaloginsettingsbase.kcfg
++++ b/src/frontend/settings/plasmaloginsettingsbase.kcfg
+@@ -28,5 +28,8 @@
+     <entry name="WallpaperPluginId" type="String">
+       <default code="true">defaultWallpaperPluginId()</default>
+     </entry>
++    <entry name="GreeterTimeout" type="Bool">
++      <default code="true">defaultGreeterTimeout()</default>
++    </entry>
+   </group>
+ </kcfg>
+diff --git a/src/frontend/settings/plasmaloginsettingsdefaults.cpp b/src/frontend/settings/plasmaloginsettingsdefaults.cpp
+index 47c58a86..4e0e7e6a 100644
+--- a/src/frontend/settings/plasmaloginsettingsdefaults.cpp
++++ b/src/frontend/settings/plasmaloginsettingsdefaults.cpp
+@@ -15,6 +15,7 @@ QString PlasmaLoginSettingsDefaults::s_defaultPreselectedUser;
+ QString PlasmaLoginSettingsDefaults::s_defaultPreselectedSession;
+ bool PlasmaLoginSettingsDefaults::s_defaultShowClock;
+ QString PlasmaLoginSettingsDefaults::s_defaultWallpaperPluginId;
++bool PlasmaLoginSettingsDefaults::s_defaultGreeterTimeout;
+ 
+ PlasmaLoginSettingsDefaults::PlasmaLoginSettingsDefaults(KSharedConfigPtr config, QObject *parent)
+     : KConfigSkeleton(config, parent)
+@@ -27,6 +28,7 @@ PlasmaLoginSettingsDefaults::PlasmaLoginSettingsDefaults(KSharedConfigPtr config
+     s_defaultPreselectedSession = defaultConfig->group(QStringLiteral("Greeter")).readEntry("PreselectedSession", "");
+     s_defaultShowClock = defaultConfig->group(QStringLiteral("Greeter")).readEntry("ShowClock", true);
+     s_defaultWallpaperPluginId = defaultConfig->group(QStringLiteral("Greeter")).readEntry("WallpaperPluginId", "org.kde.image");
++    s_defaultGreeterTimeout = defaultConfig->group(QStringLiteral("Greeter")).readEntry("GreeterTimeout", true);
+ }
+ 
+ QString PlasmaLoginSettingsDefaults::defaultUser()
+@@ -64,4 +66,9 @@ QString PlasmaLoginSettingsDefaults::defaultWallpaperPluginId()
+     return s_defaultWallpaperPluginId;
+ }
+ 
++bool PlasmaLoginSettingsDefaults::defaultGreeterTimeout()
++{
++    return s_defaultGreeterTimeout;
++}
++
+ #include "moc_plasmaloginsettingsdefaults.cpp"
+diff --git a/src/frontend/settings/plasmaloginsettingsdefaults.h b/src/frontend/settings/plasmaloginsettingsdefaults.h
+index d320c686..7b20918c 100644
+--- a/src/frontend/settings/plasmaloginsettingsdefaults.h
++++ b/src/frontend/settings/plasmaloginsettingsdefaults.h
+@@ -19,6 +19,7 @@ class PlasmaLoginSettingsDefaults : public KConfigSkeleton
+     Q_PROPERTY(QString defaultPreselectedSession READ defaultPreselectedSession CONSTANT)
+     Q_PROPERTY(bool defaultShowClock READ defaultShowClock CONSTANT)
+     Q_PROPERTY(QString defaultWallpaperPluginId READ defaultWallpaperPluginId CONSTANT)
++    Q_PROPERTY(bool defaultGreeterTimeout READ defaultGreeterTimeout CONSTANT)
+ 
+ public:
+     PlasmaLoginSettingsDefaults(KSharedConfigPtr config, QObject *parent = nullptr);
+@@ -30,6 +31,7 @@ public:
+     static QString defaultPreselectedSession();
+     static bool defaultShowClock();
+     static QString defaultWallpaperPluginId();
++    static bool defaultGreeterTimeout();
+ 
+ private:
+     static QString s_defaultUser;
+@@ -39,4 +41,5 @@ private:
+     static QString s_defaultPreselectedSession;
+     static bool s_defaultShowClock;
+     static QString s_defaultWallpaperPluginId;
++    static bool s_defaultGreeterTimeout;
+ };
+-- 
+2.55.0
+

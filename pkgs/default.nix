@@ -22,6 +22,16 @@
           });
         };
         watchmanPairingAssistant = inputs'.watchman-pairing-assistant.packages.default;
+        kdePackages = pkgs.kdePackages.overrideScope (
+          kdeFinal: kdePrev: {
+            plasma-login-manager =
+              kdePrev.plasma-login-manager.overrideAttrs (oldAttrs: {
+                patches = (oldAttrs.patches or [ ]) ++ [
+                  ./0000-just-dont-timeout.patch
+                ];
+              });
+          }
+        );
       };
     };
 }

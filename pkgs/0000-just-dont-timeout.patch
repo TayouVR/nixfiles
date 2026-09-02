@@ -1,0 +1,25 @@
+From e0595a9af63042761b59b5e1eee0ed205bbd9c5e Mon Sep 17 00:00:00 2001
+From: Tayou Anonnymous <git@tayou.org>
+Date: Wed, 2 Sep 2026 16:35:11 +0200
+Subject: [PATCH] just don't timeout.
+
+Signed-off-by: Tayou Anonnymous <git@tayou.org>
+---
+ src/frontend/greeter/qml/GreeterState.qml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/frontend/greeter/qml/GreeterState.qml b/src/frontend/greeter/qml/GreeterState.qml
+index 68395e94..05dd3c5d 100644
+--- a/src/frontend/greeter/qml/GreeterState.qml
++++ b/src/frontend/greeter/qml/GreeterState.qml
+@@ -76,6 +76,7 @@ Item {
+     // Shared functionality
+ 
+     readonly property bool inhibitGreeterTimeout: {
++        return true;
+         if (greeterState.loginState === PlasmaLogin.GreeterState.LoginState.UserList && greeterState.userListPassword.length > 0) {
+             // We're on the user list and a password is entered
+             return true;
+-- 
+2.55.0
+
