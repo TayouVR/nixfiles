@@ -25,6 +25,8 @@
     services.xserver.videoDrivers = [ "amdgpu" ];
     hardware.graphics.enable = true;
     hardware.graphics.enable32Bit = true;
+    hardware.amdgpu.zluda.enable = true;
+    programs.nix-required-mounts.presets.zluda.enable = false;
     nixpkgs.config.rocmSupport = true;
     systemd.tmpfiles.rules =
       let
