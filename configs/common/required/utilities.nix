@@ -73,10 +73,10 @@
       corectrl
 
       tailscale
-      #sweethome3d
+      sweethome3d.application
 
       # 3D printing
-      #cura # was unmaintained in nixpkgs
+      cura-appimage
       prusa-slicer
       orca-slicer
       qidi-studio

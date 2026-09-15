@@ -36,9 +36,9 @@
 #              # You can also use lib.fakeSha256:
 #              # sha256 = lib.fakeSha256;
 #            };
-            patches = [
-              ./patching/patches/monado/9091-deadzones.patch
-            ];
+#            patches = [
+#              ./patching/patches/monado/9091-deadzones.patch # patch is outdated, needs changes for current monado - 2026-09-15
+#            ];
 #            version = "${oldAttrs.version}-dyndev";
 #            # Add any other overrides needed for this specific version,
 #            # for example, disabling checks if they fail:

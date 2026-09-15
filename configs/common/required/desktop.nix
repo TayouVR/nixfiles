@@ -36,7 +36,7 @@
       kdePackages.filelight
       qdirstat
       kdePackages.partitionmanager
-      #kdePackages.calligra # nix package patch rejected - awaiting upstream fix
+      kdePackages.calligra
       kdePackages.kdiagram
       gparted
       gnome-disk-utility
