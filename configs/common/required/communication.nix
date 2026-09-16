@@ -40,6 +40,7 @@
       fluffychat
       beeper
       signal-desktop
+      mumble
 
       # File sharing
       localsend
