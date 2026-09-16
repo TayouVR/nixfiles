@@ -117,6 +117,8 @@
       vulkan-tools
       clinfo
       wayland-utils
+
+      sumo
     ];
 
 
