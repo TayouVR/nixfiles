@@ -18,6 +18,7 @@
     gnupg
     gitkraken # optional GUI git client (freemium)
     sourcegit # optional GUI git client (FOSS)
+    gitcomet
     gh
   ];
 }
