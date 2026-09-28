@@ -32,7 +32,7 @@
       msbuild
 
       # Unity
-      unityhub
+      local.unityhub
       nodejs # for openupm-cli see https://nixos.wiki/wiki/Node.js#Install_to_your_home
 
       # Godot

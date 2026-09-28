@@ -20,6 +20,21 @@
               hash = "sha256-jdI820Mbb1Okfr2LR4h9szBPb9/u1mTmJ/+cUnInd6o=";
             };
           });
+          # give unity a lower priority so it doesn't lag as much
+          unityhub = pkgs.unityhub.overrideAttrs (old: {
+            postInstall = (old.postInstall or "") + ''
+              mkdir -p $out/bin
+
+              # Wrap the unityhub executable
+              mv $out/bin/unityhub $out/bin/unityhub.real
+              cat > $out/bin/unityhub << 'EOF'
+              #!/bin/sh
+              exec systemd-run --scope --slice=user-background.slice \
+                nice -n 10 $out/bin/unityhub.real "$@"
+              EOF
+              chmod +x $out/bin/unityhub
+            '';
+          });
         };
         watchmanPairingAssistant = inputs'.watchman-pairing-assistant.packages.default;
         kdePackages = pkgs.kdePackages.overrideScope (
