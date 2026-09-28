@@ -20,6 +20,7 @@
               hash = "sha256-jdI820Mbb1Okfr2LR4h9szBPb9/u1mTmJ/+cUnInd6o=";
             };
           });
+          sablenext = pkgs.callPackage ./sable {};
           # give unity a lower priority so it doesn't lag as much
           unityhub = pkgs.unityhub.overrideAttrs (old: {
             postInstall = (old.postInstall or "") + ''

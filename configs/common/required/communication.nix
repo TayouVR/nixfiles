@@ -35,6 +35,7 @@
       jami
       cinny-desktop
       sable # fork of cinny
+      local.sablenext
       #kdePackages.neochat # - build failure because of olm dependency
       element-desktop
       fluffychat
