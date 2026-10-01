@@ -38,14 +38,13 @@ in
     ];
   };
 
-#  networking.extraHosts = ''
-#    192.168.178.64 homeassistant
-#    192.168.178.64 home.tayou.org
-#    192.168.178.64 nc.home.tayou.org
-#    192.168.178.64 ha.home.tayou.org
-#    192.168.178.64 immich.home.tayou.org
-#    192.168.178.64 git.home.tayou.org
-#  '';
+  networking.extraHosts = ''
+    192.168.178.64 home.tayou.org
+    192.168.178.64 nc.home.tayou.org
+    192.168.178.64 ha.home.tayou.org
+    192.168.178.64 immich.home.tayou.org
+    192.168.178.64 git.home.tayou.org
+  '';
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

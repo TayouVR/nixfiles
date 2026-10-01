@@ -81,7 +81,7 @@
 
   # NAS
 #  fileSystems."/mnt/NAS/Data" = {
-#    device = "192.168.178.64:/run/media/MainPool/Data";
+#    device = "192.168.178.64:/mnt/MainPool/Data";
 #    fsType = "nfs";
 #    options = [ "x-systemd.automount" "noauto" "vers=3" "sec=sys" ];
 #  };
