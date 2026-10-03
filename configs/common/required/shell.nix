@@ -30,10 +30,10 @@
       nix-conf = "$EDITOR $FLAKE_DIR/flake.nix";
 
       # Replace ls with eza
-      ls = "${pkgs.eza} --color=always --group-directories-first --icons"; # preferred listing
-      la = "${pkgs.eza} -a --color=always --group-directories-first --icons";  # all files and dirs
-      ll = "${pkgs.eza} -al --color=always --group-directories-first --icons";  # long format
-      lt = "${pkgs.eza} -aT --color=always --group-directories-first --icons"; # tree listing
+      ls = "${pkgs.eza} --color=always --group-directories-first --icons=always"; # preferred listing
+      la = "${pkgs.eza} -a --color=always --group-directories-first --icons=always";  # all files and dirs
+      ll = "${pkgs.eza} -al --color=always --group-directories-first --icons=always";  # long format
+      lt = "${pkgs.eza} -aT --color=always --group-directories-first --icons=always"; # tree listing
       "l." = "${pkgs.eza} -a | grep -e '^\.'";                                 # show only dotfiles
     };
 
