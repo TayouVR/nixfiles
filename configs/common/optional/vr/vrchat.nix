@@ -22,6 +22,7 @@ in
     vrc-get
     patched.blender
     alcom
+    local.oscinator
   ];
 
   xdg.mime.defaultApplications."x-scheme-handler/vcc" =
