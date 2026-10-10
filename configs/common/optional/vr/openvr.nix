@@ -20,7 +20,7 @@ in
         runtimePath =
           if cfg.runtime == "opencomposite" then "${pkgs.opencomposite}/lib/opencomposite"
           else if cfg.runtime == "steamvr" then "${config.hm.xdg.dataHome}/Steam/steamapps/common/SteamVR"
-          else if cfg.runtime == "xrizer" then "${pkgs.local.xrizer}/lib/xrizer"
+          else if cfg.runtime == "xrizer" then "${pkgs.xrizer}/lib/xrizer"
           else builtins.throw "Invalid value for tayouflake.openvr.runtime: ${cfg.runtime}. Expected one of: 'opencomposite', 'steamvr', 'xrizer'.";
       in
     ''
@@ -48,6 +48,6 @@ in
 
     environment.systemPackages =
       (if cfg.runtime == "opencomposite" then [ pkgs.opencomposite ] else []) ++
-      (if cfg.runtime == "xrizer" then [ pkgs.local.xrizer ] else []);
+      (if cfg.runtime == "xrizer" then [ pkgs.xrizer ] else []);
   };
 }
