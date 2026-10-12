@@ -23,6 +23,8 @@ in
     patched.blender
     alcom
     local.oscinator
+    miband-heartrate-gui
+    miband-heartrate-cli
   ];
 
   xdg.mime.defaultApplications."x-scheme-handler/vcc" =

@@ -33,6 +33,10 @@
       url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    miband-heartrate = {
+      url = "github:TayouVR/miband-heartrate-osc/refactor";
+#      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
 

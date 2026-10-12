@@ -39,6 +39,8 @@
           });
         };
         watchmanPairingAssistant = inputs'.watchman-pairing-assistant.packages.default;
+        miband-heartrate-gui = inputs'.miband-heartrate.packages.miband-heartrate-gui;
+        miband-heartrate-cli = inputs'.miband-heartrate.packages.miband-heartrate-cli;
         kdePackages = pkgs.kdePackages.overrideScope (
           kdeFinal: kdePrev: {
             plasma-login-manager =
