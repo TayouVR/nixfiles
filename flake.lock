@@ -168,11 +168,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1791842942,
-        "narHash": "sha256-8dLzlV3xJEoIaQdTUfAB88b5p3L8JPlYJ0tLD0sPFPY=",
+        "lastModified": 1791900115,
+        "narHash": "sha256-+PzkSGHZeKIc+eXEPXSrVkGngW3kexdzJU5ToDHxCJk=",
         "owner": "TayouVR",
         "repo": "miband-heartrate-osc",
-        "rev": "79dbe1d6a16ddc4710d13ac29e31ad225b35258f",
+        "rev": "39ca3b73c43e6a8f1451144aa98b7121b074dab6",
         "type": "github"
       },
       "original": {
@@ -264,11 +264,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1791734076,
-        "narHash": "sha256-i5qk1kLiit98rRbh1AXmWBNT9QXC/y4l5Wk/u5EdpDQ=",
+        "lastModified": 1789684949,
+        "narHash": "sha256-ZKhUe/2IJUq1JhKxKMu8rbkgSGmPP2ZCqlIPn40aGCM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7fd4004d0511991fff3a0524856a9be09e28c5f0",
+        "rev": "e554fab72f81915600f3f449b786fd9af40439a5",
         "type": "github"
       },
       "original": {
