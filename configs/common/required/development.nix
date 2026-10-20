@@ -33,6 +33,7 @@
 
       # Unity
       local.unityhub
+      local.unitypackage_extractor
       nodejs # for openupm-cli see https://nixos.wiki/wiki/Node.js#Install_to_your_home
 
       # Godot

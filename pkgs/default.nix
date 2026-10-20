@@ -22,6 +22,7 @@
             };
           });
           sablenext = pkgs.callPackage ./sable {};
+          unitypackage_extractor = pkgs.callPackage ./unitypackage_extractor {};
           # give unity a lower priority so it doesn't lag as much
           unityhub = pkgs.unityhub.overrideAttrs (old: {
             postInstall = (old.postInstall or "") + ''
