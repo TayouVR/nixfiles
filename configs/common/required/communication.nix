@@ -2,6 +2,21 @@
   pkgs,
   ...
 }:
+let
+  withGermanLang =
+    pkg:
+    pkgs.symlinkJoin {
+      name = pkg.pname or pkg.name;
+      paths = [ pkg ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        for bin in $out/bin/*; do
+          wrapProgram "$bin" \
+            --set LANG de_DE.UTF-8
+        done
+      '';
+    };
+in
 {
   config = {
     # libolm is insecure, but is needed as dep for many matrix clients.
@@ -28,9 +43,9 @@
       #jitsi # dropped due to old gtk2 libs
 
       # Chat and messaging
-      (discord.override { withVencord = true; })
-      vesktop
-      equibop
+      (withGermanLang (discord.override { withVencord = true; }))
+      (withGermanLang vesktop)
+      (withGermanLang equibop)
       telegram-desktop
       jami
       cinny-desktop
