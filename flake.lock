@@ -168,11 +168,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1791911926,
-        "narHash": "sha256-s4gCGZMtzGNW8yjrpnCacp6xjvf3wJDI9auiWep69M8=",
+        "lastModified": 1792769791,
+        "narHash": "sha256-uE3LfjWr8mqYDEJ1pHEpi+03JtO+VfSe0KcKAGgf2+k=",
         "owner": "TayouVR",
         "repo": "miband-heartrate-osc",
-        "rev": "0f9d34f241a1859c935e9f99632fdae80ec7a780",
+        "rev": "06554c7f1616b9d3c7b5c9027ebe3c3dc8ef2cd0",
         "type": "github"
       },
       "original": {
