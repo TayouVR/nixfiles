@@ -34,6 +34,7 @@ in
       kdePackages.falkon
       # ladybird # broken
       servo
+      tor-browser
 
       # Email
       thunderbird
