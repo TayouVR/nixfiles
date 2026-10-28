@@ -148,5 +148,35 @@
         secret_key = "SW2YcwTIb9zpOOhoPsMm";
       };
     };
+
+    services.prometheus = {
+      enable = true;
+
+      # Consider VictoriaMetrics if you later want longer-term storage
+      # without relying on Prometheus's local TSDB retention.
+      retentionTime = "365d";
+
+      scrapeConfigs = [
+        {
+          job_name = "local-node";
+          static_configs = [
+            {
+              targets = [ "127.0.0.1:9100" ];
+            }
+          ];
+        }
+      ];
+
+      # permanent
+      exporters.node = {
+        enable = true;
+        listenAddress = "127.0.0.1";
+
+        enabledCollectors = [
+          "systemd"
+          "processes"
+        ];
+      };
+    };
   };
 }
