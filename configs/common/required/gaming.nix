@@ -12,6 +12,7 @@
       dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
       gamescopeSession.enable = true;
       package = pkgs.millennium-steam;
+#      package = (pkgs.millennium-steam.override { bunDeps.outputHash = "sha256-WdqZqCAXzs7O+SnGD3U9cLnyBSv9psBAamY++/2dIJg="; });
 
 #      package = pkgs.steam.override {
 #        extraProfile = ''
