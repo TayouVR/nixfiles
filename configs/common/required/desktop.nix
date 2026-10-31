@@ -51,6 +51,7 @@
       kdePackages.wallpaper-engine-plugin
       kdePackages.kfind
       kdePackages.kcharselect
+      kdePackages.union
       fsearch
       qview
 
