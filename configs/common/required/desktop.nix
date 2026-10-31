@@ -120,6 +120,7 @@
       wayland-utils
 
       sumo
+      optiland # optics/lens simulation suite
     ];
 
 
