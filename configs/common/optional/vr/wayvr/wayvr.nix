@@ -139,6 +139,23 @@ in
         }
       );
 
+  systemd.user.services.wayvr-openvr =
+    {
+      description = "WayVR service (OpenVR)";
+
+      unitConfig.ConditionUser = "!root";
+
+      # wants = [ "wayvr-extras.service" ];
+
+      serviceConfig = {
+        ExecStart = "${lib.getExe wayvrPackage} --openvr";
+        Restart = "on-failure";
+        Type = "simple";
+      };
+
+      restartTriggers = [ wayvrPackage ];
+    };
+
   systemd.user.services.wayvr-extras = {
     description = "WayVR extras (stats updater)";
 
