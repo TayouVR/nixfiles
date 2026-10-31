@@ -95,7 +95,7 @@
       spotify
 
       # video editing
-      openshot-qt
+      #openshot-qt # broken 2026-10-31
       shotcut
       kdePackages.kdenlive
 
