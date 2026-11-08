@@ -111,6 +111,7 @@
       asciiquarium
       tealdeer
       usbutils # includes lsusb
+      jre
     ] ++
     (if (config.tayouflake.graphics.driver == "amd") then
       [nvtopPackages.amd]
