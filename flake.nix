@@ -37,6 +37,8 @@
       url = "github:TayouVR/miband-heartrate-osc/refactor";
 #      inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sonora.url = "github:sonorahq/sonora";
   };
 
 

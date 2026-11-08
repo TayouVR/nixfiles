@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs',
   ...
 }:
 
@@ -93,6 +94,7 @@
       haruna
       grayjay
       spotify
+      inputs'.sonora.packages.sonora
 
       # video editing
       #openshot-qt # broken 2026-10-31
