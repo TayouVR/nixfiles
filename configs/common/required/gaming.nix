@@ -11,7 +11,7 @@
       remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
       dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
       gamescopeSession.enable = true;
-      package = pkgs.millennium-steam;
+      package = pkgs.steamWithMillennium;
 #      package = (pkgs.millennium-steam.override { bunDeps.outputHash = "sha256-WdqZqCAXzs7O+SnGD3U9cLnyBSv9psBAamY++/2dIJg="; });
 
 #      package = pkgs.steam.override {
@@ -44,7 +44,7 @@
 
       # Game launchers
       prismlauncher
-      modrinth-app
+      # modrinth-app
       lutris
       rare
       minigalaxy
@@ -76,7 +76,7 @@
       kdePackages.ksirk # KDE Risk game
       apotris
       mindustry
-      zeroad
+      #zeroad # depended on ancient SpiderMonkey dep, removed from nixpkgs
       vintagestory
 
       # Modding

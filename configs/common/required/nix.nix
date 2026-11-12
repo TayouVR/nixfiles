@@ -9,7 +9,7 @@
 
 let
   inherit (lib) mkOption types;
-  inherit (inputs) nixpkgs-xr millennium;
+  inherit (inputs) nixpkgs-xr;
 
   cfg = config.tayouflake.nix;
 in
@@ -35,7 +35,6 @@ in
     nixpkgs.overlays = [
       self.overlays.default
       nixpkgs-xr.overlays.default
-      millennium.overlays.default
     ];
     nixpkgs.config.allowUnfree = true;
 

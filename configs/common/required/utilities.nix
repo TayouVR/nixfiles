@@ -41,7 +41,7 @@
       lolcat
 
       # appimages
-      gearlever
+      # gearlever
 #      fuse3
 #      webkitgtk_4_1 # for tauri
 #      harfbuzz

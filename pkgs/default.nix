@@ -8,6 +8,14 @@
     { pkgs, inputs', ... }:
     {
       overlayAttrs = {
+        # alcom broke upstream, fixed in https://github.com/NixOS/nixpkgs/pull/585045
+        # backport of upstream PR until this lands in unstable.
+        alcom = pkgs.alcom.overrideAttrs (old: {
+          buildInputs = (old.buildInputs or [ ]) ++ [ pkgs.aws-lc ];
+        });
+        vrc-get = pkgs.vrc-get.overrideAttrs (old: {
+          buildInputs = (old.buildInputs or [ ]) ++ [ pkgs.aws-lc ];
+        });
         local = {
           startvrc = pkgs.callPackage ./startvrc {};
           writeSystemdToggle = pkgs.callPackage ./writeSystemdToggle {};
