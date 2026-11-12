@@ -35,13 +35,11 @@
           unityhub = pkgs.unityhub.overrideAttrs (old: {
             postInstall = (old.postInstall or "") + ''
               mkdir -p $out/bin
-
-              # Wrap the unityhub executable
-              mv $out/bin/unityhub $out/bin/unityhub.real
-              cat > $out/bin/unityhub << 'EOF'
-              #!/bin/sh
+              rm -f $out/bin/unityhub
+              cat > $out/bin/unityhub <<EOF
+              #!${pkgs.runtimeShell}
               exec systemd-run --scope --slice=user-background.slice \
-                nice -n 10 $out/bin/unityhub.real "$@"
+                nice -n 10 $out/opt/unityhub/unityhub "\$@"
               EOF
               chmod +x $out/bin/unityhub
             '';
