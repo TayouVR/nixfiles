@@ -56,6 +56,16 @@
                   ./0000-just-dont-timeout.patch
                 ];
               });
+            # Keep pinned launchers as applications:<menuId> instead of the
+            # resolved absolute path to a wrapper-internal binary (e.g. NixOS
+            # makeWrapper/makeBinaryWrapper apps like gitcomet), which goes
+            # stale on updates and bypasses the wrapper's env. See KDE bug 505066.
+            plasma-workspace =
+              kdePrev.plasma-workspace.overrideAttrs (oldAttrs: {
+                patches = (oldAttrs.patches or [ ]) ++ [
+                  ./0001-launchertasksmodel-prefer-menuid.patch
+                ];
+              });
           }
         );
       };
