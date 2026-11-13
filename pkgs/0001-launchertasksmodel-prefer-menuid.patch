@@ -1,22 +1,26 @@
 --- a/libtaskmanager/launchertasksmodel.cpp	2026-11-12 17:47:31.884145239 +0100
-+++ b/libtaskmanager/launchertasksmodel.cpp	2026-11-12 17:47:31.938615167 +0100
-@@ -140,9 +140,18 @@
++++ b/libtaskmanager/launchertasksmodel.cpp	2026-11-12 18:10:51.146695508 +0100
+@@ -140,9 +140,24 @@
              return QString();
          };
  
--        // try the final resolved filename - in case url is a symlink to a
--        // .desktop file in the database
--        QString menuId = getMenuId(KService::serviceByStorageId(f.fileName()));
-+        // Prefer the registered menuId matching the desktop entry's basename.
-+        // This keeps the launcher as applications:<menuId> even when the
-+        // .desktop file resolves to a wrapper-internal binary (e.g. NixOS
-+        // makeWrapper/makeBinaryWrapper apps), which would otherwise leave a
-+        // stale absolute store path. See bug 505066 (wrapper-execv case).
-+        QString menuId = getMenuId(KService::serviceByMenuId(url.fileName()));
++        // Prefer the registered menuId for the desktop entry's basename, as
++        // long as it resolves to this same .desktop file. This keeps the
++        // launcher as applications:<menuId> even when the file resolves to a
++        // wrapper-internal binary (e.g. NixOS makeWrapper/makeBinaryWrapper
++        // apps), which would otherwise leave a stale absolute store path.
++        // See bug 505066 (wrapper-execv case).
++        QString menuId;
++        if (const KService::Ptr service = KService::serviceByMenuId(url.fileName())) {
++            if (KDesktopFile(service->entryPath()).fileName() == f.fileName()) {
++                menuId = service->menuId();
++            }
++        }
 +
+         // try the final resolved filename - in case url is a symlink to a
+         // .desktop file in the database
+-        QString menuId = getMenuId(KService::serviceByStorageId(f.fileName()));
 +        if (menuId.isEmpty()) {
-+            // try the final resolved filename - in case url is a symlink to a
-+            // .desktop file in the database
 +            menuId = getMenuId(KService::serviceByStorageId(f.fileName()));
 +        }
  
