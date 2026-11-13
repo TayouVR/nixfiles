@@ -16,6 +16,18 @@
         vrc-get = pkgs.vrc-get.overrideAttrs (old: {
           buildInputs = (old.buildInputs or [ ]) ++ [ pkgs.aws-lc ];
         });
+        # KDE Plasma resolves and caches a .desktop launcher's Exec to the
+        # absolute store path of the final binary. gitcomet's `gitcomet` is a
+        # makeBinaryWrapper that execv's the internal `.gitcomet-wrapped`, so
+        # the cached copy points at the internal binary and goes stale/broken.
+        # Point Exec at the stable system-profile path so the resolved launcher
+        # keeps working across updates. See KDE bug 505066 (wrapper-execv case).
+        gitcomet = pkgs.gitcomet.overrideAttrs (old: {
+          postInstall = (old.postInstall or "") + ''
+            substituteInPlace $out/share/applications/gitcomet.desktop \
+              --replace-fail 'Exec=gitcomet' 'Exec=/run/current-system/sw/bin/gitcomet'
+          '';
+        });
         local = {
           startvrc = pkgs.callPackage ./startvrc {};
           writeSystemdToggle = pkgs.callPackage ./writeSystemdToggle {};
