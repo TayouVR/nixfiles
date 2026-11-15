@@ -18,19 +18,19 @@ let
 in
 buildNpmPackage (finalAttrs: {
   pname = "vrcx";
-  version = "2026.09.16";
+  version = "2026.11.14";
 
   src = fetchFromGitHub {
     repo = "VRCX";
     owner = "vrcx-team";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-CNO3Ur8xp77QN+HCexCpGX+QdAKM76YOSWOG3ZHT1g0=";
+    hash = "sha256-/SPc0VAE50yHsYNEfeEuf3BfexgEKOvAUOLcrK7yQW8=";
   };
 
   nodejs = node;
   makeCacheWritable = true;
   npmFlags = [ "--ignore-scripts" ];
-  npmDepsHash = "sha256-fFuqtISueODEFzuqWWL3aG4DWbrq2G4dHsXi3RWByjY=";
+  npmDepsHash = "sha256-VEB+BS54jMhMi3GXmF9tNH/1ahTZn7FSy27zOAhaVqU=";
 
   nativeBuildInputs = [
     makeWrapper
@@ -54,7 +54,6 @@ buildNpmPackage (finalAttrs: {
       --dir \
       -c.electronDist=${electron.dist} \
       -c.electronVersion=${electron.version}
-    node ./build-scripts/patch-node-api-dotnet.js
 
     runHook postBuild
   '';
@@ -65,7 +64,7 @@ buildNpmPackage (finalAttrs: {
     mkdir -p "$out/share/vrcx"
     cp -r build/*-unpacked/resources "$out/share/vrcx/"
     mkdir -p "$out/share/vrcx/resources/app.asar.unpacked/build/Electron"
-    cp -r ${finalAttrs.passthru.backend}/build/Electron/* "$out/share/vrcx/resources/app.asar.unpacked/build/Electron/"
+    cp -r ${finalAttrs.passthru.backend}/build/Electron/linux-x64 "$out/share/vrcx/resources/app.asar.unpacked/build/Electron/linux-x64/"
 
     makeWrapper '${electron}/bin/electron' "$out/bin/vrcx"  \
       --add-flags "--ozone-platform-hint=auto --no-updater" \
@@ -103,6 +102,10 @@ buildNpmPackage (finalAttrs: {
       dotnet-sdk = dotnet.sdk;
       dotnet-runtime = dotnet.runtime;
       projectFile = "Dotnet/VRCX-Electron.csproj";
+
+      # VRCX's Directory.Build.props ValidateRuntimeIdentifier target fails
+      # when Platform is AnyCPU (nixpkgs dotnet-build default).
+      dotnetFlags = [ "-p:Platform=x64" ];
 
       nugetDeps = ./deps.json;
 
