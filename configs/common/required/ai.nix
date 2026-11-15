@@ -5,7 +5,8 @@
   ...
 }:
 let
-  ollamaPackage = if config.tayouflake.graphics.driver == "nvidia" then pkgs.ollama-cuda else pkgs.ollama;
+  # ollamaPackage = if config.tayouflake.graphics.driver == "nvidia" then pkgs.ollama-cuda else pkgs.ollama;
+  ollamaPackage = pkgs.ollama; # ollama package is already mapped to the gpu vendor by nixpkgs
 in
 {
   options.tayouflake.ai = {
@@ -18,18 +19,22 @@ in
   };
 
   config = lib.mkIf (config.tayouflake.ai.enable) {
-#    services = {
-#      open-webui = {
-#        enable = true;
-#        openFirewall = true;
-#      };
-#      ollama = {
-#        enable = true;
-#      };
-#    };
+    services = {
+      open-webui = {
+        enable = true;
+        openFirewall = true;
+      };
+      ollama = {
+        enable = true;
+        package = ollamaPackage;
+        environmentVariables = {
+          OLLAMA_CONTEXT_LENGTH = "512000";
+        };
+      };
+    };
 
     environment.systemPackages = with pkgs; [
-      # ollama
+      ollamaPackage
       opencode-desktop
     ];
   };
