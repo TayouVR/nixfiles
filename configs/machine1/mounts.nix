@@ -85,6 +85,32 @@
 #    fsType = "nfs";
 #    options = [ "x-systemd.automount" "noauto" "vers=3" "sec=sys" ];
 #  };
+  fileSystems."/mnt/smb/media" = {
+    device = "//192.168.178.64/media";
+    fsType = "cifs";
+    options = [
+      "x-systemd.automount"
+      "noauto"
+      "_netdev"
+      "vers=3"
+      "credentials=/mnt/data/tayou-nas-creds"
+      "uid=1000"
+      "gid=100"
+    ];
+  };
+  fileSystems."/mnt/smb/data" = {
+    device = "//192.168.178.64/MainPool/Data";
+    fsType = "cifs";
+    options = [
+      "x-systemd.automount"
+      "noauto"
+      "_netdev"
+      "vers=3"
+      "credentials=/mnt/data/tayou-nas-creds"
+      "uid=1000"
+      "gid=100"
+    ];
+  };
 
 
 }
