@@ -158,7 +158,7 @@ ${pkgs.freerdp}/bin/xfreerdp /u:$(${pkgs.kdePackages.kdialog}/bin/kdialog \
   --password "Enter your Password:") \
 /v:192.168.178.20 \
 /multimon /sound /microphone \
-/clipboard /dvc:urbdrc,dev:12d1:4321 /kbd:layout:0x407
+/clipboard /dvc:camera /kbd:layout:0x407
       ''}/bin/freerdp-work-laptop-exec";
       icon = "gnome-rdp";
       categories = [
@@ -166,5 +166,9 @@ ${pkgs.freerdp}/bin/xfreerdp /u:$(${pkgs.kdePackages.kdialog}/bin/kdialog \
       ];
       terminal = false;
     };
+
+    services.udev.extraRules = ''
+      SUBSYSTEM=="usb", ATTR{idVendor}=="12d1", ATTR{idProduct}=="4321", TAG+="uaccess"
+    '';
   };
 }
