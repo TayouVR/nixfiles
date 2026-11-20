@@ -19,22 +19,22 @@ in
   };
 
   config = lib.mkIf (config.tayouflake.ai.enable) {
-    services = {
-      open-webui = {
-        enable = true;
-        openFirewall = true;
-      };
-      ollama = {
-        enable = true;
-        package = ollamaPackage;
-        environmentVariables = {
-          OLLAMA_CONTEXT_LENGTH = "512000";
-        };
-      };
-    };
+#    services = {
+#      open-webui = {
+#        enable = true;
+#        openFirewall = true;
+#      };
+#      ollama = {
+#        enable = true;
+#        package = ollamaPackage;
+#        environmentVariables = {
+#          OLLAMA_CONTEXT_LENGTH = "512000";
+#        };
+#      };
+#    };
 
     environment.systemPackages = with pkgs; [
-      ollamaPackage
+#      ollamaPackage
       opencode-desktop
     ];
   };
