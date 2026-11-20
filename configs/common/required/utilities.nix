@@ -112,6 +112,10 @@
       tealdeer
       usbutils # includes lsusb
       jre
+
+      # benchmark/stress tests
+      furmark
+      unigine-heaven
     ] ++
     (if (config.tayouflake.graphics.driver == "amd") then
       [nvtopPackages.amd]
