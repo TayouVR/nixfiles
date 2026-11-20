@@ -89,12 +89,15 @@ in
     };
 
     system = {
-      autoUpgrade = {
-        enable = true;
-        dates = "02:00";
-        randomizedDelaySec = "45min";
-        persistent = true;
-      };
+      # I don't really use this on my desktop machines, should set this up for my NAS though.
+#      autoUpgrade = {
+#        enable = true;
+#        dates = "02:00";
+#        randomizedDelaySec = "45min";
+#        persistent = true;
+#        flake = "git+file:///home/tayou/nix";
+#        flags = [ "-L" ];
+#      };
 
       activationScripts.report-changes = ''
         PATH=$PATH:${lib.makeBinPath [ pkgs.nvd pkgs.nix ]}
